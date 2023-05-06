@@ -1,0 +1,23 @@
+.container {
+  display: inline;
+}
+
+.content {
+  align-items: stretch;
+  display: flex;
+}
+
+.field {
+  & input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  width: 100%;
+  flex-grow: 1;
+}
+
+.button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  flex-shrink: 0;
+}

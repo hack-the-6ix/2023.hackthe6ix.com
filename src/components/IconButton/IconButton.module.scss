@@ -1,0 +1,37 @@
+@use '~@ht6/react-ui/dist/styles/mixins.module';
+@use '~@ht6/react-ui/dist/styles/colors.module';
+
+.root {
+  @include mixins.transition(color);
+  text-decoration: none;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+  background: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  border: none;
+}
+
+@each $color in map-keys(colors.$config) {
+  .#{$color} {
+    &:hover,
+    &:focus {
+      color: colors.getColor($color, hover);
+    }
+
+    &:active {
+      color: colors.getColor($color, active);
+    }
+  }
+}
+
+.icon {
+  height: auto;
+  width: 2em;
+}
+
+.text {
+  margin-top: 0.25rem;
+}

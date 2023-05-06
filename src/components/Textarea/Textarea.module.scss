@@ -1,0 +1,24 @@
+@use '~@ht6/react-ui/dist/styles/colors.module';
+@use '~@ht6/react-ui/dist/styles/mixins.module';
+
+.field {
+  @include mixins.transition(border-color);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  border-style: solid;
+  border-width: 1px;
+  resize: vertical;
+}
+
+.outline {
+  @each $color, $_ in colors.$config {
+    &--#{$color} {
+      border-color: colors.getColor($color);
+    }
+  }
+}
+
+.text {
+  line-height: 1;
+  margin: 0;
+}

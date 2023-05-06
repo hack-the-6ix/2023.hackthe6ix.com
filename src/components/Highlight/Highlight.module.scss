@@ -1,0 +1,10 @@
+@use '~@ht6/react-ui/dist/styles/colors.module';
+
+.highlight {
+  padding: 0 0.5rem;
+  @each $color in map-keys(colors.$config) {
+    &--#{$color} {
+      box-shadow: inset 0 -0.5em colors.getColor($color);
+    }
+  }
+}

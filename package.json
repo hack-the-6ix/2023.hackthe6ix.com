@@ -1,0 +1,55 @@
+{
+  "name": "2023-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "2023-landing",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "lint": "prettier --write .",
+    "clean": "gatsby clean",
+    "typecheck": "tsc --noEmit"
+  },
+  "overrides": {
+    "react-server-dom-webpack@0.0.0-experimental-c8b778b7f-20220825": {
+      "react": "^18.2.0"
+    }
+  },
+  "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
+    "classnames": "^2.3.1",
+    "gatsby": "^5.9.0",
+    "gatsby-plugin-google-analytics": "^5.9.0",
+    "gatsby-plugin-image": "^3.9.0",
+    "gatsby-plugin-manifest": "^5.9.0",
+    "gatsby-plugin-react-helmet": "^6.9.0",
+    "gatsby-plugin-react-svg": "^3.3.0",
+    "gatsby-plugin-sass": "^6.9.0",
+    "gatsby-plugin-sharp": "^5.9.0",
+    "gatsby-plugin-sitemap": "^6.9.0",
+    "gatsby-plugin-typegen": "^3.1.0",
+    "gatsby-source-filesystem": "^5.9.0",
+    "gatsby-transformer-sharp": "^5.9.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
+    "react-hot-toast": "^2.4.1",
+    "sass": "^1.53.0",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.5",
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
+    "@types/react-helmet": "^6.1.5",
+    "@types/validator": "^13.7.3",
+    "gatsby-plugin-mini-css-class-name": "^6.0.0",
+    "gatsby-plugin-netlify": "^5.1.0",
+    "prettier": "^2.7.1",
+    "ts-graphql-plugin": "^2.1.7",
+    "typescript": "^4.9.5"
+  }
+}

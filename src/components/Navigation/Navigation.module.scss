@@ -1,0 +1,186 @@
+@use '~@ht6/react-ui/dist/styles/mixins.module';
+@use '~@ht6/react-ui/dist/styles/colors.module';
+@use '../../styles/colors.module' as localColors;
+@use '../../styles/mixins.module' as localMixins;
+
+.root {
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.12);
+  background-color: localColors.$bg-2;
+  padding-bottom: 0;
+  position: sticky;
+  padding-top: 0;
+  z-index: 100;
+  top: 0;
+}
+
+.content {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.logo {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  padding: 0.5rem 0;
+  margin-right: auto;
+  grid-gap: 1rem;
+}
+
+.logoSvg {
+  width: 1.25rem;
+}
+
+.linkItems {
+  list-style-type: none;
+  align-self: stretch;
+  display: flex;
+  padding: 0;
+  margin: 0;
+
+  @include localMixins.media(nav) {
+    display: none;
+  }
+}
+
+.linkItem {
+  @include mixins.transition(color);
+  box-sizing: border-box;
+  position: relative;
+  padding: 1.5rem;
+  display: block;
+  height: 100%;
+
+  &::before {
+    @include mixins.transition(background-color);
+    background-color: transparent;
+    border-radius: 999px;
+    margin: 0 auto auto;
+    position: absolute;
+    height: 0.25rem;
+    width: 100%;
+    content: '';
+    inset: 0;
+  }
+
+  &:hover,
+  &:focus {
+    color: colors.getColor(primary-700, hover);
+  }
+
+  &:active {
+    color: colors.getColor(primary-700, active);
+  }
+
+  &Active {
+    color: colors.getColor(primary-700);
+
+    &::before {
+      background-color: currentColor;
+    }
+  }
+}
+
+.mobileNav {
+  grid-template-columns: 1fr 1fr;
+  list-style-type: none;
+  grid-gap: 0.5rem;
+  display: grid;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+
+  @include localMixins.media(mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mobileNavItem {
+  @include mixins.transition(background-color color);
+  box-sizing: border-box;
+  border-radius: 0.25rem;
+  padding: 0.75rem 1rem;
+  display: block;
+  min-width: 1px;
+  width: clamp(1px, 100%, 11rem);
+
+  @include localMixins.media(mobile) {
+    width: 100%;
+  }
+
+  &Active {
+    background-color: colors.getColor(primary-700, hover, 0.1);
+    color: colors.getColor(primary-700);
+  }
+
+  &:hover,
+  &:focus,
+  &Active {
+    color: colors.getColor(primary-700);
+  }
+
+  &:active {
+    background-color: colors.getColor(primary-700, hover, 0.06);
+  }
+}
+
+.menu {
+  @include mixins.transition(background-color color);
+  background-color: transparent;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  aspect-ratio: 1;
+  display: none;
+  border: none;
+
+  &:hover,
+  &:focus {
+    background-color: colors.getColor(primary-500, $alpha: 0.08);
+    color: colors.getColor(primary-500);
+  }
+
+  &:active {
+    background-color: colors.getColor(primary-500, $alpha: 0.14);
+  }
+
+  @include localMixins.media(nav) {
+    display: block;
+  }
+}
+
+.menuIcon {
+  width: 1.75rem;
+  height: 1.75rem;
+  display: flex;
+}
+
+.banner {
+  margin-bottom: auto;
+  margin-left: 1.5rem;
+  overflow-y: visible;
+  width: 5.25rem;
+  height: 1px;
+}
+
+.applyContainer {
+  display: flex;
+  align-items: center;
+  margin-left: 1.5rem;
+}
+
+.apply {
+  text-decoration: none;
+  text-align: center;
+  display: block;
+}
+
+.applyMobile {
+  grid-column-start: 1;
+  grid-column-end: 2 span;
+  padding-top: 0.5rem;
+
+  @include localMixins.media(mobile) {
+    grid-column: 1;
+  }
+}
