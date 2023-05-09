@@ -43,7 +43,7 @@ const query = graphql`
   }
 `;
 
-const words = ['collaborate.', 'network.', 'win.', 'create a project.'];
+const words = ['network.', 'learn.', 'win.', 'create a project.', 'collaborate.'];
 
 function Splash() {
   const data = useStaticQuery<GatsbyTypes.SplashQueryQuery>(query);
@@ -82,28 +82,31 @@ function Splash() {
         textType='heading3'
         as='p'
       >
-        <Highlight highlightColor='primary-4'>
-          {startFormat.format(startDate)} - {endFormat.format(endDate)} | Hybrid
-          Event
+        <Highlight highlightColor='shades-0'>
+          {startFormat.format(startDate)} - {endFormat.format(endDate)} • In-person
+          event
         </Highlight>
       </Typography>
       <Typography
         className={cx(text, title)}
-        textColor='primary-700'
+        textColor='shades-0'
+        // change to same heading/font-size as below
         textType='heading1'
         as='h1'
       >
-        Hack the 6ix
+        Hack the 6ix is Toronto's <span className={highlight}>largest</span> summer hackathon, where <span className={highlight}>anyone</span> can hack to
       </Typography>
       <Typography
         className={banner}
         textColor='copy-dark'
+        // change to same heading/font-size as above
         textType='heading2'
-        as='div'
+        as='span'
       >
-        <p className={text}>We hack to</p>
-        <VCarousel className={carousel} items={words} />
+        {/* <p className={text}>We hack to</p> */}
+        <VCarousel className={cx(carousel, highlight)} items={words} />
       </Typography>
+      {/* Email Sign up */}
       <Socials
         className={socials}
         baseColor='primary-700'

@@ -16,9 +16,10 @@
 .content {
   justify-content: center;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: left;
+  text-align: left;
   display: flex;
+  max-width: 1460px;
 }
 
 .backdrop {
@@ -39,7 +40,7 @@
 }
 
 .title {
-  text-transform: uppercase;
+  color: colors.getColor(shades-0);
 }
 
 .banner {
