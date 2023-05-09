@@ -13,29 +13,29 @@ import Why from '../sections/Why';
 
 const navLinks: NavigationProps['links'] = [
   {
-    linkType: 'anchor',
     children: 'About',
-    to: '#about',
+    href: '#about',
+    linkStyle: "pure"
   },
   {
-    linkType: 'anchor',
     children: 'Why Us?',
-    to: '#why-us',
+    href: '#why-us',
+    linkStyle: "pure"
   },
   {
-    linkType: 'anchor',
     children: 'Sponsors',
-    to: '#sponsors',
+    href: '#sponsors',
+    linkStyle: "pure"
   },
   {
-    linkType: 'anchor',
     children: 'Past Speakers',
-    to: '#past-speakers',
+    href: '#past-speakers',
+    linkStyle: "pure"
   },
   {
-    linkType: 'anchor',
     children: 'FAQ',
-    to: '#faq',
+    href: '#faq',
+    linkStyle: "pure"
   },
 ];
 

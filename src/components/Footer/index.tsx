@@ -1,9 +1,8 @@
 import { FaArrowUp } from '@react-icons/all-files/fa/FaArrowUp';
 import { StaticImage } from 'gatsby-plugin-image';
 import { useEffect, useState } from 'react';
-import { Typography } from '@ht6/react-ui';
+import {BasicLink, BasicLinkProps, Input, Link, Typography} from '@ht6/react-ui';
 import cx from 'classnames';
-import Link, { LinkProps } from '../Link';
 import PageSection from '../PageSection';
 import IconButton from '../IconButton';
 import {
@@ -19,22 +18,22 @@ import {
 } from './Footer.module.scss';
 import Socials from '../Socials';
 
-const links: Omit<LinkProps, 'linkType'>[] = [
+const links: Omit<BasicLinkProps, 'linkType'>[] = [
   {
     children: '2021 Website',
-    to: 'https://2021.hackthe6ix.com',
+    href: 'https://2021.hackthe6ix.com',
   },
   {
     children: '2020 Website',
-    to: 'https://2020.hackthe6ix.com',
+    href: 'https://2020.hackthe6ix.com',
   },
   {
     children: 'Privacy Policy',
-    to: 'http://cdn.hackthe6ix.com/privacy-policy.pdf',
+    href: 'http://cdn.hackthe6ix.com/privacy-policy.pdf',
   },
   {
     children: 'MLH Code of Conduct',
-    to: 'https://static.mlh.io/docs/mlh-code-of-conduct.pdf',
+    href: 'https://static.mlh.io/docs/mlh-code-of-conduct.pdf',
   },
 ];
 
@@ -94,14 +93,14 @@ function Footer() {
           <Typography className={items} textType='subheading' as='ul'>
             {links.map((linkProps, key) => (
               <li className={linkItem} key={key}>
-                <Link
+                <BasicLink
                   {...linkProps}
                   rel='noopener noreferrer'
                   className={link}
                   linkColor='warning-400'
                   linkStyle='styled'
-                  linkType='anchor'
                   target='_blank'
+                  href={linkProps.href}
                 />
               </li>
             ))}

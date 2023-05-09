@@ -85,8 +85,8 @@ function Question() {
           return false;
         }}
       >
-        <Input {...inputProps('Name', 'name')} />
-        <Input {...inputProps('Email', 'email')} type='email' />
+        <Input {...inputProps('Name', 'name')} labelColor={"primary-700"} />
+        <Input {...inputProps('Email', 'email')} type='email' labelColor={"primary-700"} />
         <Textarea
           {...(inputProps('Enter your question here', 'message') as any)}
           onChange={(e) => {

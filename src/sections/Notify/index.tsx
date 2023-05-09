@@ -1,9 +1,8 @@
-import { Typography, Button } from '@ht6/react-ui';
+import {Typography, Button, BasicLink} from '@ht6/react-ui';
 import { StaticImage } from 'gatsby-plugin-image';
 import { useState } from 'react';
 import Highlight from '../../components/Highlight';
 import PageSection from '../../components/PageSection';
-import Link from '../../components/Link';
 import {
   container,
   text,
@@ -31,7 +30,7 @@ function Notify() {
           as='h2'
         >
           Applications are&nbsp;
-          <Highlight highlightColor='primary-4'>now open!</Highlight>
+          <Highlight highlightColor='warning-400'>now open!</Highlight>
         </Typography>
         <Typography
           className={text}
@@ -44,12 +43,11 @@ function Notify() {
         </Typography>
       </div>
       <Button
-        to='https://dash.hackthe6ix.com'
+        href='https://dash.hackthe6ix.com'
         rel='noreferrer noopener'
         className={apply}
         target='_blank'
-        linkType='anchor'
-        as={Link}
+        as={BasicLink}
       >
         Apply Now
       </Button>
@@ -60,9 +58,9 @@ function Notify() {
         as='p'
       >
         Got questions? Check out our{' '}
-        <Link linkType='anchor' linkStyle='styled' to='#faq'>
+        <BasicLink linkStyle='styled' href='#faq'>
           FAQ
-        </Link>{' '}
+        </BasicLink>{' '}
         section!
       </Typography>
     </PageSection>

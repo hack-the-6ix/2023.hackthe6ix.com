@@ -82,7 +82,7 @@ function Splash() {
         textType='heading3'
         as='p'
       >
-        <Highlight highlightColor='primary-4'>
+        <Highlight highlightColor='warning-400'>
           {startFormat.format(startDate)} - {endFormat.format(endDate)} | Hybrid
           Event
         </Highlight>
@@ -107,7 +107,7 @@ function Splash() {
       <Socials
         className={socials}
         baseColor='primary-700'
-        activeColor='primary-4'
+        activeColor='warning-400'
         gap='1rem'
       />
       <IconButton

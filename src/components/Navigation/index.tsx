@@ -1,9 +1,9 @@
 import { RiMenuLine } from '@react-icons/all-files/ri/RiMenuLine';
 import { useCallback, useEffect, useRef, useState, MouseEvent } from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
-import { Button, Typography } from '@ht6/react-ui';
+import {BasicLinkProps, Typography} from '@ht6/react-ui';
 import cx from 'classnames';
-import Link, { LinkProps } from '../Link';
+import { BasicLink } from '@ht6/react-ui';
 import PageSection from '../PageSection';
 import Popup from '../Popup';
 import Logo from '../../images/logo.svg';
@@ -25,6 +25,7 @@ import {
   applyContainer,
   applyMobile,
 } from './Navigation.module.scss';
+import {Link as GatsbyLink} from 'gatsby';
 
 function setHash(event: MouseEvent, path: string, scroll?: boolean) {
   event.preventDefault();
@@ -42,7 +43,7 @@ function setHash(event: MouseEvent, path: string, scroll?: boolean) {
 export interface NavigationProps {
   showMlhBanner?: boolean;
   useScrollSpy?: boolean;
-  links: LinkProps[];
+  links: BasicLinkProps[];
   base?: string;
 }
 
@@ -58,7 +59,7 @@ function Navigation({
   const getItemTops = useCallback(() => {
     if (!useScrollSpy) return [];
     return links.map(
-      (link) => document.querySelector<HTMLElement>(link.to)?.offsetTop ?? -999
+      (link) => document.querySelector<HTMLElement>(link.href)?.offsetTop ?? -999
     );
   }, [links, useScrollSpy]);
 
@@ -92,21 +93,21 @@ function Navigation({
 
   return (
     <PageSection containerClassName={root} className={content} as='nav'>
-      <Link
+      <BasicLink
         onClick={(...args) => setHash(...args, '#', true)}
         className={logo}
         to={base}
-        linkType='gatsby'
-        linkStyle='pure'
+        as={GatsbyLink}
       >
         <Logo className={logoSvg} />
         <Typography textType='heading3' textColor='primary-500'>
           Hack the 6ix
         </Typography>
-      </Link>
+      </BasicLink>
       {links && (
         <ul className={linkItems}>
           {links.map((link, key) => {
+            console.log(activeIdx, key);
             return (
               <Typography
                 key={key}
@@ -115,13 +116,12 @@ function Navigation({
                 textColor='grey'
                 as='li'
               >
-                <Link
+                <BasicLink
                   {...link}
                   onClick={(...args) => {
-                    setHash(...args, link.to, true);
+                    setHash(...args, link.href, true);
                     link.onClick?.(...args);
                   }}
-                  linkStyle='pure'
                   className={cx(key === activeIdx && linkItemActive, linkItem)}
                 />
               </Typography>
@@ -148,11 +148,10 @@ function Navigation({
               textColor='grey'
               as='li'
             >
-              <Link
+              <BasicLink
                 {...link}
-                linkStyle='pure'
                 onClick={(...args) => {
-                  setHash(...args, link.to, true);
+                  setHash(...args, link.href, true);
                   link.onClick?.(...args);
                   setShow(false);
                 }}
@@ -166,12 +165,10 @@ function Navigation({
         })}
       </Popup>
       {showMlhBanner && (
-        <Link
-          to='https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2023-season&utm_content=yellow'
+        <BasicLink
+          href='https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2023-season&utm_content=yellow'
           rel='noreferrer noopener'
           className={banner}
-          linkType='anchor'
-          linkStyle='pure'
           target='_blank'
         >
           <StaticImage
@@ -181,7 +178,7 @@ function Navigation({
             quality={100}
             width={200}
           />
-        </Link>
+        </BasicLink>
       )}
     </PageSection>
   );
