@@ -43,7 +43,7 @@ const query = graphql`
   }
 `;
 
-const words = ['collaborate.', 'network.', 'win.', 'create a project.'];
+const words = ['network.', 'learn.', 'win.', 'create a project.', 'collaborate.'];
 
 function Splash() {
   const data = useStaticQuery<GatsbyTypes.SplashQueryQuery>(query);
@@ -93,17 +93,19 @@ function Splash() {
         textType='heading1'
         as='h1'
       >
-        Hack the 6ix
+        Hack the 6ix is Toronto's <span className={highlight}>largest</span> summer hackathon, where <span className={highlight}>anyone</span> can hack to
       </Typography>
       <Typography
         className={banner}
         textColor='copy-dark'
+        // change to same heading/font-size as above
         textType='heading2'
         as='div'
       >
-        <p className={text}>We hack to</p>
+        {/* <p className={text}>We hack to</p> */}
         <VCarousel className={carousel} items={words} />
       </Typography>
+      {/* Email Sign up */}
       <Socials
         className={socials}
         baseColor='primary-700'
