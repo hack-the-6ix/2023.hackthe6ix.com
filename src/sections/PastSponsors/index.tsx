@@ -1,4 +1,4 @@
-import { Typography } from '@ht6/react-ui';
+import { Typography, Button } from '@ht6/react-ui';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { CSSProperties } from 'react';
@@ -38,12 +38,26 @@ function PastSponsors() {
       <Typography
         id='sponsors'
         className={title}
-        textType='heading2'
-        as='h2'
-        textColor='primary-700'
+        textType='heading1'
+        as='h1'
+        textColor='shades-0'
       >
-        Sponsors
+        Sponsor the <span style={{color: 'warning-400'}}>next big idea</span> 
       </Typography>
+      <Typography
+        id='sponsors'
+        // className={title}
+        textType='heading6'
+        as='h6'
+        textColor='shades-0'
+      >
+        Special thanks to our sponsors for supporting Hack the 6ix and the incubation of big ideas. Want to help us make it even better?
+      </Typography>
+      <Button
+        buttonColor='primary-500'
+        >
+          Become a sponsor
+      </Button>
       {data.map((group, i) => (
         <ul
           style={{ '--ps-s': group.size, '--ps-g': group.gap } as CSSProperties}
