@@ -1,18 +1,19 @@
-import { Typography } from '@ht6/react-ui';
-import PageSection from '../../components/PageSection';
-import AccordionGroup from '../../components/AccordionGroup';
-import data from './Faq.data';
-import { faqs, container, title } from './Faq.module.scss';
+import { Typography } from "@ht6/react-ui";
+import PageSection from "../../components/PageSection";
+import AccordionGroup from "../../components/AccordionGroup";
+import data from "./Faq.data";
+import { faqs, container, title } from "./Faq.module.scss";
 
 function Faq() {
   return (
     <PageSection className={container}>
       <Typography
         className={title}
-        id='faq'
-        textType='heading2'
-        textColor='primary-700'
-        as='h2'
+        id="faq"
+        textType="heading1"
+        textColor="shades-0"
+        textWeight="extra-bold"
+        as="h2"
       >
         Frequently Asked Questions
       </Typography>
@@ -21,7 +22,7 @@ function Faq() {
           <AccordionGroup
             heading={category}
             headingProps={{
-              as: 'h3',
+              as: "h4",
             }}
             items={questions.map((question) => ({
               label: question.question,

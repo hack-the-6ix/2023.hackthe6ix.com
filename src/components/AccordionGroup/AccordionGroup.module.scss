@@ -2,14 +2,10 @@
 @use '~@ht6/react-ui/dist/styles/colors.module';
 
 .root {
-  border: 1px solid colors.getColor(primary-700);
-  border-radius: 0.25rem;
   overflow: hidden;
 }
 
 .header {
-  border-bottom: 1px solid colors.getColor(primary-700);
-  background-color: colors.getColor(primary-2);
   padding: 0.75rem 2rem;
   margin: 0;
 }
@@ -59,7 +55,7 @@
 
 %iconLine {
   @include mixins.transition(transform, fast);
-  background-color: colors.getColor(copy-dark);
+  background-color: colors.getColor(shades-0);
   border-radius: 999px;
   position: absolute;
   height: 0.25rem;

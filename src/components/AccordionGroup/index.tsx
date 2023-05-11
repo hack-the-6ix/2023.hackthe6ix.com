@@ -1,6 +1,6 @@
-import { ComponentWithAs, Typography, TypographyProps } from '@ht6/react-ui';
-import { Fragment, ReactNode, useState } from 'react';
-import cx from 'classnames';
+import { ComponentWithAs, Typography, TypographyProps } from "@ht6/react-ui";
+import { Fragment, ReactNode, useState } from "react";
+import cx from "classnames";
 import {
   root,
   header,
@@ -13,11 +13,10 @@ import {
   content,
   text,
   closed,
-  line,
-} from './AccordionGroup.module.scss';
+} from "./AccordionGroup.module.scss";
 
 export type AccordionGroupProps = ComponentWithAs<{
-  headingProps?: Omit<TypographyProps, 'textType' | 'textColor'>;
+  headingProps?: Omit<TypographyProps, "textType" | "textColor">;
   heading: ReactNode;
   multiple?: boolean;
   items: {
@@ -27,7 +26,7 @@ export type AccordionGroupProps = ComponentWithAs<{
 }>;
 
 function AccordionGroup({
-  as: Component = 'div',
+  as: Component = "div",
   headingProps = {},
   multiple,
   heading,
@@ -46,8 +45,9 @@ function AccordionGroup({
       <Typography
         {...headingProps}
         className={cx(header, headingProps.className)}
-        textColor='primary-700'
-        textType='heading3'
+        textColor="warning-400"
+        textType="heading4"
+        textWeight="bold"
       >
         {heading}
       </Typography>
@@ -59,10 +59,11 @@ function AccordionGroup({
               <dt>
                 <Typography
                   onClick={() => toggle(key)}
-                  textColor='copy-dark'
+                  textColor="neutral-50"
                   className={trigger}
-                  textType='heading4'
-                  as='button'
+                  textType="paragraph-lg"
+                  textWeight="semi-bold"
+                  as="button"
                 >
                   <span className={label}>{item.label}</span>
                   <div className={cx(icon, !isOpened && closed)}>
@@ -72,13 +73,13 @@ function AccordionGroup({
                 </Typography>
               </dt>
               <Typography
-                textColor='copy-dark'
-                textType='paragraph1'
+                textColor="neutral-200"
+                textType="paragraph-md"
+                textWeight="regular"
                 className={content}
-                as='dd'
+                as="dd"
               >
                 <p className={cx(text, !isOpened && closed)}>{item.content}</p>
-                {key + 1 !== items.length && <hr className={line} />}
               </Typography>
             </Fragment>
           );
