@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PageSection from '../../components/PageSection';
 import { Input, Button, Typography, InputProps } from '@ht6/react-ui';
-import { content, title, text, form, long, btn } from './Question.module.scss';
+import { content, title, text, form, long, btn, input, questionSpan, textArea } from './Question.module.scss';
 import toast from 'react-hot-toast';
 import cx from 'classnames';
 import { ApiActions, ApiService, ApiServiceError } from '../../utils';
@@ -63,7 +63,7 @@ function Question() {
           textType='heading2'
           as='h2'
         >
-          Still have a question?
+          Still have a <span className={questionSpan}>question</span>?
         </Typography>
         <Typography
           className={text}
@@ -71,7 +71,7 @@ function Question() {
           textType='paragraph1'
           as='p'
         >
-          Send your question our way and we'll get back to you within 48 hours!
+          Send your question our way and we'll get back to you!
         </Typography>
       </div>
       <form
@@ -85,10 +85,10 @@ function Question() {
           return false;
         }}
       >
-        <Input {...inputProps('Name', 'name')} labelColor={"primary-700"} />
-        <Input {...inputProps('Email', 'email')} type='email' labelColor={"primary-700"} />
+        <Input className={input} {...inputProps('Enter name', 'name')} />
+        <Input className={input} {...inputProps('Enter email', 'email')} type='email' />
         <Textarea
-          {...(inputProps('Enter your question here', 'message') as any)}
+          {...(inputProps('Enter your question', 'message') as any)}
           onChange={(e) => {
             setInputs({
               ...inputs,
@@ -96,13 +96,13 @@ function Question() {
             });
           }}
           placeholder='Send us your questions here!'
-          className={long}
+          className={cx(long, textArea)}
           limit={200}
           rows={3}
         />
         <div className={cx(long, btn)}>
           <Button disabled={isSubmitting} type='submit'>
-            SEND
+            Send
           </Button>
         </div>
       </form>
