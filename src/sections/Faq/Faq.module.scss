@@ -8,7 +8,11 @@
 .title {
   margin: 0 0 2.25rem;
   @include localMixins.media(tablet){
-    margin: 0 0 calc(33.5rem / 14);
+    margin: 0 0 calc(28.5rem / 14);
+  }
+
+  @include localMixins.media(mobile){
+    margin: 0 0 calc(35rem / 12);
   }
 }
 
@@ -21,5 +25,9 @@
   @include localMixins.media(tablet) {
     grid-template-columns: 1fr;
     grid-gap: calc(30.5rem / 14);
+  }
+
+  @include localMixins.media(mobile){
+    grid-gap: calc(43rem / 12);
   }
 }
