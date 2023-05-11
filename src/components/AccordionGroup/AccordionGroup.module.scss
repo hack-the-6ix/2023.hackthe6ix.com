@@ -12,7 +12,7 @@
 
 .list {
   flex-direction: column;
-  margin: 1rem 1.5rem;
+  margin: 0.0625rem 1.5rem 1rem;
   display: flex;
 }
 
@@ -86,10 +86,10 @@
 .text {
   @include mixins.transition(padding max-height);
   box-sizing: border-box;
-  padding: 0.5rem 0;
+  padding: 0.25rem 0 0;
   max-height: 20rem;
   overflow: hidden;
-  margin: 0;
+  margin: 0 0 1.5rem;
 
   &.closed {
     max-height: 0;
