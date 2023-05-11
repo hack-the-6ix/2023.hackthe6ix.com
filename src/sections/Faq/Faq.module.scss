@@ -7,6 +7,9 @@
 
 .title {
   margin: 0 0 2.25rem;
+  @include localMixins.media(tablet){
+    margin: 0 0 calc(33.5rem / 14);
+  }
 }
 
 .faqs {
@@ -17,6 +20,6 @@
 
   @include localMixins.media(tablet) {
     grid-template-columns: 1fr;
-    grid-gap: 1.25rem;
+    grid-gap: calc(30.5rem / 14);
   }
 }

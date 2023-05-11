@@ -1,5 +1,6 @@
 @use '~@ht6/react-ui/dist/styles/mixins.module';
 @use '~@ht6/react-ui/dist/styles/colors.module';
+@use '../../styles/mixins.module' as localMixins;
 
 .root {
   overflow: hidden;
@@ -8,6 +9,9 @@
 .header {
   padding: 0.75rem 2rem;
   margin: 0;
+  @include localMixins.media(tablet) {
+    margin: 0 0 calc(5rem / 14);;
+  }
 }
 
 .list {
@@ -90,6 +94,11 @@
   max-height: 20rem;
   overflow: hidden;
   margin: 0 0 1.5rem;
+
+  @include localMixins.media(tablet){
+    padding: calc(4rem / 14) 0 0;
+    margin: calc(2.5rem / 14) 0 calc(17rem / 14);
+  }
 
   &.closed {
     max-height: 0;
