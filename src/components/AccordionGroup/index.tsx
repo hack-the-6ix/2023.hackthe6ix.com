@@ -1,5 +1,5 @@
 import { ComponentWithAs, Typography, TypographyProps } from "@ht6/react-ui";
-import { Fragment, ReactNode, useState } from "react";
+import { Fragment, ReactNode, useEffect, useState } from "react";
 import cx from "classnames";
 import {
   root,
@@ -34,11 +34,24 @@ function AccordionGroup({
   ...props
 }: AccordionGroupProps) {
   const [isOpen, setIsOpen] = useState<boolean[]>([]);
+  const [isDesktop, setIsDesktop] = useState<Boolean>(false);
+
   const toggle = (idx: number) => {
     const _isOpen = isOpen ? [...isOpen] : [];
     _isOpen[idx] = !_isOpen[idx];
     setIsOpen(_isOpen);
   };
+
+  useEffect(() => {
+    const handler = () => {
+      setIsDesktop(window.innerWidth > 768);
+    };
+    window.addEventListener("resize", handler, true);
+    handler();
+    return () => {
+      window.removeEventListener("resize", handler, true);
+    };
+  }, []);
 
   return (
     <Component {...props} className={cx(root, props.className)}>
@@ -48,6 +61,7 @@ function AccordionGroup({
         textColor="warning-400"
         textType="heading4"
         textWeight="bold"
+        displayType={isDesktop ? "desktop" : "mobile"}
       >
         {heading}
       </Typography>

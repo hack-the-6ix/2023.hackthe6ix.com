@@ -3,8 +3,22 @@ import PageSection from "../../components/PageSection";
 import AccordionGroup from "../../components/AccordionGroup";
 import data from "./Faq.data";
 import { faqs, container, title } from "./Faq.module.scss";
+import { useEffect, useState } from "react";
 
 function Faq() {
+  const [isDesktop, setIsDesktop] = useState<Boolean>(false);
+
+  useEffect(() => {
+    const handler = () => {
+      setIsDesktop(window.innerWidth > 768);
+    };
+    window.addEventListener("resize", handler, true);
+    handler();
+    return () => {
+      window.removeEventListener("resize", handler, true);
+    };
+  }, []);
+
   return (
     <PageSection className={container}>
       <Typography
@@ -14,6 +28,7 @@ function Faq() {
         textColor="shades-0"
         textWeight="extra-bold"
         as="h2"
+        displayType={isDesktop ? "desktop" : "mobile"}
       >
         Frequently Asked Questions
       </Typography>
