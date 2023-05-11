@@ -10,6 +10,7 @@ import Socials from '../../components/Socials';
 import IconButton from '../../components/IconButton';
 import VCarousel from './VCarousel/VCarousel';
 import Link from '../../components/Link';
+import InputButton from '../../components/InputButton';
 import {
   container,
   content,
@@ -22,6 +23,11 @@ import {
   socials,
   apply,
   applyContainer,
+  textHighlight,
+  dates,
+  eventType,
+  hideMobile,
+  signUpText,
 } from './Splash.module.scss';
 
 const query = graphql`
@@ -65,54 +71,67 @@ function Splash() {
     <PageSection
       containerClassName={container}
       className={content}
-      append={
-        <StaticImage
-          alt='Ficitional toronto landscape with CN tower'
-          src='../../images/landing.png'
-          className={backdrop}
-          layout='fullWidth'
-          objectFit='cover'
-          quality={100}
-        />
-      }
+      // TODO: Add website full bg later
+      // append={
+      //   <StaticImage
+      //     alt='Ficitional toronto landscape with CN tower and sailor ship sailing a sea of clouds'
+      //     src='../../images/Hero-Bg.svg'
+      //     className={backdrop}
+      //     layout='fullWidth'
+      //     objectFit='cover'
+      //     quality={100}
+      //   />
+      // }
     >
       <Typography
-        className={text}
-        textColor='copy-dark'
+        className={cx(text, dates)}
+        textColor='shades-0'
         textType='heading3'
         as='p'
       >
-        <Highlight highlightColor='warning-400'>
-          {startFormat.format(startDate)} - {endFormat.format(endDate)} | Hybrid
-          Event
-        </Highlight>
+        {startFormat.format(startDate)} - {endFormat.format(endDate)} 
+        <span className={eventType}> • In-person event</span>
       </Typography>
       <Typography
         className={cx(text, title)}
-        textColor='primary-700'
+        textColor='shades-0'
         textType='heading1'
         as='h1'
       >
-        Hack the 6ix is Toronto's <span className={highlight}>largest</span> summer hackathon, where <span className={highlight}>anyone</span> can hack to
-      </Typography>
-      <Typography
-        className={banner}
-        textColor='copy-dark'
-        // change to same heading/font-size as above
-        textType='heading2'
-        as='div'
-      >
-        {/* <p className={text}>We hack to</p> */}
+        Hack the 6ix is Toronto's <br className={hideMobile} /> <span className={textHighlight}>largest</span> summer hackathon, <br className={hideMobile} /> where <span className={textHighlight}>anyone</span> can hack to<br className={hideMobile} />
         <VCarousel className={carousel} items={words} />
       </Typography>
+      <Typography
+        className={cx(text, signUpText)}
+        textColor='shades-0'
+        textType='paragraph1'
+        as='paragraph'
+      >
+        Applications opening soon! Receive the latest updates in your inbox.
+      </Typography>
       {/* Email Sign up */}
+      <InputButton
+        label='Enter email'
+        name='Enter email'
+        buttonText='Notify me'
+      >
+        {/* label, name, buttonText */}
+        <Button
+          buttonColor='primary-500'
+          // TODO: Trigger callback with email as parameter (to be implemented later)
+          // href='https://dash.hackthe6ix.com'
+          // rel='noreferrer noopener'
+        >
+          Notify me
+        </Button>
+      </InputButton>
       <Socials
         className={socials}
-        baseColor='primary-700'
-        activeColor='warning-400'
+        baseColor='shades-0'
+        activeColor='primary-500' 
         gap='1rem'
       />
-      <IconButton
+      {/* <IconButton
         onClick={(e: MouseEvent) => {
           e.preventDefault();
           history.replaceState({}, '', '#about');
@@ -127,7 +146,7 @@ function Splash() {
         label='Learn More'
         href='#about'
         as='a'
-      />
+      /> */}
     </PageSection>
   );
 }
