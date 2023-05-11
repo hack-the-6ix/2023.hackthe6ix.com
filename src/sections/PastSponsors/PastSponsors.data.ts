@@ -10,8 +10,8 @@ type PastSponsorGroup = {
 };
 const pastSponsors: PastSponsorGroup[] = [
   {
-    size: 40.75,
-    gap: 6.25,
+    size: 25.75,
+    gap: 2,
     items: [
       {
         name: 'Buf',
@@ -23,18 +23,18 @@ const pastSponsors: PastSponsorGroup[] = [
         fileName: 'wealthsimple.png',
         url: 'https://wealthsimple.com',
       },
-      {
-        name: 'Staples Studio',
-        fileName: 'staplesstudio.png',
-        url: 'https://studio.staples.ca/studio/torontocorktown',
-        offset: -25
-      },
     ],
   },
   {
     size: 13.5,
-    gap: 3,
+    gap: 2,
     items: [
+      {
+        name: 'Staples Studio',
+        fileName: 'staplesstudio.png',
+        url: 'https://studio.staples.ca/studio/torontocorktown',
+        // offset: -25
+      },
       {
         name: 'Ontario Teachers Pension Plan',
         fileName: 'otpp.png',
@@ -44,7 +44,7 @@ const pastSponsors: PastSponsorGroup[] = [
   },
   {
     size: 8.25,
-    gap: 3,
+    gap: 2,
     items: [
       {
         name: 'PWC',
@@ -66,6 +66,12 @@ const pastSponsors: PastSponsorGroup[] = [
         fileName: 'balsamiq.png',
         url: 'https://balsamiq.com/wireframes/',
       },
+    ],
+  },
+  {
+    size: 8.25,
+    gap: 2,
+    items: [
       {
         name: 'Echo3D',
         fileName: 'echo3d.png',

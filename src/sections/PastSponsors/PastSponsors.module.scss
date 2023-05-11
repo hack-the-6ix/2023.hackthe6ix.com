@@ -14,7 +14,7 @@
   width: 80%;
   justify-content: center;
   list-style-type: none;
-  align-items: center;
+  align-items: stretch;
   flex-wrap: wrap;
   display: flex;
   padding: 0;
@@ -23,6 +23,14 @@
 
 .link {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-sizing: border-box;
+  flex: 1;
+  height: 100%;
 }
 
 .image {

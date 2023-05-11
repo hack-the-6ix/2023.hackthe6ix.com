@@ -69,8 +69,8 @@ function PastSponsors() {
             <li
               style={
                 item.offset
-                  ? ({ '--ps-s': group.size + item.offset } as CSSProperties)
-                  : undefined
+                  ? ({ '--ps-s': group.size + item.offset, 'min-height': '10px' } as CSSProperties)  
+                  : ({ 'min-height': '100px' } as CSSProperties)
               }
               key={j}
             >
