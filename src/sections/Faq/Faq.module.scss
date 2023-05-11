@@ -13,6 +13,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 2.5rem 1.25rem;
+  margin: 0 -2rem;
 
   @include localMixins.media(tablet) {
     grid-template-columns: 1fr;
