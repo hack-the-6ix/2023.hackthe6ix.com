@@ -30,6 +30,8 @@ import {
   hideMobile,
   signUpText,
   hideDesktop,
+  featureObject,
+  columns,
 } from './Splash.module.scss';
 import { ApiService, ApiServiceError } from '../../utils';
 
@@ -72,11 +74,10 @@ function Splash() {
   });
 
   // Email Submission
-
   const onSubmit = async () => {
     const id = toast.loading('Loading...');
     try {
-      const { response } = ApiService.ask(emailInput, 'signup', 'reset');
+      const { response } = ApiService.subscribe(emailInput, 'subscribe', 'reset');
       toast.success(await response, {id});
       setEmailInput({email: ''});
     } catch (err) {
@@ -108,7 +109,7 @@ function Splash() {
       // TODO: Add website full bg later
       append={
         <StaticImage
-          alt='Ficitional toronto landscape with CN tower and sailor ship sailing a sea of clouds'
+          alt='Fictional toronto landscape with CN tower and sailor ship sailing a sea of clouds'
           src='../../images/test_bg.png'
           className={backdrop}
           layout='fullWidth'
