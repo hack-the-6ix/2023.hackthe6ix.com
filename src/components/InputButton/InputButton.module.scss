@@ -3,11 +3,15 @@
 
 .container {
   display: inline;
+
+  @include localMixins.media(mobile) {
+    width: 100%;
+  }
 }
 
 .content {
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
 
   @include localMixins.media(mobile) {
     flex-direction: column;
@@ -16,7 +20,13 @@
 
 .field {
   width: 29.25rem;
-  color: colors.getColor(neutral-50, null, 0.18)
+  // TODO: Check that the input field 18% opacity matches the design file
+  // color: colors.getColor(neutral-50, null, 0.18) !important;
+
+  @include localMixins.media(mobile) {
+    width: 100%;
+    font-size: 1.166rem;
+  }
 }
 
 .button {
