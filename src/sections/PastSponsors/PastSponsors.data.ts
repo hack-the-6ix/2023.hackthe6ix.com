@@ -8,10 +8,11 @@ type PastSponsorGroup = {
     offset?: number;
   }[];
 };
-const pastSponsors: PastSponsorGroup[] = [
+const pastSponsors: (PastSponsorGroup & { tier: string })[] = [
   {
     size: 25.75,
     gap: 2,
+    tier: "gold",
     items: [
       {
         name: 'Buf',
@@ -28,6 +29,7 @@ const pastSponsors: PastSponsorGroup[] = [
   {
     size: 13.5,
     gap: 2,
+    tier: "silver",
     items: [
       {
         name: 'Staples Studio',
@@ -45,6 +47,7 @@ const pastSponsors: PastSponsorGroup[] = [
   {
     size: 8.25,
     gap: 2,
+    tier: "bronze",
     items: [
       {
         name: 'PWC',
@@ -71,6 +74,7 @@ const pastSponsors: PastSponsorGroup[] = [
   {
     size: 8.25,
     gap: 2,
+    tier: "bronze",
     items: [
       {
         name: 'Echo3D',

@@ -62,7 +62,7 @@ function PastSponsors() {
       {data.map((group, i) => (
         <ul
           style={{ '--ps-s': group.size, '--ps-g': group.gap } as CSSProperties}
-          className={category}
+          className={`${category} ${i >= data.length - 2 ? 'bronze' : ''}`}
           key={i}
         >
           {group.items.map((item, j) => (

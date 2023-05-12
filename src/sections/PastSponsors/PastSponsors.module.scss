@@ -27,13 +27,24 @@
   justify-content: center;
   background-color: white;
   border-radius: 12px;
-  padding: 20px;
+  padding: 1.25rem;
   box-sizing: border-box;
-  flex: 1;
   height: 100%;
 }
 
 .image {
   max-width: calc(1rem * var(--ps-s));
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .link {
+    width: 100%;
+    padding: 0.75rem
+  }
+
+  .category.bronze {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
