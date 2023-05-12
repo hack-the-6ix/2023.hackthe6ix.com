@@ -31,7 +31,8 @@ import {
   signUpText,
   hideDesktop,
   featureObject,
-  columns,
+  columnLeft,
+  columnRight,
 } from './Splash.module.scss';
 import { ApiService, ApiServiceError } from '../../utils';
 
@@ -61,8 +62,8 @@ function Splash() {
   const startDate = new Date(data.allSite.nodes[0].siteMetadata!.event!.start!);
   const endDate = new Date(data.allSite.nodes[0].siteMetadata!.event!.end!);
   const isSameMonth = startDate.getMonth() === endDate.getMonth();
-  const [emailInput, setEmailInput] = useState({email: ''});
-  const [submitting, setSubmitting] = useState(false);
+  // const [emailInput, setEmailInput] = useState({email: ''});
+  // const [submitting, setSubmitting] = useState(false);
 
   const startFormat = new Intl.DateTimeFormat('en-CA', {
     month: 'long',
@@ -74,50 +75,51 @@ function Splash() {
   });
 
   // Email Submission
-  const onSubmit = async () => {
-    const id = toast.loading('Loading...');
-    try {
-      const { response } = ApiService.subscribe(emailInput, 'subscribe', 'reset');
-      toast.success(await response, {id});
-      setEmailInput({email: ''});
-    } catch (err) {
-      switch ((err as any).name) {
-        case 'AbbortError':
-          break;
-        case 'ApiServiceError':
-          toast.error((err as ApiServiceError).getHumanError(), { id });
-          console.error(err);
-          break;
-        default:
-          toast.error('Unexpected error. Please try again later', { id });
-          console.error(err);
-          break;
-      }
-    }
+  // const onSubmit = async () => {
+  //   const id = toast.loading('Loading...');
+  //   try {
+  //     const { response } = ApiService.subscribe(emailInput, 'subscribe', 'reset');
+  //     toast.success(await response, {id});
+  //     setEmailInput({email: ''});
+  //   } catch (err) {
+  //     switch ((err as any).name) {
+  //       case 'AbbortError':
+  //         break;
+  //       case 'ApiServiceError':
+  //         toast.error((err as ApiServiceError).getHumanError(), { id });
+  //         console.error(err);
+  //         break;
+  //       default:
+  //         toast.error('Unexpected error. Please try again later', { id });
+  //         console.error(err);
+  //         break;
+  //     }
+  //   }
     
-    // To validate provided email address
-    if (!/\S+@\S+\.\S+/.test(emailInput.email)) {
-      toast.error("Please enter a valid email address");
-      return;
-    };
-  };
+  //   // To validate provided email address
+  //   if (!/\S+@\S+\.\S+/.test(emailInput.email)) {
+  //     toast.error("Please enter a valid email address");
+  //     return;
+  //   };
+  // };
 
   return (
     <PageSection
       containerClassName={container}
       className={content}
       // TODO: Add website full bg later
-      append={
-        <StaticImage
-          alt='Fictional toronto landscape with CN tower and sailor ship sailing a sea of clouds'
-          src='../../images/test_bg.png'
-          className={backdrop}
-          layout='fullWidth'
-          objectFit='cover'
-          quality={100}
-        />
-      }
+      // append={
+      //   <StaticImage
+      //     alt='Ficitional toronto landscape with CN tower and sailor ship sailing a sea of clouds'
+      //     src='../../images/test_bg.png'
+      //     className={backdrop}
+      //     layout='fullWidth'
+      //     objectFit='cover'
+      //     quality={100}
+      //   />
+      // }
     >
+      <div className={columnLeft}>
       <Typography
         className={cx(text, dates)}
         textColor='neutral-50'
@@ -174,6 +176,16 @@ function Splash() {
         activeColor='primary-500' 
         gap='1rem'
       />
+      </div>
+      <div className={columnRight}>
+        <StaticImage
+          alt='Sailor ship sailing a sea of clouds'
+          // TODO: Update ship png later
+          src='../../images/test_ship.png'
+          className={featureObject}
+          objectFit='contain'
+        />
+      </div>
       {/* From 2022:
       <IconButton
         onClick={(e: MouseEvent) => {

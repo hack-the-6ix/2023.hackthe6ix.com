@@ -7,40 +7,68 @@
   padding-bottom: 36.3125rem;
   padding-top: 11.5625rem;
 
-  @include localMixins.media(mobile) {
+  @include localMixins.media(tablet) {
     // TODO: Check that ship is not cut off in mobile
     padding: 6rem 1.33rem 32.5625rem;
   }
 
   // TODO: Solid BG for local testing purposes; Remove before final commit to PR
-  // background-color: #1C315C;
+  background-color: #1C315C;
 }
 
 .content {
   justify-content: center;
-  flex-direction: column;
   align-items: left;
   text-align: left;
   display: flex;
 
-  @include localMixins.media(mobile) {
+  @include localMixins.media(tablet) {
     align-items: center;
     text-align: center;
     padding: auto 1.875rem;
+    flex-direction: column;
   }
 }
 
-.backdrop {
+.columnLeft,
+.columnRight {
+  width: 50%;
+
+  @include localMixins.media(tablet) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.columnLeft {
+  @include localMixins.media(tablet) {
+    align-items: left;
+  }
+}
+
+.columnRight {
+  @include localMixins.media(tablet) {
+    align-items: right;
+  }
+}
+
+.feature-object {
   position: absolute !important;
   height: 100%;
   margin: auto;
-  z-index: -1;
-  width: 100%;
+  z-index: 0;
+  width: 50%;
   inset: 0;
 
   & img {
     object-position: bottom center;
   }
+
+  // @include localMixins.media(tablet) {
+    
+  // }
 }
 
 .text {
@@ -75,11 +103,13 @@
   max-width: 36rem;
 }
 
-.socials {
-  margin-top: 1rem;
+.columns .socials {
+  margin-top: 2rem;
+  gap: 1rem;
 
-  @include localMixins.media(mobile) {
+  @include localMixins.media(tablet) {
     margin-top: 1.875rem;
+    gap: 3.33rem;
   }
 }
 
@@ -104,7 +134,7 @@
   font-weight: 500;
   gap: 0.5rem;
 
-  @include localMixins.media(mobile) {
+  @include localMixins.media(tablet) {
     font-size: 1.5rem;
     line-height: 2rem;
     flex-direction: column;
@@ -118,7 +148,7 @@
 .hide-mobile {
   display: block;
 
-  @include localMixins.media(mobile) {
+  @include localMixins.media(tablet) {
     display: none;
   }
 }
@@ -127,7 +157,7 @@
   font-size: 1.25rem;
   line-height: 1.75rem;
 
-  @include localMixins.media(mobile) {
+  @include localMixins.media(tablet) {
     text-align: center;
     margin: 1rem 0.33rem 0.75rem;
     font-size: 1.5rem;
@@ -139,7 +169,7 @@
 .hide-desktop {
   display: none;
 
-  @include localMixins.media(mobile) {
+  @include localMixins.media(tablet) {
     display: block;
   }
 }
