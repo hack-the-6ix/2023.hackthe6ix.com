@@ -120,62 +120,62 @@ function Splash() {
       // }
     >
       <div className={columnLeft}>
-      <Typography
-        className={cx(text, dates)}
-        textColor='neutral-50'
-        textType='heading3'
-        as='p'
-      >
-        {startFormat.format(startDate)} - {endFormat.format(endDate)}, 2023
-        <span className={hideMobile}> • </span> 
-        <span className={eventType}> In-person event</span>
-      </Typography>
-      <Typography
-        className={cx(text, title)}
-        textColor='neutral-50'
-        textType='heading1'
-        as='h1'
-      >
-        Hack the 6ix is Toronto's <br className={hideMobile} /> <span className={textHighlight}>largest</span> summer hackathon, <br className={hideMobile} /> where <span className={textHighlight}>anyone</span> can hack <br className={hideDesktop} /> to <br className={hideMobile} />
-        <VCarousel className={carousel} items={words} />
-      </Typography>
-      <Typography
-        className={cx(text, signUpText)}
-        textColor='neutral-50'
-        textType='paragraph1'
-        as='paragraph'
-      >
-        Applications opening soon! Receive the latest updates in your inbox.
-      </Typography>
-      <InputButton
-        label='Enter email'
-        name='Enter email'
-        buttonText='Notify me'
-        // onSubmit={(e) => {
-        //   e.preventDefault();
-        //   setSubmitting(true);
-        //   onSubmit();
-        //   return false;
-        // }}
-        // onChange={(e) => {
-        //   setEmailInput({
-        //     ...inputProps,
-        //     [e.currentTarget.name]: e.currentTarget.value.slice(0, 200),
-        //   });
-        // }}
-      >
-        <Button
-          type='submit'
+        <Typography
+          className={cx(text, dates)}
+          textColor='neutral-50'
+          textType='heading3'
+          as='p'
         >
-          Notify me
-        </Button>
-      </InputButton>
-      <Socials
-        className={socials}
-        baseColor='shades-0'
-        activeColor='primary-500' 
-        gap='1rem'
-      />
+          {startFormat.format(startDate)} - {endFormat.format(endDate)}, 2023
+          <span className={hideMobile}> • </span> 
+          <span className={eventType}> In-person event</span>
+        </Typography>
+        <Typography
+          className={cx(text, title)}
+          textColor='neutral-50'
+          textType='heading1'
+          as='h1'
+        >
+          Hack the 6ix is Toronto's <br className={hideMobile} /> <span className={textHighlight}>largest</span> summer hackathon, <br className={hideMobile} /> where <span className={textHighlight}>anyone</span> can hack <br className={hideDesktop} /> to <br className={hideMobile} />
+          <VCarousel className={carousel} items={words} />
+        </Typography>
+        <Typography
+          className={cx(text, signUpText)}
+          textColor='neutral-50'
+          textType='paragraph1'
+          as='paragraph'
+        >
+          Applications opening soon! Receive the latest updates in your inbox.
+        </Typography>
+        <InputButton
+          label='Enter email'
+          name='Enter email'
+          buttonText='Notify me'
+          // onSubmit={(e) => {
+          //   e.preventDefault();
+          //   setSubmitting(true);
+          //   onSubmit();
+          //   return false;
+          // }}
+          // onChange={(e) => {
+          //   setEmailInput({
+          //     ...inputProps,
+          //     [e.currentTarget.name]: e.currentTarget.value.slice(0, 200),
+          //   });
+          // }}
+        >
+          <Button
+            type='submit'
+          >
+            Notify me
+          </Button>
+        </InputButton>
+        <Socials
+          className={socials}
+          baseColor='shades-0'
+          activeColor='primary-500' 
+          gap='1rem'
+        />
       </div>
       <div className={columnRight}>
         <StaticImage
