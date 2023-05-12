@@ -11,6 +11,7 @@ import IconButton from '../../components/IconButton';
 import VCarousel from './VCarousel/VCarousel';
 import Link from '../../components/Link';
 import InputButton from '../../components/InputButton';
+import toast from 'react-hot-toast';
 import {
   container,
   content,
@@ -28,6 +29,7 @@ import {
   eventType,
   hideMobile,
   signUpText,
+  hideDesktop,
 } from './Splash.module.scss';
 
 const query = graphql`
@@ -57,6 +59,7 @@ function Splash() {
   const endDate = new Date(data.allSite.nodes[0].siteMetadata!.event!.end!);
   const isSameMonth = startDate.getMonth() === endDate.getMonth();
   const [email, setEmail] = useState('');
+  const [submitting, setSubmitting] = useState(false);
 
   const startFormat = new Intl.DateTimeFormat('en-CA', {
     month: 'long',
@@ -85,42 +88,39 @@ function Splash() {
     >
       <Typography
         className={cx(text, dates)}
-        textColor='shades-0'
+        textColor='neutral-50'
         textType='heading3'
         as='p'
       >
-        {startFormat.format(startDate)} - {endFormat.format(endDate)} 
-        <span className={eventType}> • In-person event</span>
+        {startFormat.format(startDate)} - {endFormat.format(endDate)}, 2023
+        <span className={hideMobile}> • </span> 
+        <span className={eventType}> In-person event</span>
       </Typography>
       <Typography
         className={cx(text, title)}
-        textColor='shades-0'
+        textColor='neutral-50'
         textType='heading1'
         as='h1'
       >
-        Hack the 6ix is Toronto's <br className={hideMobile} /> <span className={textHighlight}>largest</span> summer hackathon, <br className={hideMobile} /> where <span className={textHighlight}>anyone</span> can hack to<br className={hideMobile} />
+        Hack the 6ix is Toronto's <br className={hideMobile} /> <span className={textHighlight}>largest</span> summer hackathon, <br className={hideMobile} /> where <span className={textHighlight}>anyone</span> can hack <br className={hideDesktop} /> to <br className={hideMobile} />
         <VCarousel className={carousel} items={words} />
       </Typography>
       <Typography
         className={cx(text, signUpText)}
-        textColor='shades-0'
+        textColor='neutral-50'
         textType='paragraph1'
         as='paragraph'
       >
         Applications opening soon! Receive the latest updates in your inbox.
       </Typography>
-      {/* Email Sign up */}
       <InputButton
         label='Enter email'
         name='Enter email'
         buttonText='Notify me'
       >
-        {/* label, name, buttonText */}
         <Button
-          buttonColor='primary-500'
           // TODO: Trigger callback with email as parameter (to be implemented later)
-          // href='https://dash.hackthe6ix.com'
-          // rel='noreferrer noopener'
+          type='submit'
         >
           Notify me
         </Button>
@@ -131,7 +131,8 @@ function Splash() {
         activeColor='primary-500' 
         gap='1rem'
       />
-      {/* <IconButton
+      {/* From 2022:
+      <IconButton
         onClick={(e: MouseEvent) => {
           e.preventDefault();
           history.replaceState({}, '', '#about');

@@ -4,15 +4,16 @@
 .container {
   box-sizing: border-box;
   position: relative;
-  padding-bottom: 12.25rem;
-  padding-top: 12.25rem;
+  padding-bottom: 36.3125rem;
+  padding-top: 11.5625rem;
 
   @include localMixins.media(mobile) {
-    padding: 4rem 1rem;
+    // TODO: Check that ship is not cut off in mobile
+    padding: 6rem 1.33rem 32.5625rem;
   }
 
   // TODO: Solid BG for local testing purposes; Remove before final commit to PR
-  background-color: #1C315C;
+  // background-color: #1C315C;
 }
 
 .content {
@@ -53,8 +54,8 @@
   line-height: 4rem;
 
   @include localMixins.media(mobile) {
-    font-size: 1.75rem;
-    line-height: 2.25rem;
+    font-size: 3.33rem;
+    line-height: 4rem;
   }
 }
 
@@ -75,10 +76,10 @@
 }
 
 .socials {
-  margin: 1rem 0 5rem;
+  margin-top: 1rem;
 
   @include localMixins.media(mobile) {
-    margin-bottom: 2rem;
+    margin-top: 1.875rem;
   }
 }
 
@@ -99,11 +100,14 @@
   text-transform: uppercase; 
   display: flex;
   font-size: 1.25rem;
+  line-height: 1.75rem;
   font-weight: 500;
   gap: 0.5rem;
 
   @include localMixins.media(mobile) {
-    font-size: 1.125rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    flex-direction: column;
   }
 }
 
@@ -119,8 +123,23 @@
   }
 }
 
-.sign-up-text {
+.sign-up-text { 
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+
   @include localMixins.media(mobile) {
     text-align: center;
+    margin: 1rem 0.33rem 0.75rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 500;
+  }
+}
+
+.hide-desktop {
+  display: none;
+
+  @include localMixins.media(mobile) {
+    display: block;
   }
 }
