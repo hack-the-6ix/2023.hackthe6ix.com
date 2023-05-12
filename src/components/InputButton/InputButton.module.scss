@@ -4,7 +4,7 @@
 .container {
   display: inline;
 
-  @include localMixins.media(mobile) {
+  @include localMixins.media(tablet) {
     width: 100%;
   }
 }
@@ -12,8 +12,9 @@
 .content {
   display: flex;
   gap: 1rem;
+  margin: 1rem 0;
 
-  @include localMixins.media(mobile) {
+  @include localMixins.media(tablet) {
     flex-direction: column;
   }
 }
@@ -23,7 +24,7 @@
   // TODO: Check that the input field 18% opacity matches the design file
   // color: colors.getColor(neutral-50, null, 0.18) !important;
 
-  @include localMixins.media(mobile) {
+  @include localMixins.media(tablet) {
     width: 100%;
     font-size: 1.166rem;
   }
