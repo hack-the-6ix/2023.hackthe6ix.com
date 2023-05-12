@@ -31,6 +31,7 @@ import {
   signUpText,
   hideDesktop,
 } from './Splash.module.scss';
+import { ApiService, ApiServiceError } from '../../utils';
 
 const query = graphql`
   query SplashQuery {
@@ -58,7 +59,7 @@ function Splash() {
   const startDate = new Date(data.allSite.nodes[0].siteMetadata!.event!.start!);
   const endDate = new Date(data.allSite.nodes[0].siteMetadata!.event!.end!);
   const isSameMonth = startDate.getMonth() === endDate.getMonth();
-  const [email, setEmail] = useState('');
+  const [emailInput, setEmailInput] = useState({email: ''});
   const [submitting, setSubmitting] = useState(false);
 
   const startFormat = new Intl.DateTimeFormat('en-CA', {
@@ -70,21 +71,51 @@ function Splash() {
     day: 'numeric',
   });
 
+  // Email Submission
+
+  const onSubmit = async () => {
+    const id = toast.loading('Loading...');
+    try {
+      const { response } = ApiService.ask(emailInput, 'signup', 'reset');
+      toast.success(await response, {id});
+      setEmailInput({email: ''});
+    } catch (err) {
+      switch ((err as any).name) {
+        case 'AbbortError':
+          break;
+        case 'ApiServiceError':
+          toast.error((err as ApiServiceError).getHumanError(), { id });
+          console.error(err);
+          break;
+        default:
+          toast.error('Unexpected error. Please try again later', { id });
+          console.error(err);
+          break;
+      }
+    }
+    
+    // To validate provided email address
+    if (!/\S+@\S+\.\S+/.test(emailInput.email)) {
+      toast.error("Please enter a valid email address");
+      return;
+    };
+  };
+
   return (
     <PageSection
       containerClassName={container}
       className={content}
       // TODO: Add website full bg later
-      // append={
-      //   <StaticImage
-      //     alt='Ficitional toronto landscape with CN tower and sailor ship sailing a sea of clouds'
-      //     src='../../images/Hero-Bg.svg'
-      //     className={backdrop}
-      //     layout='fullWidth'
-      //     objectFit='cover'
-      //     quality={100}
-      //   />
-      // }
+      append={
+        <StaticImage
+          alt='Ficitional toronto landscape with CN tower and sailor ship sailing a sea of clouds'
+          src='../../images/test_bg.png'
+          className={backdrop}
+          layout='fullWidth'
+          objectFit='cover'
+          quality={100}
+        />
+      }
     >
       <Typography
         className={cx(text, dates)}
@@ -117,9 +148,20 @@ function Splash() {
         label='Enter email'
         name='Enter email'
         buttonText='Notify me'
+        // onSubmit={(e) => {
+        //   e.preventDefault();
+        //   setSubmitting(true);
+        //   onSubmit();
+        //   return false;
+        // }}
+        // onChange={(e) => {
+        //   setEmailInput({
+        //     ...inputProps,
+        //     [e.currentTarget.name]: e.currentTarget.value.slice(0, 200),
+        //   });
+        // }}
       >
         <Button
-          // TODO: Trigger callback with email as parameter (to be implemented later)
           type='submit'
         >
           Notify me
