@@ -1,11 +1,6 @@
-import { Button, Typography } from '@ht6/react-ui';
-import { StaticImage } from 'gatsby-plugin-image';
+import { Typography } from '@ht6/react-ui';
 import PageSection from '../../components/PageSection';
 import {
-  about,
-  content,
-  action,
-  title,
   items,
   item,
   itemLabel,
@@ -14,88 +9,71 @@ import {
 
 const stats = [
   {
-    label: 'Hackers',
-    stat: '600+',
+    label: 'HACKERS',
+    stat: '440+',
   },
   {
-    label: 'Project Submissions',
-    stat: '90+',
+    label: 'PROJECT SUBMITTED',
+    stat: '68',
   },
   {
-    label: 'Workshops & Activities',
+    label: 'WORKSHOPS',
     stat: '20+',
   },
   {
-    label: 'In Prizes',
-    stat: '$17k+',
+    label: 'IN PRIZES',
+    stat: '$15k',
+  },
+  {
+    label: 'MENTORS',
+    stat: '8',
   },
 ];
 
 function About() {
   return (
     <PageSection className={container}>
-      <div className={about}>
-        <div className={content} id='about'>
-          <Typography textType='heading2' textColor='primary-700' as='h2'>
-            About Us
-          </Typography>
-          <Typography textType='paragraph1' textColor='copy-dark' as='p'>
-            Hack the 6ix is the largest summer student-run, not-for-profit
-            hackathon now in its eighth iteration, based in Toronto.
-          </Typography>
-          <Typography textType='paragraph1' textColor='copy-dark' as='p'>
-            We take pride in the diversity and talent of our hackers, who help
-            us become a key player in the Toronto tech ecosystem. We provide an
-            outlet for students to present their ideas of the future.
-          </Typography>
-          <div>
-            <Button
-              href='https://hackthe6ix2021.devpost.com'
-              rel='noopener noreferrer'
-              className={action}
-              target='_blank'
-              as='a'
-            >
-              View Past Projects
-            </Button>
-          </div>
-        </div>
-        <StaticImage
-          src='../../images/about-us.png'
-          alt='An interpretation of Toronto new city hall'
-          layout='fullWidth'
-          quality={100}
-        />
-      </div>
       <div>
-        <Typography
-          className={title}
-          textType='heading3'
-          textColor='primary-700'
-          as='h3'
-        >
-          Last Year We Had
-        </Typography>
         <ul className={items}>
           {stats.map(({ label, stat }, key) => (
             <li key={key}>
               <p className={item}>
                 <Typography
                   className={itemLabel}
-                  textType='heading1'
-                  textColor='primary-500'
+                  textType='heading2'
+                  textColor='shades-0'
                   textWeight={700}
                   as='span'
                 >
                   {stat}
                 </Typography>
-                <Typography textType='heading4' textColor='copy-dark' as='span'>
+                <Typography textType='heading3' textColor='warning-400' as='span'>
                   {label}
                 </Typography>
               </p>
             </li>
           ))}
         </ul>
+      </div>
+      <div  style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+      <div style={{marginBottom: '-2.5rem'}}> 
+        <Typography
+          textType='heading3'
+          as='h3'
+          textColor='shades-0'
+        >
+          We're back <span style={{color: '#FBBF24'}}>in-person</span> 
+        </Typography>
+        </div>
+        <Typography
+          textType='paragraph1'
+          as='p'
+          textColor='shades-0'
+        >
+         Join hundreds of students from diverse backgrounds, disciplines, and skill levels to work together on 
+          <br />
+          <span style={{ display: 'inline-block', width: '100%', textAlign: 'center' }}>projects that have real-world impact. We'll handle the back-end, so just show up and have fun!</span>
+        </Typography>
       </div>
     </PageSection>
   );
