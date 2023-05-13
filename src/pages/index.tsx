@@ -48,7 +48,8 @@ function IndexPage() {
       <About />
       <Why />
       <PastSponsors />
-      <PastSpeakers />
+      <Notify />
+      {/* <PastSpeakers /> */}
       <Faq />
       <Question />
       <Footer />
