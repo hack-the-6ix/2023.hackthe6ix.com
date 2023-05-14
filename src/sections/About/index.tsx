@@ -103,13 +103,15 @@ function About() {
         </ul>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Typography
-          textType='heading3'
-          as='h3'
-          textColor='shades-0'
-        >
-          We're back <span style={{ color: '#FBBF24' }}>in-person</span>
-        </Typography>
+        <div style={{ marginBottom: '-2.5rem' }}>
+          <Typography
+            textType='heading3'
+            as='h3'
+            textColor='shades-0'
+          >
+            We're back <span style={{ color: '#FBBF24' }}>in-person</span>
+          </Typography>
+        </div>
         <Typography
           textType='paragraph1'
           as='p'
