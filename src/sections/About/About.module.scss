@@ -7,12 +7,15 @@
 }
 
 .items {
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   list-style-type: none;
-  display: grid;
   gap: 1.25rem;
   padding: 0;
   margin: 0;
+  gap: 2rem;
+  margin: 0 0 8rem 0;
 
   @include localMixins.media(laptop) {
     grid-template-columns: repeat(2, 1fr);
@@ -21,10 +24,11 @@
   @include localMixins.media(tablet) {
     grid-template-columns: 1fr;
   }
+
 }
 
 .item {
-  background-color: colors.getColor(primary-2);
+  position: relative;
   grid-template-columns: 1fr;
   text-transform: uppercase;
   border-radius: 0.25rem;
@@ -32,12 +36,26 @@
   align-items: center;
   text-align: center;
   padding: 1.25rem;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   height: 100%;
-  gap: 0.5rem;
   margin: 0;
+  z-index: 1;
+  width: 23.5rem;
+  height: 8rem;
 }
 
 .itemLabel {
   letter-spacing: map-get(fonts.$config, heading2, letter-spacing);
+}
+
+.statsImg {
+  position: absolute;
+  z-index: -1;
+  transform: scale(0.75);
+
+  @include localMixins.media(mobile) {
+    transform: scale(0.60);
+  }
 }
