@@ -61,7 +61,6 @@ $_control-pad: 0.5rem;
   position: relative;
   min-width: 1px;
   margin: auto 0;
-  display: flex;
   width: 100%;
 }
 
@@ -75,7 +74,8 @@ $_control-pad: 0.5rem;
   //   localColors.$bg-1
   // );
   background: transparent;
-  width: 100vw;
+  width: 97vw;
+  max-height: 500px;
   justify-content: space-between;
   padding: 0 $_control-pad;
   box-sizing: border-box;
@@ -119,14 +119,20 @@ $_control-pad: 0.5rem;
   scroll-behavior: smooth;
   list-style-type: none;
   overflow: scroll;
-  display: flex;
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
   padding: 0;
-  margin: 0;
 
   &::-webkit-scrollbar {
     display: none;
   }
   scrollbar-width: none;
+
+  @include localMixins.media(tablet) {
+    grid-template-columns: 1fr; // Change to a single column for tablet and smaller screens
+    justify-items: center;
+  }
 }
 
 .item {
@@ -136,6 +142,7 @@ $_control-pad: 0.5rem;
   padding: 2.75rem 1.5rem 2.25rem;
   box-sizing: border-box;
   display: flex;
+  flex: 0 0 $_slide-width;
 
   // Inactive state
   transform: scale(0.8);

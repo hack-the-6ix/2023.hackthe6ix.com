@@ -21,6 +21,11 @@
   letter-spacing: -0.02em;
 }
 
+.contentIntro {
+  max-width: 1150px;
+  margin: auto;
+}
+
 .whyTitle {
   color: colors.getColor(warning-400);
 }
@@ -42,10 +47,12 @@
 }
 
 .content {
-  margin-top: 150px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 2rem;
+  // display: grid;
+  // grid-template-columns: 1fr 1fr 1fr;
+  // grid-gap: 1rem;
+  display: flex;
+  overflow: hidden;
+  max-height: 500px;
 
   @include mixins.media(tablet) {
     grid-template-columns: 1fr;

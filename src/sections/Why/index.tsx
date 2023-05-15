@@ -12,15 +12,16 @@ import {
   whyTitle,
   titleDesc,
   italicsTitle,
+  contentIntro
 } from './Why.module.scss';
 
 const slides = [
   {
     image: 'wilson.png',
-    title: 'Inspiring, challenging, and exciting.',
+    title: 'Thank you so much for this amazing opportunity.',
     content:
-      'Just a few words I would use to describe the past weekend I had at Hack the 6ix, all from the comfort of my own home! Working on our hackathon project remotely was definitely a unique experience and had its own set of challenges, but it was super rewarding and was an incredible learning opportunity.',
-    name: 'Willson Wang',
+      'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
+    name: 'Samson Hua',
     role: 'Hacker',
   },
   {
@@ -120,7 +121,7 @@ function Why() {
 
   return (
     <PageSection containerClassName={root}>
-      <div>
+      <div className={contentIntro}>
         <Typography
           className={title}
           textColor='shades-0'

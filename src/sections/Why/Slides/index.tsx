@@ -78,6 +78,14 @@ function Slides({ slides, headingLevel }: SlidesProps) {
   const [active, setActive] = useState(0);
   const onLoad = useRef(true);
 
+  const handlePrevSlide = () => {
+    setActive(active - 1);
+  };
+
+  const handleNextSlide = () => {
+    setActive(active + 1);
+  };
+
   const scrollTo = useCallback((idx: number, smooth = false) => {
     if (!scrollRef.current || !slideRefs.current[idx]) return;
     const slideWidth = slideRefs.current[idx]!.offsetWidth;
@@ -113,14 +121,14 @@ function Slides({ slides, headingLevel }: SlidesProps) {
       <div className={controls}>
         <button
           className={control}
-          onClick={() => setActive(active - 1)}
+          onClick={handlePrevSlide}
           disabled={active === 0}
         >
           <LeftArrow width='22' />
         </button>
         <button
           className={control}
-          onClick={() => setActive(active + 1)}
+          onClick={handleNextSlide}
           disabled={active === slides.length - 1}
         >
           <RightArrow width='22' />
