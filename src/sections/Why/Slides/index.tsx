@@ -4,17 +4,13 @@ import { Typography } from '@ht6/react-ui';
 import cx from 'classnames';
 import LeftArrow from '../../../images/left-arrow.svg';
 import RightArrow from '../../../images/right-arrow.svg';
+import Card from './Card'
 import {
   root,
   controls,
   control,
   items,
-  item,
-  image,
-  title,
-  content,
-  label,
-  activeItem,
+  item
 } from './Slides.module.scss';
 
 export interface SlidesProps {
@@ -87,10 +83,11 @@ function Slides({ slides, headingLevel }: SlidesProps) {
         {slides.map((slide, key) => (
           <li
             ref={(el) => (slideRefs.current[key] = el)}
-            className={cx(item, key === active && activeItem)}
+            className={cx(item)} //, key === active && activeItem
             key={key}
           >
-            <GatsbyImage
+            <Card slide={slide} headingLevel={headingLevel} />
+            {/* <GatsbyImage
               imgStyle={{ borderRadius: '100%' }}
               image={slide.image!}
               alt={`Headshot of ${item.name}`}
@@ -120,7 +117,7 @@ function Slides({ slides, headingLevel }: SlidesProps) {
               <Typography textType='subheading' textColor='primary-700' as='span'>
                 {slide.role}
               </Typography>
-            </p>
+            </p> */}
           </li>
         ))}
         <li className={item} />

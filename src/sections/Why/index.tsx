@@ -1,21 +1,17 @@
 import { Button, Typography } from '@ht6/react-ui';
 import { graphql, useStaticQuery } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
+import cx from 'classnames';
 import { useMemo, useState } from 'react';
 import PageSection from '../../components/PageSection';
-import Popup from '../../components/Popup';
 import Slides from './Slides';
 import {
   root,
   title,
   content,
-  points,
-  heading,
-  text,
-  icon,
-  action,
-  popup,
-  prizeImage,
+  whyTitle,
+  titleDesc,
+  italicsTitle,
 } from './Why.module.scss';
 
 const slides = [
@@ -69,7 +65,6 @@ const query = graphql`
 
 function Why() {
   const data = useStaticQuery<GatsbyTypes.WhySectionQueryQuery>(query);
-  const [showPopup, setShowPopup] = useState(false);
   const transformedData = useMemo(() => {
     const imageMap = data.allFile.nodes.reduce<{
       [
@@ -86,56 +81,78 @@ function Why() {
     }));
   }, [data]);
 
-  const textItems = [
-    {
-      title: 'Want to land your next internship?',
-      icon: require('../../images/why-section/icons/laptop.svg'),
-      content:
-        "Hackathons are an amazing place to meet mentors and industry professionals in the tech community. A pandemic won't stop us from fostering important conversations.",
-    },
-    {
-      title: 'Looking to learn from experts?',
-      icon: require('../../images/why-section/icons/star.svg'),
-      content:
-        "We value sharing knowledge and applying the things we learned. We'll host live workshops all weekend to give you the inspiration you need to get your project off the ground.",
-    },
-    {
-      title: 'Want to be rewarded for your work?',
-      icon: require('../../images/why-section/icons/money.svg'),
-      content: "With $17K+ worth of prizes, there's something for everyone.",
-      action: {
-        onClick: () => setShowPopup(true),
-        children: 'Prizes',
-      },
-    },
-    {
-      title: 'Need projects for your portfolio?',
-      icon: require('../../images/why-section/icons/light-bulb.svg'),
-      content:
-        'Complete a project worth showcasing within 48 hours from scratch and land your next job. Check out what our hackers created last year!',
-      action: {
-        children: '2021 Project Gallery',
-        as: 'a' as any,
-        href: 'https://hackthe6ix2021.devpost.com',
-        rel: 'noreferrer noopener',
-        target: '_blank',
-      },
-    },
-  ];
+  // const textItems = [
+  //   {
+  //     title: 'Want to land your next internship?',
+  //     icon: require('../../images/why-section/icons/laptop.svg'),
+  //     content:
+  //       "Hackathons are an amazing place to meet mentors and industry professionals in the tech community. A pandemic won't stop us from fostering important conversations.",
+  //   },
+  //   {
+  //     title: 'Looking to learn from experts?',
+  //     icon: require('../../images/why-section/icons/star.svg'),
+  //     content:
+  //       "We value sharing knowledge and applying the things we learned. We'll host live workshops all weekend to give you the inspiration you need to get your project off the ground.",
+  //   },
+  //   {
+  //     title: 'Want to be rewarded for your work?',
+  //     icon: require('../../images/why-section/icons/money.svg'),
+  //     content: "With $17K+ worth of prizes, there's something for everyone.",
+  //     action: {
+  //       onClick: () => setShowPopup(true),
+  //       children: 'Prizes',
+  //     },
+  //   },
+  //   {
+  //     title: 'Need projects for your portfolio?',
+  //     icon: require('../../images/why-section/icons/light-bulb.svg'),
+  //     content:
+  //       'Complete a project worth showcasing within 48 hours from scratch and land your next job. Check out what our hackers created last year!',
+  //     action: {
+  //       children: '2021 Project Gallery',
+  //       as: 'a' as any,
+  //       href: 'https://hackthe6ix2021.devpost.com',
+  //       rel: 'noreferrer noopener',
+  //       target: '_blank',
+  //     },
+  //   },
+  // ];
 
   return (
     <PageSection containerClassName={root}>
-      <Typography
-        className={title}
-        textColor='primary-700'
-        textType='heading2'
-        id='why-us'
-        as='h2'
-      >
-        Why Get Involved?
-      </Typography>
+      <div>
+        <Typography
+          className={title}
+          textColor='shades-0'
+          textType='heading2'
+          textWeight='800'
+          id='why-us'
+          as='h2'
+        >
+          Want to <span className={whyTitle}> be part of a change</span>?
+        </Typography>
+        <Typography
+          className={titleDesc}
+          textColor='shades-0'
+          textType='paragraph1'
+          id='details'
+          as='p'
+        >
+          Now in our 9th iteration, we aim to inspire young hackers to tackle complex challenges and explore the possibilities of technology and to build the world of tomorrow by giving the support they need.
+        </Typography>
+        <Typography
+          className={cx(titleDesc, italicsTitle)}
+          textColor='neutral-400'
+          textType='heading4'
+          textWeight='700'
+          id='sub-details'
+          as='h4'
+        >
+          Collaborate, compete, and push the boundaries of technology. 
+        </Typography>
+      </div>
       <div className={content}>
-        <ul className={points}>
+        {/* <ul className={points}>
           {textItems.map((item, key) => (
             <li key={key}>
               <Typography
@@ -158,10 +175,10 @@ function Why() {
               {item.action && <Button className={action} {...item.action} />}
             </li>
           ))}
-        </ul>
+        </ul> */}
         <Slides headingLevel='h3' slides={transformedData} />
       </div>
-      <Popup
+      {/* <Popup
         onClose={() => setShowPopup(false)}
         className={popup}
         show={showPopup}
@@ -173,7 +190,7 @@ function Why() {
           objectFit='contain'
           quality={100}
         />
-      </Popup>
+      </Popup> */}
     </PageSection>
   );
 }
