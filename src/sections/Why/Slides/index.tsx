@@ -25,6 +25,54 @@ export interface SlidesProps {
 }
 
 function Slides({ slides, headingLevel }: SlidesProps) {
+
+  // const [currentSlide, setCurrentSlide] = useState(0);
+
+  // const handlePrevSlide = () => {
+  //   setCurrentSlide(currentSlide - 1);
+  // };
+
+  // const handleNextSlide = () => {
+  //   setCurrentSlide(currentSlide + 1);
+  // };
+
+  // const renderDots = () => {
+  //   return slides.map((slide, index) => {
+  //     const className = cx(dot, index === currentSlide && active); //index === currentSlide ? cx(dot, active) : dot; 
+  //     return (
+  //       <span
+  //         key={index}
+  //         className={className}
+  //         onClick={() => setCurrentSlide(index)}
+  //       />
+  //     );
+  //   });
+  // };
+
+  // const renderSlides = () => {
+  //   return slides.map((slide, index) => {
+  //     const className = cx(individualSlide, index === currentSlide ? active : hidden);
+  //       // index === currentSlide ? 'slide active' : 'slide hidden';
+  //     return (
+  //       <div key={index} className={className}>
+  //         <Card slide={slide} headingLevel={headingLevel} />
+  //       </div>
+  //     );
+  //   });
+  // };
+
+  // return (
+  //   <div className={slidesOuter}>
+  //     <div className={slideContainer}>{renderSlides()}</div>
+  //     <div className={dots}>{renderDots()}</div>
+  //     <button onClick={handlePrevSlide}>
+  //       <LeftArrow />
+  //     </button>
+  //     <button onClick={handleNextSlide}>
+  //       <RightArrow />
+  //     </button>
+  //   </div>
+  // );
   const slideRefs = useRef<(HTMLLIElement | null)[]>([]);
   const scrollRef = useRef<HTMLUListElement>(null);
   const [active, setActive] = useState(0);

@@ -4,6 +4,54 @@
 @use '../../../styles/mixins.module' as localMixins;
 @use 'sass:math';
 
+// .slidesOuter {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   width: 100%;
+
+//   .slideContainer {
+//     display: flex;
+//     width: 100%;
+//     overflow-x: auto;
+//     scroll-snap-type: x mandatory;
+
+//     .individualSlide {
+//       flex: 0 0 33.33%;
+//       scroll-snap-align: start;
+//       transition: transform 0.3s ease-in-out;
+
+//       &.hidden {
+//         transform: translateX(-100%);
+//       }
+
+//       &.active {
+//         transform: none;
+//       }
+//     }
+//   }
+
+//   .dots {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     margin: 1rem 0;
+
+//     .dot {
+//       width: 10px;
+//       height: 10px;
+//       border-radius: 50%;
+//       background-color: #ccc;
+//       margin: 0 5px;
+//       cursor: pointer;
+
+//       &.active {
+//         background-color: #000;
+//       }
+//     }
+//   }
+// }
+
 $_slide-width: 468px;
 $_control-pad: 0.5rem;
 
@@ -18,14 +66,16 @@ $_control-pad: 0.5rem;
 }
 
 .controls {
-  background: linear-gradient(
-    90deg,
-    localColors.$bg-1,
-    10%,
-    rgba(255, 255, 255, 0),
-    90%,
-    localColors.$bg-1
-  );
+  // background: linear-gradient(
+  //   90deg,
+  //   localColors.$bg-1,
+  //   10%,
+  //   rgba(255, 255, 255, 0),
+  //   90%,
+  //   localColors.$bg-1
+  // );
+  background: transparent;
+  width: 100vw;
   justify-content: space-between;
   padding: 0 $_control-pad;
   box-sizing: border-box;
@@ -85,9 +135,6 @@ $_control-pad: 0.5rem;
   border-radius: 0.25rem;
   padding: 2.75rem 1.5rem 2.25rem;
   box-sizing: border-box;
-  flex-direction: column;
-  min-width: $_slide-width;
-  align-items: center;
   display: flex;
 
   // Inactive state
