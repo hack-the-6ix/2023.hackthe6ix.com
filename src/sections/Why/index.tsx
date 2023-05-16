@@ -25,16 +25,7 @@ const slides = [
     role: 'Hacker',
   },
   {
-    image: 'aaiman.png',
-    title:
-      'So honored to chat about diversity & inclusion at @HackThe6ix today.',
-    content:
-      "It's the most organized hackathon I've ever been to (from what feels like millions), and it's all virtual! Well-moderated, great questions, diverse backgrounds+views of the panelists. Kudos to the HT6 team 👏🏻",
-    name: 'Aaiman Aamir',
-    role: 'Speaker',
-  },
-  {
-    image: 'samson.png',
+    image: 'wilson.png',
     title: 'Thank you so much for this amazing opportunity.',
     content:
       'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
@@ -42,13 +33,21 @@ const slides = [
     role: 'Hacker',
   },
   {
-    image: 'sam.png',
-    title: 'It was so nice to guide students through their projects.',
+    image: 'wilson.png',
+    title: 'Thank you so much for this amazing opportunity.',
     content:
-      "Whether it was simply providing feedback on project ideas, or helping hackers deploy apps, connect their React apps to backends, and build API's for their projects, I had a great time.",
-    name: 'Sam Eskandar',
-    role: 'Mentor',
+      'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
+    name: 'Samson Hua',
+    role: 'Hacker',
   },
+  // {
+  //   image: 'sam.png',
+  //   title: 'It was so nice to guide students through their projects.',
+  //   content:
+  //     "Whether it was simply providing feedback on project ideas, or helping hackers deploy apps, connect their React apps to backends, and build API's for their projects, I had a great time.",
+  //   name: 'Sam Eskandar',
+  //   role: 'Mentor',
+  // },
 ];
 
 const query = graphql`

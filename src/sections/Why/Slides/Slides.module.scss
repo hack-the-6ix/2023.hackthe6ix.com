@@ -56,7 +56,7 @@ $_slide-width: 468px;
 $_control-pad: 0.5rem;
 
 .root {
-  max-width: $_slide-width * 1.5;
+  //max-width: $_slide-width * 1.5;
   align-items: center;
   position: relative;
   min-width: 1px;
@@ -145,7 +145,7 @@ $_control-pad: 0.5rem;
   flex: 0 0 $_slide-width;
 
   // Inactive state
-  transform: scale(0.8);
+  //transform: scale(0.8);
 
   &:last-child {
     margin-right: 0;
