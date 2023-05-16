@@ -1,0 +1,49 @@
+@use '../../styles/mixins.module';
+@use '../../styles/colors.module';
+
+.root {
+  padding-bottom: 6.5rem;
+  padding-top: 6.5rem;
+}
+
+.title {
+  margin: 0 0 2.5rem;
+  display: inline-block;
+}
+
+.airplane{
+  max-width: 25.375rem;
+  margin-left: -10rem;
+  display:block;
+}
+
+.points {
+  justify-content: space-evenly;
+  list-style-type: none;
+  flex-wrap: wrap;
+  display: flex;
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+  @include mixins.media(laptop) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
+
+.point{
+  flex-basis: 22rem;
+  svg {
+    max-width: 22rem;
+  }
+  text-align: center;
+}
+
+.text,
+.heading {
+  margin: 0;
+}
+
+.text {
+  margin-top: 1rem;
+}
