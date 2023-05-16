@@ -1,5 +1,5 @@
 import { Button, Typography } from "@ht6/react-ui";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PageSection from "../../components/PageSection";
 import {
   root,
@@ -37,6 +37,19 @@ const textItems = [
 ];
 
 function JourneyPoint({ item }: { item: (typeof textItems)[number] }) {
+  const [isDesktop, setIsDesktop] = useState<Boolean>(false);
+
+  useEffect(() => {
+    const handler = () => {
+      setIsDesktop(window.innerWidth > 768);
+    };
+    window.addEventListener("resize", handler, true);
+    handler();
+    return () => {
+      window.removeEventListener("resize", handler, true);
+    };
+  }, []);
+
   return (
     <li className={point} tabIndex={0}>
       <item.image />
@@ -45,6 +58,7 @@ function JourneyPoint({ item }: { item: (typeof textItems)[number] }) {
         textColor="neutral-50"
         textType="heading3"
         textWeight="extra-bold"
+        displayType={isDesktop ? "desktop" : "mobile"}
         as="h3"
       >
         <span>{item.title}</span>
@@ -54,6 +68,7 @@ function JourneyPoint({ item }: { item: (typeof textItems)[number] }) {
         textColor="neutral-50"
         textType="heading6"
         textWeight="medium"
+        displayType={isDesktop ? "desktop" : "mobile"}
         as="h6"
       >
         {item.content}
@@ -64,6 +79,18 @@ function JourneyPoint({ item }: { item: (typeof textItems)[number] }) {
 
 function Journey() {
   const PaperAirplane = require("../../images/journey-section/paper-airplane.svg");
+  const [isDesktop, setIsDesktop] = useState<Boolean>(false);
+
+  useEffect(() => {
+    const handler = () => {
+      setIsDesktop(window.innerWidth > 768);
+    };
+    window.addEventListener("resize", handler, true);
+    handler();
+    return () => {
+      window.removeEventListener("resize", handler, true);
+    };
+  }, []);
 
   return (
     <PageSection containerClassName={root}>
@@ -74,6 +101,7 @@ function Journey() {
           textColor="neutral-50"
           textType="heading1"
           textWeight="extra-bold"
+          displayType={isDesktop ? "desktop" : "mobile"}
           as="h1"
         >
           Start your&nbsp;
@@ -83,6 +111,7 @@ function Journey() {
           textColor="warning-400"
           textType="heading1"
           textWeight="extra-bold"
+          displayType={isDesktop ? "desktop" : "mobile"}
           as="h1"
         >
           journey

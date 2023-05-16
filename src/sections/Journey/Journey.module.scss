@@ -25,16 +25,19 @@
   gap: 2rem;
   padding: 0;
   margin: 0;
-  @include mixins.media(laptop) {
-    grid-template-columns: 1fr;
-    justify-items: center;
+  @include mixins.media(tablet) {
+    flex-direction: column;
   }
 }
 
 .point{
   flex-basis: 22rem;
   svg {
-    max-width: 22rem;
+    max-width: 100%;
+    margin-bottom: -1rem;
+    @include mixins.media(tablet){
+      margin-bottom: 0rem;
+    }
   }
   text-align: center;
 }
