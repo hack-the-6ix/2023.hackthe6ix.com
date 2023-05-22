@@ -1,0 +1,32 @@
+@use '~@ht6/react-ui/dist/styles/colors.module';
+
+.iconItem {
+  margin-right: var(--socials-g);
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.icon {
+  width: 1.875rem;
+  height: auto;
+  display: flex;
+}
+
+.icons {
+  list-style-type: none;
+  align-items: center;
+  flex-wrap: wrap;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.link {
+  display: block;
+  @each $color in map-keys(colors.$config) {
+    &--#{$color} {
+      color: colors.getColor($color);
+    }
+  }
+}

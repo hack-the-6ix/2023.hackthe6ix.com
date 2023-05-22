@@ -1,0 +1,63 @@
+@use '~@ht6/react-ui/dist/styles/colors.module';
+@use '~@ht6/react-ui/dist/styles/mixins.module';
+@use '../../styles/mixins.module' as localMixins;
+
+.container {
+  padding: 2.5rem 0 7rem;
+}
+
+.heading {
+  margin: 0 0 2rem;
+}
+
+.items {
+  justify-content: center;
+  list-style-type: none;
+  flex-wrap: wrap;
+  display: flex;
+  gap: 1.25rem;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  border-radius: 0.25rem;
+  position: relative;
+  flex-basis: 24rem;
+  overflow: hidden;
+  display: flex;
+
+  &:hover,
+  &:focus {
+    & .content {
+      transform: translateY(0);
+    }
+  }
+}
+
+:global(.gatsby-image-wrapper).image {
+  position: absolute;
+  margin: 0;
+  inset: 0;
+}
+
+.content {
+  @include mixins.transition(transform, slow);
+  transform: translateY(100%) translateY(calc(var(--offset) * -1px));
+  background-color: colors.getColor(primary-3);
+  padding: 0 1.25rem 0.75rem;
+  box-sizing: border-box;
+  color: white;
+  z-index: 1;
+}
+
+.header {
+  padding: 0.75rem 0 1rem;
+  & > * {
+    margin: 0;
+  }
+}
+
+.body {
+  padding-top: 0.25rem;
+}

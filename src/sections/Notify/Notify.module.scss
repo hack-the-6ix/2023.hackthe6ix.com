@@ -1,0 +1,44 @@
+@use '../../styles/colors.module';
+
+.container {
+  text-align: center;
+  background-color: colors.$bg-1;
+  padding-bottom: 7.25rem;
+  padding-top: 3.75rem;
+}
+
+.text {
+  margin: 0;
+}
+
+.title {
+  text-transform: capitalize;
+}
+
+.image {
+  width: 18.5rem;
+}
+
+%singleColumn {
+  grid-template-columns: 1fr;
+  display: grid;
+}
+
+.root {
+  @extend %singleColumn;
+  justify-items: center;
+  grid-gap: 1.5rem;
+}
+
+.headline {
+  @extend %singleColumn;
+  grid-gap: 0.75rem;
+}
+
+.input {
+  width: 24rem;
+}
+
+.apply {
+  text-decoration: none;
+}

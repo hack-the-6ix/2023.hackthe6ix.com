@@ -1,0 +1,4 @@
+src/__generated__
+node_modules
+public
+.cache

@@ -1,0 +1,86 @@
+@use '~@ht6/react-ui/dist/styles/colors.module';
+@use '../../styles/mixins.module' as localMixins;
+
+.container {
+  box-sizing: border-box;
+  position: relative;
+  padding-bottom: 8rem;
+  padding-top: 8rem;
+
+  @include localMixins.media(mobile) {
+    padding-bottom: 4rem;
+    padding-top: 4rem;
+  }
+}
+
+.content {
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  display: flex;
+}
+
+.backdrop {
+  position: absolute !important;
+  height: 100%;
+  margin: auto;
+  z-index: -1;
+  width: 100%;
+  inset: 0;
+
+  & img {
+    object-position: bottom center;
+  }
+}
+
+.text {
+  margin: 0.5rem 0;
+}
+
+.title {
+  text-transform: uppercase;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  @include localMixins.media(tablet) {
+    flex-direction: column;
+  }
+}
+
+.carousel {
+  color: colors.getColor(secondary-2);
+  margin: 0.25rem 0.75rem;
+  @include localMixins.media(tablet) {
+    align-items: center;
+    & li {
+      margin-right: 0;
+    }
+  }
+}
+
+.aside {
+  margin: 2rem 0 0.75rem;
+  max-width: 36rem;
+}
+
+.socials {
+  margin: 1rem 0 5rem;
+
+  @include localMixins.media(mobile) {
+    margin-bottom: 2rem;
+  }
+}
+
+.apply {
+  text-decoration: none;
+}
+
+.apply-container {
+  display: flex;
+  column-gap: 1rem;
+}

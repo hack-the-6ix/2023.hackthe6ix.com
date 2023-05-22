@@ -1,0 +1,11 @@
+@use './vars.module';
+
+@mixin media($bp) {
+  @if not map-has-key(vars.$bp, $bp) {
+    @error "#{$bp} is not a supported breakpoint";
+  }
+
+  @media only screen and (max-width: map-get(vars.$bp, $bp)) {
+    @content;
+  }
+}

@@ -1,0 +1,27 @@
+@use '~@ht6/react-ui/dist/styles/colors.module';
+@use '~@ht6/react-ui/dist/styles/mixins.module';
+
+.pure {
+  text-decoration: none;
+  color: inherit;
+}
+
+.styled {
+  @extend .pure;
+  @include mixins.transition(color);
+}
+
+@each $color, $_ in colors.$config {
+  .#{$color} {
+    color: colors.getColor($color);
+
+    &:hover,
+    &:active {
+      color: colors.getColor($color, hover);
+    }
+
+    &:active {
+      color: colors.getColor($color, active);
+    }
+  }
+}

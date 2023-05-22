@@ -1,0 +1,25 @@
+@use '~@ht6/react-ui/dist/styles/mixins.module';
+
+.root {
+  @include mixins.transition(width height);
+  height: var(--vc-h, unset);
+  width: var(--vc-w, unset);
+  flex-direction: column;
+  list-style-type: none;
+  display: inline-flex;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  @include mixins.transition(opacity, slow);
+  white-space: nowrap;
+  margin-right: auto;
+  padding: 0.25rem 0;
+  opacity: 0;
+}
+
+.active {
+  opacity: 1;
+}

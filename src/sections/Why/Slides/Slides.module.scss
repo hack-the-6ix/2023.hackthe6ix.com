@@ -1,0 +1,129 @@
+@use '~@ht6/react-ui/dist/styles/mixins.module';
+@use '~@ht6/react-ui/dist/styles/colors.module';
+@use '../../../styles/colors.module' as localColors;
+@use '../../../styles/mixins.module' as localMixins;
+@use 'sass:math';
+
+$_slide-width: 25.25rem;
+$_control-pad: 0.5rem;
+
+.root {
+  max-width: $_slide-width * 1.5;
+  align-items: center;
+  position: relative;
+  min-width: 1px;
+  margin: auto 0;
+  display: flex;
+  width: 100%;
+}
+
+.controls {
+  background: linear-gradient(
+    90deg,
+    localColors.$bg-1,
+    10%,
+    rgba(255, 255, 255, 0),
+    90%,
+    localColors.$bg-1
+  );
+  justify-content: space-between;
+  padding: 0 $_control-pad;
+  box-sizing: border-box;
+  align-items: center;
+  position: absolute;
+  display: flex;
+  z-index: 1;
+  margin: 0;
+  inset: 0;
+}
+
+.control {
+  @include mixins.transition(transform opacity color);
+  color: colors.getColor(primary-3);
+  background: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  border: none;
+
+  &:not(:disabled) {
+    &:hover,
+    &:focus {
+      color: colors.getColor(primary-3, hover);
+      transform: scale(1.1);
+    }
+
+    &:active {
+      color: colors.getColor(primary-3, active);
+      transform: scale(1);
+    }
+  }
+
+  &:disabled {
+    color: colors.getColor(disabled);
+    opacity: 0.25;
+  }
+}
+
+.items {
+  scroll-behavior: smooth;
+  list-style-type: none;
+  overflow: scroll;
+  display: flex;
+  padding: 0;
+  margin: 0;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+}
+
+.item {
+  @include mixins.transition(transform);
+  background-color: colors.getColor(primary-2);
+  border-radius: 0.25rem;
+  padding: 2.75rem 1.5rem 2.25rem;
+  box-sizing: border-box;
+  flex-direction: column;
+  min-width: $_slide-width;
+  align-items: center;
+  display: flex;
+
+  // Inactive state
+  transform: scale(0.8);
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.activeItem {
+  transform: scale(1);
+}
+
+.image {
+  box-sizing: border-box;
+  border: 0.25rem solid colors.getColor(primary-1);
+  border-radius: 50%;
+  width: 50%;
+  height: auto;
+  display: flex;
+  aspect-ratio: 1;
+}
+
+.title {
+  font-style: italic;
+  margin: 1.5rem 0 0;
+  letter-spacing: 0.03rem;
+}
+
+.content {
+  margin: 1.75rem 0;
+}
+
+.label {
+  text-align: end;
+  width: 100%;
+  margin: auto 0 0;
+}

@@ -1,0 +1,106 @@
+@use '~@ht6/react-ui/dist/styles/mixins.module';
+@use '~@ht6/react-ui/dist/styles/colors.module';
+@use '../../styles/colors.module' as localColors;
+
+.animated {
+}
+
+.backdrop {
+  @include mixins.transition(background-color backdrop-filter opacity, slow);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: fixed;
+  display: flex;
+  z-index: 200;
+  opacity: 0;
+  margin: 0;
+  inset: 0;
+
+  &.animated {
+    backdrop-filter: blur(0.75rem);
+    opacity: 1;
+
+    @supports not (backdrop-filter: blur(0.75rem)) {
+      background-color: rgba(localColors.$bg-2, 0.75);
+    }
+  }
+}
+
+.box {
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.1);
+  background-color: localColors.$bg-2;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  position: relative;
+  max-height: 85%;
+  cursor: initial;
+  max-width: 85%;
+  display: flex;
+}
+
+.floating {
+  position: absolute;
+  inset: 0 0 auto auto;
+  margin: 0;
+  z-index: 1;
+}
+
+.heading {
+  align-items: flex-start;
+  padding: 1.25rem 1.25rem 0 2rem;
+  justify-content: space-between;
+  display: flex;
+}
+
+.title {
+  margin: 0.75rem 0 0;
+
+  &.withText {
+    margin-top: 0;
+  }
+}
+
+.text {
+  margin: 0;
+}
+
+.close {
+  @include mixins.transition(color background-color);
+  color: colors.getColor(copy-dark);
+  background-color: transparent;
+  border-radius: 0.25rem;
+  align-items: center;
+  margin-left: 1rem;
+  aspect-ratio: 1;
+  padding: 0.5rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  border: none;
+
+  &:hover,
+  &:focus {
+    background-color: colors.getColor(primary-1, $alpha: 0.08);
+    color: colors.getColor(primary-1);
+  }
+
+  &:active {
+    background-color: colors.getColor(primary-1, $alpha: 0.12);
+  }
+}
+
+.closeIcon {
+  height: 1.75rem;
+  width: 1.75rem;
+}
+
+.body {
+  min-height: 1px;
+  padding: 1rem 2rem 2rem;
+  display: flex;
+}
+
+.scrollBody {
+  overflow: auto;
+}
