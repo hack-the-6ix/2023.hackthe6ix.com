@@ -41,7 +41,7 @@ function About() {
           </Typography>
           <Typography textType='paragraph1' textColor='copy-dark' as='p'>
             Hack the 6ix is the largest summer student-run, not-for-profit
-            hackathon now in its eighth iteration, based in Toronto.
+            hackathon now in its ninth iteration, based in Toronto.
           </Typography>
           <Typography textType='paragraph1' textColor='copy-dark' as='p'>
             We take pride in the diversity and talent of our hackers, who help
