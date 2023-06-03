@@ -31,8 +31,7 @@ import {
   signUpText,
   hideDesktop,
   featureObject,
-  columnLeft,
-  columnRight,
+  splashContent,
 } from './Splash.module.scss';
 import { ApiService, ApiServiceError } from '../../utils';
 
@@ -106,7 +105,7 @@ function Splash() {
   return (
     <PageSection
       containerClassName={container}
-      className={content}
+      className={splashContent}
       // TODO: Add website full bg later
       // append={
       //   <StaticImage
@@ -119,7 +118,6 @@ function Splash() {
       //   />
       // }
     >
-      <div className={columnLeft}>
         <Typography
           className={cx(text, dates)}
           textColor='neutral-50'
@@ -137,7 +135,8 @@ function Splash() {
           as='h1'
         >
           Hack the 6ix is Toronto's <br className={hideMobile} /> <span className={textHighlight}>largest</span> summer hackathon, <br className={hideMobile} /> where <span className={textHighlight}>anyone</span> can hack <br className={hideDesktop} /> to <br className={hideMobile} />
-          <VCarousel className={carousel} items={words} />
+          <VCarousel // TODO: FIX ON MOBILE
+          className={carousel} items={words} />
         </Typography>
         <Typography
           className={cx(text, signUpText)}
@@ -176,16 +175,8 @@ function Splash() {
           activeColor='primary-500' 
           gap='1rem'
         />
-      </div>
-      <div className={columnRight}>
-        <StaticImage
-          alt='Sailor ship sailing a sea of clouds'
-          // TODO: Update ship png later
-          src='../../images/test_ship.png'
-          className={featureObject}
-          objectFit='contain'
-        />
-      </div>
+
+
       {/* From 2022:
       <IconButton
         onClick={(e: MouseEvent) => {
