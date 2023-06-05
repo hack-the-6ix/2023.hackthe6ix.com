@@ -135,8 +135,7 @@ function Splash() {
           as='h1'
         >
           Hack the 6ix is Toronto's <br className={hideMobile} /> <span className={textHighlight}>largest</span> summer hackathon, <br className={hideMobile} /> where <span className={textHighlight}>anyone</span> can hack <br className={hideDesktop} /> to <br className={hideMobile} />
-          <VCarousel // TODO: FIX ON MOBILE
-          className={carousel} items={words} />
+          <VCarousel className={carousel} items={words} />
         </Typography>
         <Typography
           className={cx(text, signUpText)}
