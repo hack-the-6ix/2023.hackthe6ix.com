@@ -1,9 +1,8 @@
 import { RiMenuLine } from '@react-icons/all-files/ri/RiMenuLine';
 import { useCallback, useEffect, useRef, useState, MouseEvent } from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
-import {BasicLinkProps, Typography} from '@ht6/react-ui';
+import { Button, BasicLink, BasicLinkProps, Typography } from '@ht6/react-ui';
 import cx from 'classnames';
-import { BasicLink } from '@ht6/react-ui';
 import PageSection from '../PageSection';
 import Popup from '../Popup';
 import Logo from '../../images/logo.svg';
@@ -100,9 +99,6 @@ function Navigation({
         as={GatsbyLink}
       >
         <Logo className={logoSvg} />
-        <Typography textType='heading3' textColor='primary-500'>
-          Hack the 6ix
-        </Typography>
       </BasicLink>
       {links && (
         <ul className={linkItems}>
@@ -127,6 +123,7 @@ function Navigation({
               </Typography>
             );
           })}
+          <Button buttonVariant='secondary' onClick={() => window.open('mailto:hello@hackthe6ix.com')}>Contact us</Button>
         </ul>
       )}
       <button onClick={() => setShow(true)} className={menu}>
@@ -172,8 +169,8 @@ function Navigation({
           target='_blank'
         >
           <StaticImage
-            alt='MLH 2022 Season Banner'
-            src='../../images/mlh.png'
+            alt='MLH 2024 Season Banner'
+            src='../../images/mlh.svg'
             placeholder='none'
             quality={100}
             width={200}
