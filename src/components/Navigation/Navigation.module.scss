@@ -14,6 +14,8 @@
 .content {
   justify-content: space-between;
   display: flex;
+  padding: 0 1.25rem;
+  width: auto;
 }
 
 .logo {
@@ -77,6 +79,10 @@
   padding: 0;
   margin: 0;
 
+  button {
+    grid-column: 1/-1;
+  }
+
   @include localMixins.media(mobile) {
     grid-template-columns: 1fr;
   }
@@ -136,8 +142,6 @@
 }
 
 .menuIcon {
-  width: 1.75rem;
-  height: 1.75rem;
   display: flex;
 }
 
@@ -146,6 +150,10 @@
   overflow-y: visible;
   width: 5.25rem;
   height: 1px;
+
+  @include localMixins.media(nav) {
+    margin-left: 12px;
+  }
 }
 
 .applyContainer {

@@ -127,11 +127,11 @@ function Navigation({
         </ul>
       )}
       <button onClick={() => setShow(true)} className={menu}>
-        <RiMenuLine className={menuIcon} />
+        <RiMenuLine className={menuIcon} size={14}/>
       </button>
       <Popup
         onClose={() => setShow(false)}
-        label='Navigate to Section'
+        label='Navigate to section'
         className={mobileNav}
         show={show}
         as='ul'
@@ -160,6 +160,7 @@ function Navigation({
             </Typography>
           );
         })}
+        <Button buttonVariant='secondary' onClick={() => window.open('mailto:hello@hackthe6ix.com')}>Contact us</Button>
       </Popup>
       {showMlhBanner && (
         <BasicLink
