@@ -38,7 +38,7 @@ function IndexPage() {
   const location = useLocation();
   return (
     <Page title='Home'>
-      <Navigation links={navLinks} showMlhBanner useScrollSpy />
+      <Navigation links={navLinks} showMlhBanner useScrollSpy /> {/* when apps are open, add showApply as a prop*/}
       <Splash />
       <About />
       <Why />

@@ -24,7 +24,7 @@ import {
   applyContainer,
   applyMobile,
 } from './Navigation.module.scss';
-import {Link as GatsbyLink} from 'gatsby';
+import { Link as GatsbyLink } from 'gatsby';
 
 function setHash(event: MouseEvent, path: string, scroll?: boolean) {
   event.preventDefault();
@@ -44,6 +44,7 @@ export interface NavigationProps {
   useScrollSpy?: boolean;
   links: BasicLinkProps[];
   base?: string;
+  showApply?: boolean;
 }
 
 function Navigation({
@@ -51,6 +52,7 @@ function Navigation({
   useScrollSpy,
   base = '/',
   links,
+  showApply
 }: NavigationProps) {
   const [show, setShow] = useState(false);
   const [top, setTop] = useState(0);
@@ -124,6 +126,7 @@ function Navigation({
             );
           })}
           <Button buttonVariant='secondary' onClick={() => window.open('mailto:hello@hackthe6ix.com')}>Contact us</Button>
+          {showApply && <Button onClick={() => window.open('https://dash.hackthe6ix.com')}>Apply now</Button>}
         </ul>
       )}
       <button onClick={() => setShow(true)} className={menu}>
@@ -161,6 +164,7 @@ function Navigation({
           );
         })}
         <Button buttonVariant='secondary' onClick={() => window.open('mailto:hello@hackthe6ix.com')}>Contact us</Button>
+        {showApply && <Button onClick={() => window.open('https://dash.hackthe6ix.com')}>Apply now</Button>}
       </Popup>
       {showMlhBanner && (
         <BasicLink

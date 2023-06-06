@@ -40,6 +40,15 @@
   align-items: center;
   gap: 4rem;
 
+  button {
+    margin-left: -24px;
+    margin-right: -24px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
   @include localMixins.media(nav) {
     display: none;
   }
@@ -50,11 +59,6 @@
   box-sizing: border-box;
   position: relative;
   display: block;
-
-  button {
-    margin-left: -24px;
-    margin-right: 24px;
-  }
 
   &:hover,
   &:focus {
