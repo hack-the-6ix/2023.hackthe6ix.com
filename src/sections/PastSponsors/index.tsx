@@ -42,7 +42,10 @@ function PastSponsors() {
         as='h2'
         textColor='shades-0'
       >
-        Sponsor the <span style={{color: '#FBBF24'}}>next big idea</span> 
+        <span style={{ display: 'inline-block', width: '100%', textAlign: 'center', }}>
+          Sponsor the <span style={{color: '#FBBF24'}}>next big idea</span> 
+        </span>
+        
       </Typography>
       <Typography
         id='sponsors'
@@ -50,7 +53,7 @@ function PastSponsors() {
         as='p'
         textColor='shades-0'
       >
-        Special thanks to our sponsors for supporting Hack the 6ix and the incubation of big ideas. 
+        <span style={{ display: 'inline-block', width: '100%', textAlign: 'center' }}>Special thanks to our sponsors for supporting Hack the 6ix and the incubation of big ideas. </span>
         <br />
         <span style={{ display: 'inline-block', width: '100%', textAlign: 'center' }}>Want to help us make it even better?</span>
       </Typography>
