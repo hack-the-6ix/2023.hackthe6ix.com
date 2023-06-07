@@ -16,6 +16,9 @@ import {
   ctaHeading,
   faqCta,
 } from './Notify.module.scss';
+import React from 'react';
+
+const appsOpen = false;
 
 function Notify() {
   // const [emailInput, setEmailInput] = useState({email: ''});
@@ -59,73 +62,94 @@ function Notify() {
         className={image}
       />
       <div className={headline}>
-        <Typography
-          className={cx(text, ctaHeading)}
-          textColor='neutral-50'
-          textType='heading2'
-          as='h2'
-          // TODO: Update copy with "Ready to be a hacker?" with textHighlight on "hacker?" when applications open
-        >
-          Applications open&nbsp;
-          <span className={textHighlight}>soon</span>
-        </Typography>
-        {/* <Typography
-          className={text}
-          textColor='neural-50'
-          textType='heading4'
-          as='p'
-
-          // TODO: Update when applications open
-        >
-          Let's hack, learn, collaborate, and meet new people. Applications close <sp an>[deadline here in format Month day]</span>
-        </Typography> */}
+        {
+          appsOpen 
+          ? 
+          (<React.Fragment>
+            <Typography
+              className={cx(text, ctaHeading)}
+              textColor='neutral-50'
+              textType='heading2'
+              as='h2'
+            >
+              Ready to be a&nbsp;
+              <span className={textHighlight}>hacker?</span>
+            </Typography>
+            <Typography
+            className={text}
+            textColor='neutral-50'
+            textType='p'
+            as='p'
+            >
+              Let's hack, learn, collaborate, and meet new people. Applications close <span>[deadline here in format Month day]</span>
+            </Typography>
+          </React.Fragment>
+          )
+          :
+          (<Typography
+            className={cx(text, ctaHeading)}
+            textColor='neutral-50'
+            textType='heading2'
+            as='h2'
+          >
+            Applications open&nbsp;
+            <span className={textHighlight}>soon</span>
+          </Typography>)
+          
+        }
+        
       </div>
-      <InputButton
-        label='Enter email'
-        name='Enter email'
-        buttonText='Notify me'
-        // onSubmit={(e) => {
-        //   e.preventDefault();
-        //   setSubmitting(true);
-        //   onSubmit();
-        //   return false;
-        // }}
-        // onChange={(e) => {
-        //   setEmailInput({
-        //     ...inputProps,
-        //     [e.currentTarget.name]: e.currentTarget.value.slice(0, 200),
-        //   });
-        // }}
-       >
-        <Button
-          type='submit'
+      {
+        appsOpen ?
+        (<Button
+          href='https://dash.hackthe6ix.com'
+          rel='noreferrer noopener'
+          className={apply}
+          target='_blank'
+          as={BasicLink}
         >
-          Notify me
-        </Button>
-      </InputButton>
-      {/* 
-      TODO:  Update later when applications open:
-      <Button
-        href='https://dash.hackthe6ix.com'
-        rel='noreferrer noopener'
-        className={apply}
-        target='_blank'
-        as={BasicLink}
-      >
-        Apply Now
-      </Button> */}
-      <Typography
-        className={cx(text, faqCta)}
-        textColor='neutral-50'
-        textType='paragraph1'
-        as='p'
-      >
-        Have questions? Check out our{' '}
-        <BasicLink linkStyle='styled' href='#faq' className={textHighlight}>
-          FAQ
-        </BasicLink>{' '}
-        section.
-      </Typography>
+          Apply Now
+        </Button>)
+        :
+        (<React.Fragment>
+          <InputButton
+            label='Enter email'
+            name='Enter email'
+            buttonText='Notify me'
+            // onSubmit={(e) => {
+            //   e.preventDefault();
+            //   setSubmitting(true);
+            //   onSubmit();
+            //   return false;
+            // }}
+            // onChange={(e) => {
+            //   setEmailInput({
+            //     ...inputProps,
+            //     [e.currentTarget.name]: e.currentTarget.value.slice(0, 200),
+            //   });
+            // }}
+           >
+            <Button
+              type='submit'
+            >
+              Notify me
+            </Button>
+          </InputButton>
+          <Typography
+          className={cx(text, faqCta)}
+          textColor='neutral-50'
+          textType='paragraph1'
+          as='p'
+        >
+          Have questions? Check out our{' '}
+          <BasicLink linkStyle='styled' href='#faq' className={textHighlight}>
+            FAQ
+          </BasicLink>{' '}
+          section.
+        </Typography>
+        </React.Fragment>)
+      }
+      
     </PageSection>
   );
 }

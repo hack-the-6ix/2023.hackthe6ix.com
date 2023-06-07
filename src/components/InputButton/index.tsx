@@ -48,8 +48,6 @@ function InputButton({
         <Input
           {...inputProps}
           status={status ? { state: status.state } : undefined}
-          // TODO: 'neutral-50' at 18%
-          outlineColor='neutral-50'
           disabled={isDisabled}
           className={field}
           label={label}
