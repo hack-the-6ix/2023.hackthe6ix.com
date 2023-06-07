@@ -58,8 +58,8 @@ function AccordionGroup({
       <Typography
         {...headingProps}
         className={cx(header, headingProps.className)}
+        textType="heading3"
         textColor="warning-400"
-        textType="heading4"
         textWeight="bold"
         displayType={isDesktop ? "desktop" : "mobile"}
       >
