@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PageSection from '../../components/PageSection';
 import { Input, Button, Typography, InputProps } from '@ht6/react-ui';
-import { content, title, text, form, long, btn, input, questionSpan, textArea } from './Question.module.scss';
+import { content, title, text, form, long, btn, input, questionSpan, textArea, button } from './Question.module.scss';
 import toast from 'react-hot-toast';
 import cx from 'classnames';
 import { ApiActions, ApiService, ApiServiceError } from '../../utils';
@@ -101,7 +101,7 @@ function Question() {
           rows={3}
         />
         <div className={cx(long, btn)}>
-          <Button disabled={isSubmitting} type='submit'>
+          <Button className={button} disabled={isSubmitting} type='submit'>
             Send
           </Button>
         </div>
