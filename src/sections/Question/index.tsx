@@ -59,7 +59,7 @@ function Question() {
       <div>
         <Typography
           className={title}
-          textColor='primary-700'
+          textColor='neutral-50'
           textType='heading2'
           as='h2'
         >
@@ -67,7 +67,7 @@ function Question() {
         </Typography>
         <Typography
           className={text}
-          textColor='copy-dark'
+          textColor='neutral-50'
           textType='paragraph1'
           as='p'
         >
