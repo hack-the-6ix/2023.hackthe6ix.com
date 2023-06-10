@@ -2,8 +2,9 @@ import { Typography } from "@ht6/react-ui";
 import PageSection from "../../components/PageSection";
 import AccordionGroup from "../../components/AccordionGroup";
 import data from "./Faq.data";
-import { faqs, container, faqHeading, root } from "./Faq.module.scss";
+import { faqs, container, faqHeading, root, text } from "./Faq.module.scss";
 import { useEffect, useState } from "react";
+import cx from 'classnames';
 
 function Faq() {
   const [isDesktop, setIsDesktop] = useState<Boolean>(false);
@@ -20,9 +21,9 @@ function Faq() {
   }, []);
 
   return (
-    <PageSection className={root} containerClassName={container} id='notify'>
+    <PageSection className={root} containerClassName={container} id='faq'>
       <Typography
-        className={faqHeading}
+        className={cx(text, faqHeading)}
         id="faq"
         textType="heading1"
         textColor="shades-0"
