@@ -134,7 +134,7 @@ function Navigation({
       </button>
       <Popup
         onClose={() => setShow(false)}
-        label='Navigate to section'
+        label='Navigation Menu'
         className={mobileNav}
         show={show}
         as='ul'

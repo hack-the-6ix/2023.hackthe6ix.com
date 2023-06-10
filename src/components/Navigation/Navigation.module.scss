@@ -58,19 +58,25 @@
   @include mixins.transition(color);
   box-sizing: border-box;
   position: relative;
-  display: block;
+  display: inline-block;
 
-  &:hover,
-  &:focus {
-    color: colors.getColor(primary-700, hover);
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% + 3rem);
+    height: calc(100% + 1rem);
+    background-color: #f5f5f5;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
   }
 
-  &:active {
-    color: colors.getColor(primary-700, active);
-  }
-
-  &Active {
-    color: colors.getColor(primary-700);
+  &:hover::before {
+    opacity: 1;
   }
 }
 
