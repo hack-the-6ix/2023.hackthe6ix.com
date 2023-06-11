@@ -129,7 +129,7 @@ function Why() {
           id='why-us'
           as='h2'
         >
-          Want to <span className={whyTitle}> be part of a change</span>?
+          Ready to <span className={whyTitle}> leave your mark?</span>
         </Typography>
         <Typography
           className={titleDesc}
@@ -138,59 +138,22 @@ function Why() {
           id='details'
           as='p'
         >
-          Now in our 9th iteration, we aim to inspire young hackers to tackle complex challenges and explore the possibilities of technology and to build the world of tomorrow by giving the support they need.
+          We understand making a change is difficult. At Hack the 6ix, we aim to inspire young hackers to tackle complex challenges, explore the possibilities of technology, and to build the world of tomorrow by giving the support they need.
         </Typography>
         <Typography
           className={cx(titleDesc, italicsTitle)}
-          textColor='neutral-400'
-          textType='heading4'
+          textColor='shades-0'
+          textType='heading6'
           textWeight='700'
           id='sub-details'
-          as='h4'
+          as='h6'
         >
-          Collaborate, compete, and push the boundaries of technology. 
+          Join us in our <span className={whyTitle}>9th iteration</span> to discover, collaborate, and push the boundaries of technology.         
         </Typography>
       </div>
       <div className={content}>
-        {/* <ul className={points}>
-          {textItems.map((item, key) => (
-            <li key={key}>
-              <Typography
-                className={heading}
-                textColor='primary-700'
-                textType='heading3'
-                as='h3'
-              >
-                <span>{item.title}</span>
-                <item.icon className={icon} />
-              </Typography>
-              <Typography
-                className={text}
-                textColor='copy-dark'
-                textType='paragraph1'
-                as='p'
-              >
-                {item.content}
-              </Typography>
-              {item.action && <Button className={action} {...item.action} />}
-            </li>
-          ))}
-        </ul> */}
         <Slides headingLevel='h3' slides={transformedData} />
       </div>
-      {/* <Popup
-        onClose={() => setShowPopup(false)}
-        className={popup}
-        show={showPopup}
-      >
-        <StaticImage
-          className={prizeImage}
-          alt=' Prizes for event. First place - Nintendo Switch, Second place - Beats Fit Pro, Third place - Mechanical Keyboard and Mouse'
-          src='../../images/prizes.png'
-          objectFit='contain'
-          quality={100}
-        />
-      </Popup> */}
     </PageSection>
   );
 }
