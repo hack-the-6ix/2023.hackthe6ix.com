@@ -4,16 +4,23 @@
 .root {
   padding-bottom: 6.5rem;
   padding-top: 6.5rem;
+  background-color: black; // temporarily just so text is visible
 }
 
 .title {
   margin: 0 0 2.5rem;
   display: inline-block;
+  font-size: 34px;
+  font-weight: bold;
+  letter-spacing: normal;
 }
 
 .airplane{
   max-width: 25.375rem;
-  margin-left: -10rem;
+  margin-left: -6rem;
+  @include mixins.media(tablet) {
+    margin-left: -1rem;
+  }
   display:block;
 }
 
@@ -45,8 +52,14 @@
 .text,
 .heading {
   margin: 0;
+  letter-spacing: normal;
+}
+
+.heading{
+  font-weight: 500;
 }
 
 .text {
   margin-top: 1rem;
+  font-size: 12px;
 }
