@@ -9,25 +9,33 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-}
-
-.title {
-  margin: auto;
-  // display: flex;
-  // align-items: center;
-  text-align: center;
-  font-size: 40px;
-  line-height: 48px;
-  letter-spacing: -0.02em;
+  margin: 0;
 }
 
 .contentIntro {
-  max-width: 1150px;
-  margin: auto;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .whyTitle {
   color: colors.getColor(warning-400);
+}
+
+.slidesWrapper {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -0.02em;
 }
 
 .titleDesc {
@@ -44,20 +52,6 @@
   line-height: 32px;
   text-align: center;
   letter-spacing: -0.02em;
-}
-
-.content {
-  // display: grid;
-  // grid-template-columns: 1fr 1fr 1fr;
-  // grid-gap: 1rem;
-  display: flex;
-  overflow: hidden;
-  max-height: 500px;
-
-  @include mixins.media(tablet) {
-    grid-template-columns: 1fr;
-    justify-items: center;
-  }
 }
 
 .points {

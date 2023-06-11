@@ -8,17 +8,17 @@ import Slides from './Slides';
 import {
   root,
   title,
-  content,
   whyTitle,
   titleDesc,
   italicsTitle,
-  contentIntro
+  contentIntro,
+  slidesWrapper
 } from './Why.module.scss';
 
 const slides = [
   {
     image: 'wilson.png',
-    title: 'Thank you so much for this amazing opportunity.',
+    title: 'Thank you so much for this amazing opportunity.1',
     content:
       'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
     name: 'Samson Hua',
@@ -26,7 +26,7 @@ const slides = [
   },
   {
     image: 'wilson.png',
-    title: 'Thank you so much for this amazing opportunity.',
+    title: 'Thank you so much for this amazing opportunity.2',
     content:
       'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
     name: 'Samson Hua',
@@ -34,7 +34,23 @@ const slides = [
   },
   {
     image: 'wilson.png',
-    title: 'Thank you so much for this amazing opportunity.',
+    title: 'Thank you so much for this amazing opportunity.3',
+    content:
+      'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
+    name: 'Samson Hua',
+    role: 'Hacker',
+  },
+  {
+    image: 'wilson.png',
+    title: 'Thank you so much for this amazing opportunity.4',
+    content:
+      'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
+    name: 'Samson Hua',
+    role: 'Hacker',
+  },
+  {
+    image: 'wilson.png',
+    title: 'Thank you so much for this amazing opportunity.5',
     content:
       'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
     name: 'Samson Hua',
@@ -119,7 +135,7 @@ function Why() {
   // ];
 
   return (
-    <PageSection containerClassName={root}>
+    <div className={root}>
       <div className={contentIntro}>
         <Typography
           className={title}
@@ -151,10 +167,10 @@ function Why() {
           Join us in our <span className={whyTitle}>9th iteration</span> to discover, collaborate, and push the boundaries of technology.         
         </Typography>
       </div>
-      <div className={content}>
+      <div className={slidesWrapper}>
         <Slides headingLevel='h3' slides={transformedData} />
       </div>
-    </PageSection>
+    </div>
   );
 }
 

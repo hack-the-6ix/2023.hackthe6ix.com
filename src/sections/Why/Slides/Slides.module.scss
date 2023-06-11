@@ -4,92 +4,14 @@
 @use '../../../styles/mixins.module' as localMixins;
 @use 'sass:math';
 
-// .slidesOuter {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   width: 100%;
-
-//   .slideContainer {
-//     display: flex;
-//     width: 100%;
-//     overflow-x: auto;
-//     scroll-snap-type: x mandatory;
-
-//     .individualSlide {
-//       flex: 0 0 33.33%;
-//       scroll-snap-align: start;
-//       transition: transform 0.3s ease-in-out;
-
-//       &.hidden {
-//         transform: translateX(-100%);
-//       }
-
-//       &.active {
-//         transform: none;
-//       }
-//     }
-//   }
-
-//   .dots {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     margin: 1rem 0;
-
-//     .dot {
-//       width: 10px;
-//       height: 10px;
-//       border-radius: 50%;
-//       background-color: #ccc;
-//       margin: 0 5px;
-//       cursor: pointer;
-
-//       &.active {
-//         background-color: #000;
-//       }
-//     }
-//   }
-// }
-
-$_slide-width: 468px;
-$_control-pad: 0.5rem;
-
 .root {
-  //max-width: $_slide-width * 1.5;
-  align-items: center;
-  position: relative;
-  min-width: 1px;
-  margin: auto 0;
-  width: 100%;
-}
-
-.controls {
-  // background: linear-gradient(
-  //   90deg,
-  //   localColors.$bg-1,
-  //   10%,
-  //   rgba(255, 255, 255, 0),
-  //   90%,
-  //   localColors.$bg-1
-  // );
-  background: transparent;
-  width: 97vw;
-  max-height: 500px;
-  justify-content: space-between;
-  padding: 0 $_control-pad;
-  box-sizing: border-box;
-  align-items: center;
-  position: absolute;
   display: flex;
-  z-index: 1;
-  margin: 0;
-  inset: 0;
+  align-items: center;
 }
 
 .control {
   @include mixins.transition(transform opacity color);
-  color: colors.getColor(primary-700);
+  color: colors.getColor(neutral-50);
   background: none;
   cursor: pointer;
   padding: 0.5rem;
@@ -99,12 +21,12 @@ $_control-pad: 0.5rem;
   &:not(:disabled) {
     &:hover,
     &:focus {
-      color: colors.getColor(primary-700, hover);
+      color: colors.getColor(neutral-100, hover);
       transform: scale(1.1);
     }
 
     &:active {
-      color: colors.getColor(primary-700, active);
+      color: colors.getColor(neutral-100, active);
       transform: scale(1);
     }
   }
@@ -112,72 +34,80 @@ $_control-pad: 0.5rem;
   &:disabled {
     color: colors.getColor(disabled);
     opacity: 0.25;
+    cursor: not-allowed;
   }
 }
 
 .items {
   scroll-behavior: smooth;
   list-style-type: none;
-  overflow: scroll;
-  display: inline-grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  overflow-x: hidden;
+  display: flex;
+  align-items: center;
   padding: 0;
-
+  margin: 0;
+  width: 100%;
+  
   &::-webkit-scrollbar {
     display: none;
   }
   scrollbar-width: none;
+}
 
-  @include localMixins.media(tablet) {
-    grid-template-columns: 1fr; // Change to a single column for tablet and smaller screens
-    justify-items: center;
+@media screen and (min-width: 425px) {
+  .items {
+    overflow-x: scroll !important;
   }
 }
 
 .item {
   @include mixins.transition(transform);
-  background-color: colors.getColor(primary-2);
-  border-radius: 0.25rem;
-  padding: 2.75rem 1.5rem 2.25rem;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 32px 0;
   box-sizing: border-box;
+  justify-content: center;
+  min-width: 33.3333333%;
+  
   display: flex;
-  flex: 0 0 $_slide-width;
-
-  // Inactive state
-  //transform: scale(0.8);
+  transform: scale(0.95);
 
   &:last-child {
     margin-right: 0;
   }
+
+  .wrapper {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .image {
+    box-sizing: border-box;
+    border: 0.25rem solid colors.getColor(primary-1);
+    border-radius: 50%;
+    width: 20%;
+    height: 20%;
+    aspect-ratio: 1 / 1;
+  }
+  
+  .title {
+    font-weight: 700;
+    font-size: 16px;
+    font-style: italic;
+    line-height: 25px;
+    margin: 0;
+  }
+  
+  .content {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+  }
+
+  .label {
+    color: colors.getColor(primary-600);
+    margin: 0;
+  }
 }
-
-// .activeItem {
-//   transform: scale(1);
-// }
-
-// .image {
-//   box-sizing: border-box;
-//   border: 0.25rem solid colors.getColor(primary-500);
-//   border-radius: 50%;
-//   width: 50%;
-//   height: auto;
-//   display: flex;
-//   aspect-ratio: 1;
-// }
-
-// .title {
-//   font-style: italic;
-//   margin: 1.5rem 0 0;
-//   letter-spacing: 0.03rem;
-// }
-
-// .content {
-//   margin: 1.75rem 0;
-// }
-
-// .label {
-//   text-align: end;
-//   width: 100%;
-//   margin: auto 0 0;
-// }
