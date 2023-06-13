@@ -68,6 +68,8 @@
   box-sizing: border-box;
   justify-content: center;
   min-width: 33.3333333%;
+  // aspect-ratio: 468 / 270; // in accordance to design
+  gap: 18px;
   
   display: flex;
   transform: scale(0.95);
@@ -77,19 +79,23 @@
   }
 
   .wrapper {
-    width: 70%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
 
-  .image {
-    box-sizing: border-box;
-    border: 0.25rem solid colors.getColor(primary-1);
-    border-radius: 50%;
-    width: 20%;
-    height: 20%;
-    aspect-ratio: 1 / 1;
+  .imgwrapper {
+    width: 18%;
+    display: flex;
+    height: auto;
+    justify-content: end;
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+      aspect-ratio: 1 / 1;
+    }
   }
   
   .title {
@@ -109,5 +115,7 @@
   .label {
     color: colors.getColor(primary-600);
     margin: 0;
+    line-height: 20px;
+    font-size: 14px;
   }
 }

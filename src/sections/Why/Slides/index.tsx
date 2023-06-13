@@ -6,16 +6,15 @@ import LeftArrow from '../../../images/left-arrow.svg';
 import RightArrow from '../../../images/right-arrow.svg';
 import {
   root,
-  controls,
   control,
   items,
   item,
-  image,
   title,
   content,
   label,
   activeItem,
-  wrapper
+  wrapper,
+  imgwrapper
 } from './Slides.module.scss';
 
 export interface SlidesProps {
@@ -81,12 +80,12 @@ function Slides({ slides, headingLevel }: SlidesProps) {
             className={cx(item, key === active && activeItem)}
             key={key}
           >
-            <GatsbyImage
-              imgStyle={{ borderRadius: '100%' }}
-              image={slide.image!}
-              alt={`Headshot of ${item.name}`}
-              className={image}
-            />
+            <div className={imgwrapper}>
+              <GatsbyImage
+                image={slide.image!}
+                alt={`Headshot of ${item.name}`}
+              />
+            </div>
             <div className={wrapper}>
               <Typography
                 className={title}
@@ -105,10 +104,10 @@ function Slides({ slides, headingLevel }: SlidesProps) {
                 {slide.content}
               </Typography>
               <p className={label}>
-                <Typography textType='heading4' textColor='primary-3' as='span'>
+                <Typography textType='p' textWeight='600' textColor='primary-3' as='span'>
                   {slide.name},{' '}
                 </Typography>
-                <Typography textType='subheading' textColor='primary-3' as='span'>
+                <Typography textType='p' textColor='primary-3' as='span'>
                   {slide.role}
                 </Typography>
               </p>

@@ -17,7 +17,7 @@ import {
 
 const slides = [
   {
-    image: 'wilson.png',
+    image: 'samson.png',
     title: 'Thank you so much for this amazing opportunity.1',
     content:
       'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
@@ -33,7 +33,7 @@ const slides = [
     role: 'Hacker',
   },
   {
-    image: 'wilson.png',
+    image: 'aaiman.png',
     title: 'Thank you so much for this amazing opportunity.3',
     content:
       'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
@@ -49,7 +49,7 @@ const slides = [
     role: 'Hacker',
   },
   {
-    image: 'wilson.png',
+    image: 'sam.png',
     title: 'Thank you so much for this amazing opportunity.5',
     content:
       'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
