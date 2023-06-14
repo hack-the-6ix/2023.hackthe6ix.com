@@ -32,14 +32,15 @@ function Slides({ slides, headingLevel }: SlidesProps) {
   const scrollRef = useRef<HTMLUListElement>(null);
   const [active, setActive] = useState(0);
   const onLoad = useRef(true);
-
+  const [rightDisabled, setRightDisabled] = useState<boolean>(false);
+  
   const scrollTo = useCallback((idx: number, smooth = false) => {
     if (!scrollRef.current || !slideRefs.current[idx]) return;
     const slideLeft = slideRefs.current[idx]!.offsetLeft;
-
+    
     scrollRef.current.scrollTo({
       behavior: smooth ? 'smooth' : 'auto',
-      left: slideLeft - 152,
+      left: slideLeft - 72 - (window.innerWidth * 0.05), // div padding + image width + image padding
     });
   }, []);
 
@@ -48,6 +49,14 @@ function Slides({ slides, headingLevel }: SlidesProps) {
       if (!slideRefs.current[active]) return;
       scrollTo(active);
     };
+
+    if (window.innerWidth > 1024) {
+      setRightDisabled(active === slides.length - 3)
+    } else if (768 <= window.innerWidth && window.innerWidth <= 1024) {
+      setRightDisabled(active === slides.length - 2)
+    } else if (window.innerWidth <= 768) {
+      setRightDisabled(active === slides.length - 1)
+    }
 
     window.addEventListener('resize', handler, true);
     return () => {
@@ -61,10 +70,9 @@ function Slides({ slides, headingLevel }: SlidesProps) {
     onLoad.current = false;
   }, [active, scrollTo]);
 
-  console.log(active)
 
   return (
-    <div className={root}>
+    <div className={root} id='slides'>
       <button
         className={control}
         onClick={() => setActive(active - 1)}
@@ -118,7 +126,7 @@ function Slides({ slides, headingLevel }: SlidesProps) {
       <button
         className={control}
         onClick={() => setActive(active + 1)}
-        disabled={active === slides.length - 3}
+        disabled={rightDisabled}
         id='right'
       >
         <img src={RightArrow} alt='rightarrow' />

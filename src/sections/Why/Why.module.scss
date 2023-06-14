@@ -1,6 +1,7 @@
 @use '../../styles/mixins.module';
-@use '../../styles/colors.module' as localColors;
 @use '~@ht6/react-ui/dist/styles/colors.module';
+@use '../../styles/colors.module' as localColors;
+@use '../../styles/mixins.module' as localMixins;
 
 .root {
   background-color: #000D25; //for visibility of lighter text, change when background finalized
@@ -28,8 +29,11 @@
 
 .slidesWrapper {
   margin-top: 172px;
-  padding-left: 5rem;
-  padding-right: 5rem;
+  // padding-left: 5rem;
+  // padding-right: 5rem;
+
+  @include localMixins.media(tablet) {
+  }
 }
 
 .title {

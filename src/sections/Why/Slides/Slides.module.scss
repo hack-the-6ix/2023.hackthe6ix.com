@@ -7,6 +7,8 @@
 .root {
   display: flex;
   align-items: center;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .control {
@@ -51,10 +53,8 @@
     display: none;
   }
   scrollbar-width: none;
-}
 
-@media screen and (min-width: 425px) {
-  .items {
+  @include localMixins.media(mobile) {
     overflow-x: scroll !important;
   }
 }
@@ -72,6 +72,7 @@
   
   display: flex;
   transform: scale(0.95);
+  flex-direction: row;
 
   &:last-child {
     margin-right: 0;
@@ -89,6 +90,8 @@
     display: flex;
     height: auto;
     justify-content: end;
+    min-width: 3.5rem;
+
     img {
       width: 100%;
       height: auto;
@@ -116,5 +119,23 @@
     margin: 0;
     line-height: 20px;
     font-size: 14px;
+  }
+
+  @include localMixins.media(laptop) {
+    min-width: 50%;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px;
+    
+    .imgwrapper {
+      width: 50%;
+      justify-content: center;
+    }
+    .wrapper {
+      width: 100%;
+    }
+  }
+  @include localMixins.media(tablet) {
+    min-width: 100%;
   }
 }
