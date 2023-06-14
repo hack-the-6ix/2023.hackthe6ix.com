@@ -13,7 +13,9 @@ import {
   content,
   label,
   wrapper,
-  imgwrapper
+  imgwrapper,
+  mobilecontroller,
+  current
 } from './Slides.module.scss';
 
 export interface SlidesProps {
@@ -29,6 +31,7 @@ export interface SlidesProps {
 
 function Slides({ slides, headingLevel }: SlidesProps) {
   const slideRefs = useRef<(HTMLLIElement | null)[]>([]);
+  const mobileControllerRefs = useRef<(HTMLDivElement | null)[]>([]);
   const scrollRef = useRef<HTMLUListElement>(null);
   const [active, setActive] = useState(0);
   const onLoad = useRef(true);
@@ -56,6 +59,11 @@ function Slides({ slides, headingLevel }: SlidesProps) {
       setRightDisabled(active === slides.length - 2)
     } else if (window.innerWidth <= 768) {
       setRightDisabled(active === slides.length - 1)
+    }
+
+    for (let i = 0; i < mobileControllerRefs.current.length; i++) {
+      mobileControllerRefs.current[i]!.classList.remove(current);
+      mobileControllerRefs.current[active]!.classList.add(current);
     }
 
     window.addEventListener('resize', handler, true);
@@ -131,6 +139,13 @@ function Slides({ slides, headingLevel }: SlidesProps) {
       >
         <img src={RightArrow} alt='rightarrow' />
       </button>
+      <div className={mobilecontroller}>
+        {
+          slides.map((slide, key) => (
+            <div className={cx((key === active) ? current : "")} ref={(el) => (mobileControllerRefs.current[key] = el)}></div>
+          ))
+        }
+      </div>
     </div>
   );
 }

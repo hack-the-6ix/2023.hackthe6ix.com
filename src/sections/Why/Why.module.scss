@@ -29,10 +29,9 @@
 
 .slidesWrapper {
   margin-top: 172px;
-  // padding-left: 5rem;
-  // padding-right: 5rem;
 
-  @include localMixins.media(tablet) {
+  @include localMixins.media(mobile) {
+    margin-top: 58px
   }
 }
 
