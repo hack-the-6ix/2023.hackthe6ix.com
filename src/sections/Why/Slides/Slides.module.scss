@@ -11,28 +11,27 @@
 
 .control {
   @include mixins.transition(transform opacity color);
-  color: colors.getColor(neutral-50);
+  color: colors.getColor(neutral-200);
   background: none;
   cursor: pointer;
-  padding: 0.5rem;
   display: flex;
   border: none;
+  padding: 0;
+
+  &:first-child {
+    padding-right: 28px;
+  }
+  &:last-child {
+    padding-left: 28px;
+  }
 
   &:not(:disabled) {
-    &:hover,
-    &:focus {
-      color: colors.getColor(neutral-100, hover);
+    &:hover, &:active {
       transform: scale(1.1);
-    }
-
-    &:active {
-      color: colors.getColor(neutral-100, active);
-      transform: scale(1);
     }
   }
 
   &:disabled {
-    color: colors.getColor(disabled);
     opacity: 0.25;
     cursor: not-allowed;
   }

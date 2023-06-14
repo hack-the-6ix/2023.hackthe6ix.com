@@ -27,6 +27,7 @@
 }
 
 .slidesWrapper {
+  margin-top: 172px;
   padding-left: 5rem;
   padding-right: 5rem;
 }
@@ -36,11 +37,12 @@
   font-size: 40px;
   line-height: 48px;
   letter-spacing: -0.02em;
+  margin-bottom: 8px;
 }
 
 .titleDesc {
-  margin-top: 8px;
-  font-size: 20px;
+  margin: 0;
+  font-size: 20px !important;
   line-height: 28px;
   text-align: center;
   letter-spacing: -0.02em;

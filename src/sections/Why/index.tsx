@@ -155,16 +155,17 @@ function Why() {
           as='p'
         >
           We understand making a change is difficult. At Hack the 6ix, we aim to inspire young hackers to tackle complex challenges, explore the possibilities of technology, and to build the world of tomorrow by giving the support they need.
-        </Typography>
-        <Typography
-          className={cx(titleDesc, italicsTitle)}
-          textColor='shades-0'
-          textType='heading6'
-          textWeight='700'
-          id='sub-details'
-          as='h6'
-        >
-          Join us in our <span className={whyTitle}>9th iteration</span> to discover, collaborate, and push the boundaries of technology.         
+          <br/><br/>
+          <Typography
+            className={cx(titleDesc, italicsTitle)}
+            textColor='shades-0'
+            textType='heading6'
+            textWeight='700'
+            id='sub-details'
+            as='h6'
+          >
+            Join us in our <span className={whyTitle}>9th iteration</span> to discover, collaborate, and push the boundaries of technology.         
+          </Typography>
         </Typography>
       </div>
       <div className={slidesWrapper}>

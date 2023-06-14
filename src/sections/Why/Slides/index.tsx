@@ -2,8 +2,8 @@ import { ElementType, useCallback, useEffect, useRef, useState } from 'react';
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import { Typography } from '@ht6/react-ui';
 import cx from 'classnames';
-import LeftArrow from '../../../images/left-arrow.svg';
-import RightArrow from '../../../images/right-arrow.svg';
+import LeftArrow from '../../../images/why-section/icons/left-arrow.png';
+import RightArrow from '../../../images/why-section/icons/right-arrow.png';
 import {
   root,
   control,
@@ -12,7 +12,6 @@ import {
   title,
   content,
   label,
-  activeItem,
   wrapper,
   imgwrapper
 } from './Slides.module.scss';
@@ -40,7 +39,7 @@ function Slides({ slides, headingLevel }: SlidesProps) {
 
     scrollRef.current.scrollTo({
       behavior: smooth ? 'smooth' : 'auto',
-      left: slideLeft - 126,
+      left: slideLeft - 152,
     });
   }, []);
 
@@ -70,14 +69,15 @@ function Slides({ slides, headingLevel }: SlidesProps) {
         className={control}
         onClick={() => setActive(active - 1)}
         disabled={active === 0}
+        id='left'
       >
-        <LeftArrow width='22' />
+        <img src={LeftArrow} alt='leftarrow' />
       </button>
       <ul ref={scrollRef} className={items}>
         {slides.map((slide, key) => (
           <li
             ref={(el) => (slideRefs.current[key] = el)}
-            className={cx(item, key === active && activeItem)}
+            className={item}
             key={key}
           >
             <div className={imgwrapper}>
@@ -119,8 +119,9 @@ function Slides({ slides, headingLevel }: SlidesProps) {
         className={control}
         onClick={() => setActive(active + 1)}
         disabled={active === slides.length - 3}
+        id='right'
       >
-        <RightArrow width='22' />
+        <img src={RightArrow} alt='rightarrow' />
       </button>
     </div>
   );
