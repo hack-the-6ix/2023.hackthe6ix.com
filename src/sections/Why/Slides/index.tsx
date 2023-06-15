@@ -32,18 +32,54 @@ export interface SlidesProps {
 }
 
 function Slides({ slides, headingLevel }: SlidesProps) {
-  const slideRefs = useRef<(HTMLLIElement | null)[]>([]);
+  const slideRefs = useRef<HTMLLIElement[]>([]);
+  const alreadyObserving = useRef<Set<number>>(new Set());
   const mobileControllerRefs = useRef<(HTMLDivElement | null)[]>([]);
   const scrollRef = useRef<HTMLUListElement>(null);
   const [active, setActive] = useState(0);
   const [currentDot, setCurrentDot] = useState(0);
   const onLoad = useRef(true);
   const [rightDisabled, setRightDisabled] = useState<boolean>(false);
-  
-  const [touchStart, setTouchStart] = useState(null)
-  const [touchEnd, setTouchEnd] = useState(null)
 
-  const minSwipeDistance = 50
+  const intersectionObserver = useRef<IntersectionObserver | null>(null);
+
+  const refHook = useCallback((node: HTMLLIElement | null) => {
+    if(node) {
+      const slideId = node.getAttribute('data-slide-key');
+      if(slideId) {
+        const slideIdNum = parseInt(slideId);
+
+        slideRefs.current[slideIdNum] = node;
+        intersectionObserver.current?.observe(node);
+        alreadyObserving.current.add(slideIdNum);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    intersectionObserver.current = new IntersectionObserver((entries, observer) => {
+      const inViewEntries = entries.filter((entry) => entry.isIntersecting);
+      if(inViewEntries.length > 0) {
+        const slideId = inViewEntries[inViewEntries.length - 1].target.getAttribute('data-slide-key');
+        if(slideId) {
+          setCurrentDot(parseInt(slideId));
+        }
+      }
+    }, {
+      rootMargin: "0px",
+      threshold: 0.9,
+    })
+
+    for(const eleRef of slideRefs.current) {
+      const slideId = eleRef.getAttribute('data-slide-key');
+      if(slideId) {
+        const slideIdNum = parseInt(slideId);
+        if(alreadyObserving.current.has(slideIdNum)){
+          intersectionObserver.current?.observe(eleRef);
+        }
+      }
+    }
+  }, []);
 
   const scrollTo = useCallback((idx: number, smooth = false) => {
     if (!scrollRef.current || !slideRefs.current[idx]) return;
@@ -56,38 +92,6 @@ function Slides({ slides, headingLevel }: SlidesProps) {
     });
   }, []);
 
-  const onTouchStart = (e:any) => {
-    setTouchEnd(null) // otherwise the swipe is fired even with usual touch events
-    setTouchStart(e.targetTouches[0].clientX)
-  }
-  
-  const onTouchMove = (e:any) => setTouchEnd(e.targetTouches[0].clientX)
-  
-  const onTouchEnd = () => { // logic for changing active dot on mobile
-    if (!touchStart || !touchEnd) return
-    const distance = touchStart - touchEnd
-    console.log(distance)
-
-    var rect = slideRefs.current[0]!.getBoundingClientRect();
-    console.log(
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    )
-      // for (let i = 0; i < slideRefs.current.length; i++) {
-    // }
-
-    if (distance > minSwipeDistance && !rightDisabled) { // swipe left
-      console.log('swiped left')
-      setCurrentDot(currentDot + 1)
-    }
-    if (distance < -minSwipeDistance && currentDot !== 0) { // swipe right
-      console.log('swiped right')
-      setCurrentDot(currentDot - 1)
-    }
-  }
-  
   useEffect(() => {
 
     const handler = () => {
@@ -130,12 +134,13 @@ function Slides({ slides, headingLevel }: SlidesProps) {
       >
         <img src={LeftArrow} alt='leftarrow' />
       </button>
-      <ul ref={scrollRef} className={items} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+      <ul ref={scrollRef} className={items}>
         {slides.map((slide, key) => (
           <li
-            ref={(el) => (slideRefs.current[key] = el)}
+            ref={refHook}
             className={item}
-            key={key}
+            key={"slide" + key}
+            data-slide-key={key}
           >
             <div className={imgwrapper}>
               <GatsbyImage
@@ -183,7 +188,10 @@ function Slides({ slides, headingLevel }: SlidesProps) {
       <div className={mobilecontroller}>
         {
           slides.map((slide, key) => (
-            <div className={cx((key === currentDot) ? current : "")} ref={(el) => (mobileControllerRefs.current[key] = el)}></div>
+            <div className={cx((key === currentDot) ? current : "")}
+                 ref={(el) => (mobileControllerRefs.current[key] = el)}
+                 key={"dot"+key}
+            ></div>
           ))
         }
       </div>
