@@ -15,7 +15,9 @@ import {
   wrapper,
   imgwrapper,
   mobilecontroller,
-  current
+  current,
+  rightArrow,
+  leftArrow,
 } from './Slides.module.scss';
 
 export interface SlidesProps {
@@ -34,20 +36,60 @@ function Slides({ slides, headingLevel }: SlidesProps) {
   const mobileControllerRefs = useRef<(HTMLDivElement | null)[]>([]);
   const scrollRef = useRef<HTMLUListElement>(null);
   const [active, setActive] = useState(0);
+  const [currentDot, setCurrentDot] = useState(0);
   const onLoad = useRef(true);
   const [rightDisabled, setRightDisabled] = useState<boolean>(false);
   
+  const [touchStart, setTouchStart] = useState(null)
+  const [touchEnd, setTouchEnd] = useState(null)
+
+  const minSwipeDistance = 50
+
   const scrollTo = useCallback((idx: number, smooth = false) => {
     if (!scrollRef.current || !slideRefs.current[idx]) return;
     const slideLeft = slideRefs.current[idx]!.offsetLeft;
+    // console.log(slideRefs.current)
     
     scrollRef.current.scrollTo({
       behavior: smooth ? 'smooth' : 'auto',
-      left: slideLeft - 72 - (window.innerWidth * 0.05), // div padding + image width + image padding
+      left: slideLeft - 58 - (window.innerWidth * 0.05), // div padding + image width + image padding
     });
   }, []);
 
+  const onTouchStart = (e:any) => {
+    setTouchEnd(null) // otherwise the swipe is fired even with usual touch events
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+  
+  const onTouchMove = (e:any) => setTouchEnd(e.targetTouches[0].clientX)
+  
+  const onTouchEnd = () => { // logic for changing active dot on mobile
+    if (!touchStart || !touchEnd) return
+    const distance = touchStart - touchEnd
+    console.log(distance)
+
+    var rect = slideRefs.current[0]!.getBoundingClientRect();
+    console.log(
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    )
+      // for (let i = 0; i < slideRefs.current.length; i++) {
+    // }
+
+    if (distance > minSwipeDistance && !rightDisabled) { // swipe left
+      console.log('swiped left')
+      setCurrentDot(currentDot + 1)
+    }
+    if (distance < -minSwipeDistance && currentDot !== 0) { // swipe right
+      console.log('swiped right')
+      setCurrentDot(currentDot - 1)
+    }
+  }
+  
   useEffect(() => {
+
     const handler = () => {
       if (!slideRefs.current[active]) return;
       scrollTo(active);
@@ -77,19 +119,18 @@ function Slides({ slides, headingLevel }: SlidesProps) {
     scrollTo(active, !onLoad.current);
     onLoad.current = false;
   }, [active, scrollTo]);
-
-
+    
   return (
     <div className={root} id='slides'>
       <button
-        className={control}
+        className={cx(control, leftArrow)}
         onClick={() => setActive(active - 1)}
         disabled={active === 0}
         id='left'
       >
         <img src={LeftArrow} alt='leftarrow' />
       </button>
-      <ul ref={scrollRef} className={items}>
+      <ul ref={scrollRef} className={items} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
         {slides.map((slide, key) => (
           <li
             ref={(el) => (slideRefs.current[key] = el)}
@@ -132,7 +173,7 @@ function Slides({ slides, headingLevel }: SlidesProps) {
         ))}
       </ul>
       <button
-        className={control}
+        className={cx(control, rightArrow)}
         onClick={() => setActive(active + 1)}
         disabled={rightDisabled}
         id='right'
@@ -142,7 +183,7 @@ function Slides({ slides, headingLevel }: SlidesProps) {
       <div className={mobilecontroller}>
         {
           slides.map((slide, key) => (
-            <div className={cx((key === active) ? current : "")} ref={(el) => (mobileControllerRefs.current[key] = el)}></div>
+            <div className={cx((key === currentDot) ? current : "")} ref={(el) => (mobileControllerRefs.current[key] = el)}></div>
           ))
         }
       </div>
