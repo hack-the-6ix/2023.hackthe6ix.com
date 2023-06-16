@@ -23,6 +23,7 @@ import {
   apply,
   applyContainer,
   applyMobile,
+  scrolled
 } from './Navigation.module.scss';
 import { Link as GatsbyLink } from 'gatsby';
 
@@ -56,6 +57,7 @@ function Navigation({
 }: NavigationProps) {
   const [show, setShow] = useState(false);
   const [top, setTop] = useState(0);
+  const [isAtTop, setIsAtTop] = useState(false);
 
   const getItemTops = useCallback(() => {
     if (!useScrollSpy) return [];
@@ -68,13 +70,14 @@ function Navigation({
   useEffect(() => {
     if (!useScrollSpy) return;
 
-    const scrollHandler = () =>
+    const scrollHandler = () => {
       setTop(window.scrollY + window.innerHeight * 0.8);
+      setIsAtTop(window.scrollY <= 100)
+    }
     window.addEventListener('scroll', scrollHandler, true);
 
     const resizeHandler = () => {
       itemTops.current = getItemTops();
-      setTop(window.scrollY);
     };
     window.addEventListener('resize', resizeHandler, true);
     resizeHandler();
@@ -93,7 +96,7 @@ function Navigation({
   }, -1);
 
   return (
-    <PageSection containerClassName={root} className={content} as='nav'>
+    <PageSection containerClassName={cx(root, (isAtTop) ? "" : scrolled)} className={content} as='nav'>
       <BasicLink
         onClick={(...args) => setHash(...args, '#', true)}
         className={logo}
@@ -105,7 +108,6 @@ function Navigation({
       {links && (
         <ul className={linkItems}>
           {links.map((link, key) => {
-            console.log(activeIdx, key);
             return (
               <Typography
                 key={key}
