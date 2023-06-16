@@ -47,6 +47,7 @@ function IndexPage() {
   const location = useLocation();
   return (
     <div id="lol" style={{
+      backgroundColor: "#020F29",
       backgroundImage: `url(${FullWebsiteBackground})`,
       backgroundPosition: 'center',
       backgroundSize: 'cover',
