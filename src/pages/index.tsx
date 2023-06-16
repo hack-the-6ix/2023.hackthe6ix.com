@@ -10,6 +10,7 @@ import PastSponsors from '../sections/PastSponsors';
 import Question from '../sections/Question';
 import Splash from '../sections/Splash';
 import Why from '../sections/Why';
+import Journey from "../sections/Journey";
 
 const navLinks: NavigationProps['links'] = [
   {
@@ -46,6 +47,7 @@ function IndexPage() {
       <Navigation links={navLinks} showMlhBanner useScrollSpy />
       <Splash />
       <About />
+      <Journey />
       <Why />
       <PastSponsors />
       <Notify />

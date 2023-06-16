@@ -37,19 +37,6 @@ const textItems = [
 ];
 
 function JourneyPoint({ item }: { item: (typeof textItems)[number] }) {
-  const [isDesktop, setIsDesktop] = useState<Boolean>(false);
-
-  useEffect(() => {
-    const handler = () => {
-      setIsDesktop(window.innerWidth > 768);
-    };
-    window.addEventListener("resize", handler, true);
-    handler();
-    return () => {
-      window.removeEventListener("resize", handler, true);
-    };
-  }, []);
-
   return (
     <li className={point} tabIndex={0}>
       <item.image />
@@ -57,19 +44,17 @@ function JourneyPoint({ item }: { item: (typeof textItems)[number] }) {
         className={heading}
         textColor="neutral-50"
         textType="heading3"
-        textWeight="extra-bold"
-        displayType={isDesktop ? "desktop" : "mobile"}
-        as="h3"
+        textWeight={600}
+        as="p"
       >
-        <span>{item.title}</span>
+        {item.title}
       </Typography>
       <Typography
         className={text}
         textColor="neutral-50"
-        textType="heading6"
-        textWeight="medium"
-        displayType={isDesktop ? "desktop" : "mobile"}
-        as="h6"
+        textType="heading4"
+        textWeight={500}
+        as="p"
       >
         {item.content}
       </Typography>
@@ -79,18 +64,6 @@ function JourneyPoint({ item }: { item: (typeof textItems)[number] }) {
 
 function Journey() {
   const PaperAirplane = require("../../images/journey-section/paper-airplane.svg");
-  const [isDesktop, setIsDesktop] = useState<Boolean>(false);
-
-  useEffect(() => {
-    const handler = () => {
-      setIsDesktop(window.innerWidth > 768);
-    };
-    window.addEventListener("resize", handler, true);
-    handler();
-    return () => {
-      window.removeEventListener("resize", handler, true);
-    };
-  }, []);
 
   return (
     <PageSection containerClassName={root}>
@@ -99,20 +72,18 @@ function Journey() {
         <Typography
           className={title}
           textColor="neutral-50"
-          textType="heading1"
-          textWeight="extra-bold"
-          displayType={isDesktop ? "desktop" : "mobile"}
-          as="h1"
+          textType="heading2"
+          textWeight={800}
+          as="h2"
         >
           Start your&nbsp;
         </Typography>
         <Typography
           className={title}
           textColor="warning-400"
-          textType="heading1"
-          textWeight="extra-bold"
-          displayType={isDesktop ? "desktop" : "mobile"}
-          as="h1"
+          textType="heading2"
+          textWeight={800}
+          as="h2"
         >
           journey
         </Typography>
@@ -120,24 +91,6 @@ function Journey() {
       <ul className={points}>
         {textItems.map((item, key) => (
           <JourneyPoint item={item} key={key} />
-          /**<li key={key}>
-            <Typography
-              className={heading}
-              textColor="primary-700"
-              textType="heading3"
-              as="h3"
-            >
-              <span>{item.title}</span>
-            </Typography>
-            <Typography
-              className={text}
-              textColor="copy-dark"
-              textType="paragraph1"
-              as="p"
-            >
-              {item.content}
-            </Typography>
-          </li>**/
         ))}
       </ul>
     </PageSection>
