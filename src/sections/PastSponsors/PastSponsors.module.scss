@@ -14,7 +14,7 @@
   width: 80%;
   justify-content: center;
   list-style-type: none;
-  align-items: center;
+  align-items: stretch;
   flex-wrap: wrap;
   display: flex;
   padding: 0;
@@ -23,9 +23,35 @@
 
 .link {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.75rem;
+  box-sizing: border-box;
+  height: 100%;
+  transition: all .2s ease-in-out;
 }
 
 .image {
   max-width: calc(1rem * var(--ps-s));
   width: 100%;
+}
+
+.link:hover {
+  transition: transform .4s;
+  transform:scale(1.1);
+}
+
+
+@media (max-width: 768px) {
+  .link {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .category.bronze {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
