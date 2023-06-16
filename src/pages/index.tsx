@@ -57,7 +57,9 @@ function IndexPage() {
         <Navigation links={navLinks} showMlhBanner useScrollSpy />
           <Splash />
           <About />
+          <div style={{height: "450px"}} />
           <Journey />
+          <div style={{height: "430px"}} />
           <Why />
           <PastSponsors />
           <Notify />
