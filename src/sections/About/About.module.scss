@@ -59,6 +59,17 @@
   }
 }
 
+.itemBackgroundContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .itemLabel {
   letter-spacing: map-get(fonts.$config, heading2, letter-spacing);
 }
@@ -70,5 +81,24 @@
 
   @include localMixins.media(mobile) {
     transform: scale(0.60);
+  }
+}
+
+.bottomTextContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.bottomSubtext {
+  width: 50vw;
+
+  @include localMixins.media(tablet) {
+    width: 80vw;
+  }
+
+  @include localMixins.media(mobile) {
+    width: auto;
   }
 }

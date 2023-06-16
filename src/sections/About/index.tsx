@@ -3,10 +3,14 @@ import PageSection from '../../components/PageSection';
 import {
   items,
   item,
+  itemBackgroundContainer,
   itemLabel,
   container,
   statsImg,
+  bottomTextContainer,
+  bottomSubtext
 } from './About.module.scss';
+import cx from 'classnames';
 import HackersBackground from '../../images/about-us/hacker-background.svg';
 import HackersBorder from '../../images/about-us/hacker-border.svg';
 import MentorBackground from '../../images/about-us/mentor-background.svg';
@@ -22,53 +26,53 @@ const stats = [
   {
     label: 'HACKERS',
     stat: '440+',
-    background: <HackersBackground className={statsImg} />,
-    border: <HackersBorder className={statsImg} />
+    background: <HackersBackground className={cx(statsImg)} />,
+    border: <HackersBorder className={cx(statsImg)} />
   },
   {
     label: 'PROJECTS SUBMITTED',
     stat: '68',
-    background: <ProjectsBackground className={statsImg} />,
-    border: <ProjectsBorder className={statsImg} />
+    background: <ProjectsBackground className={cx(statsImg)} />,
+    border: <ProjectsBorder className={cx(statsImg)} />
   },
   {
     label: 'WORKSHOPS',
     stat: '20+',
-    background: <WorkshopsBackground className={statsImg} />,
-    border: <WorkshopsBorder className={statsImg} />
+    background: <WorkshopsBackground className={cx(statsImg)} />,
+    border: <WorkshopsBorder className={cx(statsImg)} />
   },
   {
     label: 'IN PRIZES',
     stat: '$15k',
-    background: <PrizesBackground className={statsImg} />,
-    border: <PrizesBorder className={statsImg} />
+    background: <PrizesBackground className={cx(statsImg)} />,
+    border: <PrizesBorder className={cx(statsImg)} />
   },
   {
     label: 'MENTORS',
     stat: '8',
-    background: <MentorBackground className={statsImg} />,
-    border: <MentorBorder className={statsImg} />
+    background: <MentorBackground className={cx(statsImg)} />,
+    border: <MentorBorder className={cx(statsImg)} />
   },
 ];
 
 function About() {
   return (
-    <PageSection className={container} style={{ background: 'linear-gradient(165.93deg, #FFCFBB 7.98%, #627AA6 66.26%' }}>
+    <PageSection className={cx(container)} style={{ background: 'linear-gradient(165.93deg, #FFCFBB 7.98%, #627AA6 66.26%' }}>
       <div>
         <ul className={items}>
           {stats.map(({ label, stat , background: statBackground, border: statBorder}, key) => (
-            <li key={key} className={item}>
+            <li key={key} className={cx(item)}>
               <div>
-                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div className={cx(itemBackgroundContainer)}>
                   {statBackground}
                   {statBorder}
                 </div>
               </div>
               <Typography
-                className={itemLabel}
+                className={cx(itemLabel)}
                 textType='heading2'
                 textColor='shades-0'
-                textWeight={650}
+                textWeight={800}
                 as='span'
               >
                 {stat}
@@ -77,7 +81,6 @@ function About() {
                 textType='heading4'
                 textColor='warning-400'
                 as='span'
-                style={{ fontSize: '3rem' }}
                 textWeight={600}
               >
                 {label}
@@ -86,25 +89,29 @@ function About() {
           ))}
         </ul>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div className={cx(bottomTextContainer)}>
         <div style={{ marginBottom: '-2.5rem' }}>
           <Typography
-            textType='heading3'
+            textType='heading2'
             as='h3'
             textColor='shades-0'
           >
-            We're back <span style={{ color: '#FBBF24' }}>in-person</span>
+            We're back <wbr /><span style={{ color: '#FBBF24', whiteSpace: "nowrap" }}>in-person</span>
           </Typography>
         </div>
-        <Typography
-          textType='paragraph1'
-          as='p'
-          textColor='shades-0'
+        <div
+            className={cx(bottomSubtext)}
         >
-          Join hundreds of students from diverse backgrounds, disciplines, and skill levels to work together on
-          <br />
-          <span style={{ display: 'inline-block', width: '100%', textAlign: 'center' }}>projects that have real-world impact. We'll handle the back-end, so just show up and have fun!</span>
-        </Typography>
+          <Typography
+              textType='paragraph1'
+              as='p'
+              textColor='shades-0'
+          >
+            Join hundreds of students from diverse backgrounds, disciplines, and skill levels to work together on projects that have real-world impact. We'll handle the back-end, so just show up and have fun!
+          </Typography>
+        </div>
+
+
       </div>
     </PageSection>
   );
