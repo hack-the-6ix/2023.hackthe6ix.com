@@ -1,14 +1,16 @@
-import { Button, Typography } from "@ht6/react-ui";
-import { useState, useEffect } from "react";
+import { Typography } from "@ht6/react-ui";
 import PageSection from "../../components/PageSection";
+import cx from "classnames";
 import {
   root,
   title,
   airplane,
-  points,
-  point,
   heading,
   text,
+  iconContainer,
+  iconImage,
+  iconText,
+  imageConnectionsAdjustment
 } from "./Journey.module.scss";
 
 const textItems = [
@@ -25,6 +27,7 @@ const textItems = [
   {
     title: "Form Connections",
     image: require("../../images/journey-section/connections.svg"),
+    classNames: cx(imageConnectionsAdjustment),
     content:
       "Hackathons are an amazing place to meet new friends, mentors, and industry professionals in the tech community.",
   },
@@ -38,27 +41,31 @@ const textItems = [
 
 function JourneyPoint({ item }: { item: (typeof textItems)[number] }) {
   return (
-    <li className={point} tabIndex={0}>
-      <item.image />
-      <Typography
-        className={heading}
-        textColor="neutral-50"
-        textType="heading3"
-        textWeight={600}
-        as="p"
-      >
-        {item.title}
-      </Typography>
-      <Typography
-        className={text}
-        textColor="neutral-50"
-        textType="heading4"
-        textWeight={500}
-        as="p"
-      >
-        {item.content}
-      </Typography>
-    </li>
+      <>
+        <div className={cx(iconImage)}>
+          <item.image className={item.classNames}/>
+        </div>
+        <div className={cx(iconText)}>
+          <Typography
+              className={heading}
+              textColor="neutral-50"
+              textType="heading3"
+              textWeight={600}
+              as="p"
+          >
+            {item.title}
+          </Typography>
+          <Typography
+              className={text}
+              textColor="neutral-50"
+              textType="heading4"
+              textWeight={500}
+              as="p"
+          >
+            {item.content}
+          </Typography>
+        </div>
+      </>
   );
 }
 
@@ -88,11 +95,11 @@ function Journey() {
           journey
         </Typography>
       </div>
-      <ul className={points}>
-        {textItems.map((item, key) => (
-          <JourneyPoint item={item} key={key} />
-        ))}
-      </ul>
+      <div className={cx(iconContainer)}>
+          {
+              textItems.map((item, key) => (<JourneyPoint item={item} key={key} />))
+          }
+      </div>
     </PageSection>
   );
 }
