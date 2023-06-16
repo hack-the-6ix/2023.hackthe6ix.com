@@ -22,22 +22,32 @@ const stats = [
   {
     label: 'HACKERS',
     stat: '440+',
+    background: <HackersBackground className={statsImg} />,
+    border: <HackersBorder className={statsImg} />
   },
   {
     label: 'PROJECTS SUBMITTED',
     stat: '68',
+    background: <ProjectsBackground className={statsImg} />,
+    border: <ProjectsBorder className={statsImg} />
   },
   {
     label: 'WORKSHOPS',
     stat: '20+',
+    background: <WorkshopsBackground className={statsImg} />,
+    border: <WorkshopsBorder className={statsImg} />
   },
   {
     label: 'IN PRIZES',
     stat: '$15k',
+    background: <PrizesBackground className={statsImg} />,
+    border: <PrizesBorder className={statsImg} />
   },
   {
     label: 'MENTORS',
     stat: '8',
+    background: <MentorBackground className={statsImg} />,
+    border: <MentorBorder className={statsImg} />
   },
 ];
 
@@ -46,39 +56,13 @@ function About() {
     <PageSection className={container} style={{ background: 'linear-gradient(165.93deg, #FFCFBB 7.98%, #627AA6 66.26%' }}>
       <div>
         <ul className={items}>
-          {stats.map(({ label, stat }, key) => (
+          {stats.map(({ label, stat , background: statBackground, border: statBorder}, key) => (
             <li key={key} className={item}>
               <div>
-                {label == 'HACKERS' &&
-                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <HackersBackground className={statsImg} />
-                    <HackersBorder className={statsImg} />
-                  </div>
-                }
-                {label == 'PROJECTS SUBMITTED' &&
-                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <ProjectsBackground className={statsImg} />
-                    <ProjectsBorder className={statsImg} />
-                  </div>
-                }
-                {label == 'WORKSHOPS' &&
-                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <WorkshopsBackground className={statsImg} />
-                    <WorkshopsBorder className={statsImg} />
-                  </div>
-                }
-                {label == 'IN PRIZES' &&
-                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <PrizesBackground className={statsImg} />
-                    <PrizesBorder className={statsImg} />
-                  </div>
-                }
-                {label == 'MENTORS' &&
-                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <MentorBackground className={statsImg} />
-                    <MentorBorder className={statsImg} />
-                  </div>
-                }
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  {statBackground}
+                  {statBorder}
+                </div>
               </div>
               <Typography
                 className={itemLabel}
