@@ -1,101 +1,117 @@
-import { Button, Typography } from '@ht6/react-ui';
-import { StaticImage } from 'gatsby-plugin-image';
+import { Typography } from '@ht6/react-ui';
 import PageSection from '../../components/PageSection';
 import {
-  about,
-  content,
-  action,
-  title,
   items,
   item,
+  itemBackgroundContainer,
   itemLabel,
   container,
+  statsImg,
+  bottomTextContainer,
+  bottomSubtext
 } from './About.module.scss';
+import cx from 'classnames';
+import HackersBackground from '../../images/about-us/hacker-background.svg';
+import HackersBorder from '../../images/about-us/hacker-border.svg';
+import MentorBackground from '../../images/about-us/mentor-background.svg';
+import MentorBorder from '../../images/about-us/mentor-border.svg';
+import PrizesBackground from '../../images/about-us/prizes-background.svg';
+import PrizesBorder from '../../images/about-us/prizes-border.svg';
+import ProjectsBackground from '../../images/about-us/projects-background.svg';
+import ProjectsBorder from '../../images/about-us/projects-border.svg';
+import WorkshopsBackground from '../../images/about-us/projects-background.svg';
+import WorkshopsBorder from '../../images/about-us/projects-border.svg';
 
 const stats = [
   {
-    label: 'Hackers',
-    stat: '600+',
+    label: 'HACKERS',
+    stat: '440+',
+    background: <HackersBackground className={cx(statsImg)} />,
+    border: <HackersBorder className={cx(statsImg)} />
   },
   {
-    label: 'Project Submissions',
-    stat: '90+',
+    label: 'PROJECTS SUBMITTED',
+    stat: '68',
+    background: <ProjectsBackground className={cx(statsImg)} />,
+    border: <ProjectsBorder className={cx(statsImg)} />
   },
   {
-    label: 'Workshops & Activities',
+    label: 'WORKSHOPS',
     stat: '20+',
+    background: <WorkshopsBackground className={cx(statsImg)} />,
+    border: <WorkshopsBorder className={cx(statsImg)} />
   },
   {
-    label: 'In Prizes',
-    stat: '$17k+',
+    label: 'IN PRIZES',
+    stat: '$15k',
+    background: <PrizesBackground className={cx(statsImg)} />,
+    border: <PrizesBorder className={cx(statsImg)} />
+  },
+  {
+    label: 'MENTORS',
+    stat: '8',
+    background: <MentorBackground className={cx(statsImg)} />,
+    border: <MentorBorder className={cx(statsImg)} />
   },
 ];
 
 function About() {
   return (
-    <PageSection className={container}>
-      <div className={about}>
-        <div className={content} id='about'>
-          <Typography textType='heading2' textColor='primary-700' as='h2'>
-            About Us
-          </Typography>
-          <Typography textType='paragraph1' textColor='copy-dark' as='p'>
-            Hack the 6ix is the largest summer student-run, not-for-profit
-            hackathon now in its eighth iteration, based in Toronto.
-          </Typography>
-          <Typography textType='paragraph1' textColor='copy-dark' as='p'>
-            We take pride in the diversity and talent of our hackers, who help
-            us become a key player in the Toronto tech ecosystem. We provide an
-            outlet for students to present their ideas of the future.
-          </Typography>
-          <div>
-            <Button
-              href='https://hackthe6ix2021.devpost.com'
-              rel='noopener noreferrer'
-              className={action}
-              target='_blank'
-              as='a'
-            >
-              View Past Projects
-            </Button>
-          </div>
-        </div>
-        <StaticImage
-          src='../../images/about-us.png'
-          alt='An interpretation of Toronto new city hall'
-          layout='fullWidth'
-          quality={100}
-        />
-      </div>
+    <PageSection className={cx(container)} style={{ background: 'linear-gradient(165.93deg, #FFCFBB 7.98%, #627AA6 66.26%' }}>
       <div>
-        <Typography
-          className={title}
-          textType='heading3'
-          textColor='primary-700'
-          as='h3'
-        >
-          Last Year We Had
-        </Typography>
         <ul className={items}>
-          {stats.map(({ label, stat }, key) => (
-            <li key={key}>
-              <p className={item}>
-                <Typography
-                  className={itemLabel}
-                  textType='heading1'
-                  textColor='primary-500'
-                  textWeight={700}
-                  as='span'
-                >
-                  {stat}
-                </Typography>
-                <Typography textType='heading4' textColor='copy-dark' as='span'>
-                  {label}
-                </Typography>
-              </p>
+          {stats.map(({ label, stat , background: statBackground, border: statBorder}, key) => (
+            <li key={key} className={cx(item)}>
+              <div>
+                <div className={cx(itemBackgroundContainer)}>
+                  {statBackground}
+                  {statBorder}
+                </div>
+              </div>
+              <Typography
+                className={cx(itemLabel)}
+                textType='heading2'
+                textColor='shades-0'
+                textWeight={800}
+                as='span'
+              >
+                {stat}
+              </Typography>
+              <Typography
+                textType='heading4'
+                textColor='warning-400'
+                as='span'
+                textWeight={600}
+              >
+                {label}
+              </Typography>
             </li>
           ))}
         </ul>
+      </div>
+      <div className={cx(bottomTextContainer)}>
+        <div style={{ marginBottom: '-2.5rem' }}>
+          <Typography
+            textType='heading2'
+            as='h3'
+            textColor='shades-0'
+          >
+            We're back <wbr /><span style={{ color: '#FBBF24', whiteSpace: "nowrap" }}>in-person</span>
+          </Typography>
+        </div>
+        <div
+            className={cx(bottomSubtext)}
+        >
+          <Typography
+              textType='paragraph1'
+              as='p'
+              textColor='shades-0'
+          >
+            Join hundreds of students from diverse backgrounds, disciplines, and skill levels to work together on projects that have real-world impact. We'll handle the back-end, so just show up and have fun!
+          </Typography>
+        </div>
+
+
       </div>
     </PageSection>
   );
