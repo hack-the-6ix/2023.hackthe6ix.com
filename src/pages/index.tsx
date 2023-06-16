@@ -12,6 +12,7 @@ import Splash from '../sections/Splash';
 import Why from '../sections/Why';
 import Journey from "../sections/Journey";
 import FullWebsiteBackground from "../../static/full-website-background.svg";
+import HeroBackgound from "../../static/hero-background.svg"
 
 
 const navLinks: NavigationProps['links'] = [
@@ -42,17 +43,19 @@ const navLinks: NavigationProps['links'] = [
   },
 ];
 
+const pageBackground = {
+  backgroundColor: "#020F29",
+  backgroundImage: `url(${FullWebsiteBackground})`,
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+}
+
 
 function IndexPage() {
   const location = useLocation();
   return (
-    <div id="lol" style={{
-      backgroundColor: "#020F29",
-      backgroundImage: `url(${FullWebsiteBackground})`,
-      backgroundPosition: 'center',
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat'
-      }}>
+    <div style={pageBackground}>
     <Page title='Home'>
       <Navigation links={navLinks} showMlhBanner useScrollSpy />
       <Splash />
