@@ -4,9 +4,11 @@ import { StaticImage } from 'gatsby-plugin-image';
 import cx from 'classnames';
 import { useMemo, useState } from 'react';
 import PageSection from '../../components/PageSection';
+import Bg from '../../images/why-section/Testimonial-Bg.svg'
 import Slides from './Slides';
 import {
   root,
+  bg,
   title,
   whyTitle,
   titleDesc,
@@ -162,6 +164,7 @@ function Why() {
 
   return (
     <div className={root}>
+      <Bg className={bg} />
       <div className={contentIntro}>
         <Typography
           className={title}
