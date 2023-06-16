@@ -11,6 +11,8 @@ import Question from '../sections/Question';
 import Splash from '../sections/Splash';
 import Why from '../sections/Why';
 import Journey from "../sections/Journey";
+import FullWebsiteBackground from "../../static/full-website-background.svg";
+
 
 const navLinks: NavigationProps['links'] = [
   {
@@ -40,9 +42,16 @@ const navLinks: NavigationProps['links'] = [
   },
 ];
 
+
 function IndexPage() {
   const location = useLocation();
   return (
+    <div id="lol" style={{
+      backgroundImage: `url(${FullWebsiteBackground})`,
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat'
+      }}>
     <Page title='Home'>
       <Navigation links={navLinks} showMlhBanner useScrollSpy />
       <Splash />
@@ -56,6 +65,7 @@ function IndexPage() {
       <Question />
       <Footer />
     </Page>
+    </div>
   );
 }
 
