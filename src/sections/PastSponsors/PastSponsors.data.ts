@@ -1,5 +1,6 @@
 type PastSponsorGroup = {
   size: number;
+  tier: string;
   gap: number;
   items: {
     name: string;
@@ -8,7 +9,7 @@ type PastSponsorGroup = {
     offset?: number;
   }[];
 };
-const pastSponsors: (PastSponsorGroup & { tier: string })[] = [
+const pastSponsors: PastSponsorGroup[] = [
   {
     size: 25.75,
     gap: 2,
