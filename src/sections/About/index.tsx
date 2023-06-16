@@ -57,7 +57,7 @@ const stats = [
 
 function About() {
   return (
-    <PageSection className={cx(container)} style={{ background: 'linear-gradient(165.93deg, #FFCFBB 7.98%, #627AA6 66.26%' }}>
+    <PageSection className={cx(container)}>
       <div>
         <ul className={items}>
           {stats.map(({ label, stat , background: statBackground, border: statBorder}, key) => (
