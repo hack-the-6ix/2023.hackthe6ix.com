@@ -36,22 +36,22 @@ const stats = [
     border: <ProjectsBorder className={cx(statsImg)} />
   },
   {
-    label: 'WORKSHOPS',
-    stat: '20+',
+    label: 'MENTORS',
+    stat: '15',
     background: <WorkshopsBackground className={cx(statsImg)} />,
     border: <WorkshopsBorder className={cx(statsImg)} />
+  },
+  {
+    label: 'SCHOOLS',
+    stat: '197',
+    background: <MentorBackground className={cx(statsImg)} />,
+    border: <MentorBorder className={cx(statsImg)} />
   },
   {
     label: 'IN PRIZES',
     stat: '$15k',
     background: <PrizesBackground className={cx(statsImg)} />,
     border: <PrizesBorder className={cx(statsImg)} />
-  },
-  {
-    label: 'MENTORS',
-    stat: '8',
-    background: <MentorBackground className={cx(statsImg)} />,
-    border: <MentorBorder className={cx(statsImg)} />
   },
 ];
 
