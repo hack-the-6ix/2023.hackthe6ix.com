@@ -106,17 +106,6 @@ function Splash() {
     <PageSection
       containerClassName={container}
       className={splashContent}
-      // TODO: Add website full bg later
-      // append={
-      //   <StaticImage
-      //     alt='Ficitional toronto landscape with CN tower and sailor ship sailing a sea of clouds'
-      //     src='../../images/test_bg.png'
-      //     className={backdrop}
-      //     layout='fullWidth'
-      //     objectFit='cover'
-      //     quality={100}
-      //   />
-      // }
     >
         <Typography
           className={cx(text, dates)}

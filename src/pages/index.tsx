@@ -11,8 +11,7 @@ import Question from '../sections/Question';
 import Splash from '../sections/Splash';
 import Why from '../sections/Why';
 import Journey from "../sections/Journey";
-import FullWebsiteBackground from "../../static/full-website-background.svg";
-import HeroBackgound from "../../static/hero-background.svg"
+import WebsiteFullBackground from "../../static/website-full-background.svg";
 
 
 const navLinks: NavigationProps['links'] = [
@@ -45,30 +44,28 @@ const navLinks: NavigationProps['links'] = [
 
 const pageBackground = {
   backgroundColor: "#020F29",
-  backgroundImage: `url(${FullWebsiteBackground})`,
-  backgroundPosition: 'center',
+  backgroundImage: `url(${WebsiteFullBackground})`,
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
 }
 
-
 function IndexPage() {
   const location = useLocation();
   return (
-    <div style={pageBackground}>
-    <Page title='Home'>
-      <Navigation links={navLinks} showMlhBanner useScrollSpy />
-      <Splash />
-      <About />
-      <Journey />
-      <Why />
-      <PastSponsors />
-      <Notify />
-      {/* <PastSpeakers /> */}
-      <Faq />
-      <Question />
-      <Footer />
-    </Page>
+    <div id="page-container" style={pageBackground}>
+      <Page title='Home'>
+        <Navigation links={navLinks} showMlhBanner useScrollSpy />
+          <Splash />
+          <About />
+          <Journey />
+          <Why />
+          <PastSponsors />
+          <Notify />
+          {/* <PastSpeakers /> */}
+          <Faq />
+          <Question />
+          <Footer />
+      </Page>
     </div>
   );
 }
