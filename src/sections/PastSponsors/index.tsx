@@ -1,4 +1,4 @@
-import { Typography } from '@ht6/react-ui';
+import { Typography, Button } from '@ht6/react-ui';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { CSSProperties } from 'react';
@@ -40,22 +40,40 @@ function PastSponsors() {
         className={title}
         textType='heading2'
         as='h2'
-        textColor='primary-700'
+        textColor='shades-0'
       >
-        Sponsors
+        <span style={{ display: 'inline-block', width: '100%', textAlign: 'center', }}>
+          Sponsor the <span style={{color: '#FBBF24'}}>next big idea</span> 
+        </span>
+        
       </Typography>
+      <Typography
+        id='sponsors'
+        textType='paragraph1'
+        as='p'
+        textColor='shades-0'
+      >
+        <span style={{ display: 'inline-block', width: '100%', textAlign: 'center' }}>Special thanks to our sponsors for supporting Hack the 6ix and the incubation of big ideas. </span>
+        <br />
+        <span style={{ display: 'inline-block', width: '100%', textAlign: 'center' }}>Want to help us make it even better?</span>
+      </Typography>
+      <Button
+        buttonColor='primary-500'
+        >
+          Become a sponsor
+      </Button>
       {data.map((group, i) => (
         <ul
           style={{ '--ps-s': group.size, '--ps-g': group.gap } as CSSProperties}
-          className={category}
+          className={`${category} ${i >= data.length - 2 ? 'bronze' : ''}`}
           key={i}
         >
           {group.items.map((item, j) => (
             <li
               style={
                 item.offset
-                  ? ({ '--ps-s': group.size + item.offset } as CSSProperties)
-                  : undefined
+                  ? ({ '--ps-s': group.size + item.offset, 'min-height': '10px' } as CSSProperties)  
+                  : ({ 'min-height': '100px' } as CSSProperties)
               }
               key={j}
             >

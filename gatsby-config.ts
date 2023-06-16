@@ -16,6 +16,7 @@ const config: GatsbyConfig = {
       process.env.SITE_URL ??
       process.env.DEPLOY_PRIME_URL ??
       process.env.DEPLOY_URL ??
+      process.env.CF_PAGES_URL ??
       '',
     event: {
       start: new Date('2023-8-18 09:00:00 GMT-0400'),

@@ -107,7 +107,6 @@ function Navigation({
       {links && (
         <ul className={linkItems}>
           {links.map((link, key) => {
-            console.log(activeIdx, key);
             return (
               <Typography
                 key={key}

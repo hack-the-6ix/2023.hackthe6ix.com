@@ -8,7 +8,7 @@
   padding: 3rem 0;
   grid-gap: 2rem;
 
-  @include mixins.media(laptop) {
+  @include mixins.media(tablet) {
     grid-template-columns: 1fr;
   }
 }
@@ -20,26 +20,43 @@
 
 .title {
   margin-bottom: 1.5rem;
+  font-weight: 750;
+}
+
+.questionSpan {
+  color: colors.getColor('warning-400');
 }
 
 .long {
   grid-column: span 2;
+  border-radius: 20px;
+
   @include mixins.media(tablet) {
     grid-column: span 1;
   }
+}
+
+.textArea {
+  border-radius: 20px;
+}
+
+.input {
+  border-radius: 64px;
 }
 
 .form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 0.75rem 1rem;
-  border: 1px solid colors.getColor(primary-700);
-  background-color: localColors.$bg-2;
-  border-radius: 0.5rem;
-  padding: 1.5rem 2rem;
+  background-color: transparent;
+  padding: 0 2rem;
 
   @include mixins.media(tablet) {
     grid-template-columns: 1fr;
+  }
+
+  @include mixins.media(mobile) {
+    padding: 0;
   }
 }
 
@@ -47,4 +64,16 @@
   display: flex;
   justify-content: flex-end;
   margin-top: 0.5rem;
+  border-radius: 64px;
+
+  @include mixins.media(tablet) {
+    display: grid;
+    justify-content: initial;
+    grid-column: span 1;
+  }
+
+}
+
+.button {
+  min-width: 35%;
 }
