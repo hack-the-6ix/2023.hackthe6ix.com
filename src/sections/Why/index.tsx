@@ -164,7 +164,7 @@ function Why() {
 
   return (
     <div className={root}>
-      <Bg className={bg} />
+      {/*<Bg className={bg} />*/}
       <div className={contentIntro}>
         <Typography
           className={title}
