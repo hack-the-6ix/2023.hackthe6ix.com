@@ -10,6 +10,8 @@ import Socials from '../../components/Socials';
 import IconButton from '../../components/IconButton';
 import VCarousel from './VCarousel/VCarousel';
 import Link from '../../components/Link';
+import InputButton from '../../components/InputButton';
+import toast from 'react-hot-toast';
 import {
   container,
   content,
@@ -22,7 +24,16 @@ import {
   socials,
   apply,
   applyContainer,
+  textHighlight,
+  dates,
+  eventType,
+  hideMobile,
+  signUpText,
+  hideDesktop,
+  featureObject,
+  splashContent,
 } from './Splash.module.scss';
+import { ApiService, ApiServiceError } from '../../utils';
 
 const query = graphql`
   query SplashQuery {
@@ -43,14 +54,15 @@ const query = graphql`
   }
 `;
 
-const words = ['collaborate.', 'network.', 'win.', 'create a project.'];
+const words = ['network.', 'learn.', 'win.', 'create a project.', 'collaborate.'];
 
 function Splash() {
   const data = useStaticQuery<GatsbyTypes.SplashQueryQuery>(query);
   const startDate = new Date(data.allSite.nodes[0].siteMetadata!.event!.start!);
   const endDate = new Date(data.allSite.nodes[0].siteMetadata!.event!.end!);
   const isSameMonth = startDate.getMonth() === endDate.getMonth();
-  const [email, setEmail] = useState('');
+  // const [emailInput, setEmailInput] = useState({email: ''});
+  // const [submitting, setSubmitting] = useState(false);
 
   const startFormat = new Intl.DateTimeFormat('en-CA', {
     month: 'long',
@@ -61,55 +73,110 @@ function Splash() {
     day: 'numeric',
   });
 
+  // Email Submission
+  // const onSubmit = async () => {
+  //   const id = toast.loading('Loading...');
+  //   try {
+  //     const { response } = ApiService.subscribe(emailInput, 'subscribe', 'reset');
+  //     toast.success(await response, {id});
+  //     setEmailInput({email: ''});
+  //   } catch (err) {
+  //     switch ((err as any).name) {
+  //       case 'AbbortError':
+  //         break;
+  //       case 'ApiServiceError':
+  //         toast.error((err as ApiServiceError).getHumanError(), { id });
+  //         console.error(err);
+  //         break;
+  //       default:
+  //         toast.error('Unexpected error. Please try again later', { id });
+  //         console.error(err);
+  //         break;
+  //     }
+  //   }
+    
+  //   // To validate provided email address
+  //   if (!/\S+@\S+\.\S+/.test(emailInput.email)) {
+  //     toast.error("Please enter a valid email address");
+  //     return;
+  //   };
+  // };
+
   return (
     <PageSection
       containerClassName={container}
-      className={content}
-      append={
-        <StaticImage
-          alt='Ficitional toronto landscape with CN tower'
-          src='../../images/landing.png'
-          className={backdrop}
-          layout='fullWidth'
-          objectFit='cover'
-          quality={100}
-        />
-      }
+      className={splashContent}
+      // TODO: Add website full bg later
+      // append={
+      //   <StaticImage
+      //     alt='Ficitional toronto landscape with CN tower and sailor ship sailing a sea of clouds'
+      //     src='../../images/test_bg.png'
+      //     className={backdrop}
+      //     layout='fullWidth'
+      //     objectFit='cover'
+      //     quality={100}
+      //   />
+      // }
     >
-      <Typography
-        className={text}
-        textColor='copy-dark'
-        textType='heading3'
-        as='p'
-      >
-        <Highlight highlightColor='warning-400'>
-          {startFormat.format(startDate)} - {endFormat.format(endDate)} | Hybrid
-          Event
-        </Highlight>
-      </Typography>
-      <Typography
-        className={cx(text, title)}
-        textColor='primary-700'
-        textType='heading1'
-        as='h1'
-      >
-        Hack the 6ix
-      </Typography>
-      <Typography
-        className={banner}
-        textColor='copy-dark'
-        textType='heading2'
-        as='div'
-      >
-        <p className={text}>We hack to</p>
-        <VCarousel className={carousel} items={words} />
-      </Typography>
-      <Socials
-        className={socials}
-        baseColor='primary-700'
-        activeColor='warning-400'
-        gap='1rem'
-      />
+        <Typography
+          className={cx(text, dates)}
+          textColor='neutral-50'
+          textType='heading3'
+          as='p'
+        >
+          {startFormat.format(startDate)} - {endFormat.format(endDate)}, 2023
+          <span className={hideMobile}> • </span> 
+          <span className={eventType}> In-person event</span>
+        </Typography>
+        <Typography
+          className={cx(text, title)}
+          textColor='neutral-50'
+          textType='heading1'
+          as='h1'
+        >
+          Hack the 6ix is Toronto's <br className={hideMobile} /> <span className={textHighlight}>largest</span> summer hackathon, <br className={hideMobile} /> where <span className={textHighlight}>anyone</span> can hack <br className={hideDesktop} /> to <br className={hideMobile} />
+          <VCarousel className={carousel} items={words} />
+        </Typography>
+        <Typography
+          className={cx(text, signUpText)}
+          textColor='neutral-50'
+          textType='paragraph1'
+          as='paragraph'
+        >
+          Applications opening soon! Receive the latest updates in your inbox.
+        </Typography>
+        <InputButton
+          label='Enter email'
+          name='Enter email'
+          buttonText='Notify me'
+          // onSubmit={(e) => {
+          //   e.preventDefault();
+          //   setSubmitting(true);
+          //   onSubmit();
+          //   return false;
+          // }}
+          // onChange={(e) => {
+          //   setEmailInput({
+          //     ...inputProps,
+          //     [e.currentTarget.name]: e.currentTarget.value.slice(0, 200),
+          //   });
+          // }}
+        >
+          <Button
+            type='submit'
+          >
+            Notify me
+          </Button>
+        </InputButton>
+        <Socials
+          className={socials}
+          baseColor='shades-0'
+          activeColor='primary-500' 
+          gap='1rem'
+        />
+
+
+      {/* From 2022:
       <IconButton
         onClick={(e: MouseEvent) => {
           e.preventDefault();
@@ -125,7 +192,7 @@ function Splash() {
         label='Learn More'
         href='#about'
         as='a'
-      />
+      /> */}
     </PageSection>
   );
 }
