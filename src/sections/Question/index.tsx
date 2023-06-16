@@ -41,10 +41,11 @@ function Question() {
 
   const inputProps = (
     label: string,
-    name: keyof typeof inputs
+    name: keyof typeof inputs,
+    placeholder?: string
   ): InputProps => ({
     outlineColor: 'grey',
-    placeholder: label,
+    placeholder: placeholder ?? label,
     hideLabel: false,
     label,
     name,
@@ -85,8 +86,8 @@ function Question() {
           return false;
         }}
       >
-        <Input className={input} {...inputProps('Enter name', 'name')} />
-        <Input className={input} {...inputProps('Enter email', 'email')} type='email' />
+        <Input className={input} {...inputProps('Enter name', 'name', 'Name')} />
+        <Input className={input} {...inputProps('Enter email', 'email', 'Email')} type='email' />
         <Textarea
           {...(inputProps('Enter your question', 'message') as any)}
           onChange={(e) => {
