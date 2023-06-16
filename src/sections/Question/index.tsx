@@ -86,8 +86,8 @@ function Question() {
           return false;
         }}
       >
-        <Input className={input} {...inputProps('Enter name', 'name', 'Name')} />
-        <Input className={input} {...inputProps('Enter email', 'email', 'Email')} type='email' />
+        <Input className={input} {...inputProps('Name', 'name', 'Enter name')} />
+        <Input className={input} {...inputProps('Email', 'email', 'Enter email')} type='email' />
         <Textarea
           {...(inputProps('Enter your question', 'message') as any)}
           onChange={(e) => {
