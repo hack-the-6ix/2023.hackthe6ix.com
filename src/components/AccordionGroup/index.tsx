@@ -75,7 +75,7 @@ function AccordionGroup({
                   onClick={() => toggle(key)}
                   textColor="neutral-50"
                   className={trigger}
-                  textType="paragraph-lg"
+                  textType="heading4"
                   textWeight="semi-bold"
                   as="button"
                 >
@@ -88,7 +88,7 @@ function AccordionGroup({
               </dt>
               <Typography
                 textColor="neutral-200"
-                textType="paragraph-md"
+                textType="paragraph1"
                 textWeight="regular"
                 className={content}
                 as="dd"
