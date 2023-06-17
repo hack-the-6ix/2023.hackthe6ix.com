@@ -132,7 +132,7 @@ function Navigation({
         </ul>
       )}
       <button onClick={() => setShow(true)} className={menu}>
-        <Hamborgre className={menuIcon}/>
+        <Hamborgre />
       </button>
       <Popup
         onClose={() => setShow(false)}

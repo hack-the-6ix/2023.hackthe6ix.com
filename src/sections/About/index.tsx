@@ -93,19 +93,18 @@ function About() {
         <div style={{ marginBottom: '-2.5rem' }}>
           <Typography
             textType='heading2'
-            as='h3'
+            as='h2'
             textColor='shades-0'
           >
             We're back <wbr /><span style={{ color: '#FBBF24', whiteSpace: "nowrap" }}>in-person</span>
           </Typography>
         </div>
-        <div
-            className={cx(bottomSubtext)}
-        >
+        <div>
           <Typography
               textType='paragraph1'
               as='p'
               textColor='shades-0'
+              className={cx(bottomSubtext)}
           >
             Join hundreds of students from diverse backgrounds, disciplines, and skill levels to work together on projects that have real-world impact. We'll handle the back-end, so just show up and have fun!
           </Typography>

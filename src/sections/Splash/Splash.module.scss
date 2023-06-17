@@ -4,10 +4,10 @@
 .container {
   box-sizing: border-box;
   position: relative;
-  padding: 0;
   padding-bottom: 36.3125rem;
   padding-top: 11.5625rem;
-  
+  padding-left: 2rem;
+  padding-right: 2rem;
 
   @include localMixins.media(tablet) {
     // TODO: Check that ship is not cut off in mobile
@@ -29,8 +29,7 @@
   }
 }
 
-.splashContent{
-  padding-left: 8.3rem;
+.splashContent {
   @include localMixins.media(tablet) {
     width: 100%;
     display: flex;
@@ -120,11 +119,13 @@
   line-height: 1.75rem;
   font-weight: 500;
   gap: 0.5rem;
+  // width: 100%;
 
   @include localMixins.media(tablet) {
     font-size: 1.5rem;
     line-height: 2rem;
     flex-direction: column;
+    text-transform: uppercase;
   }
 }
 
