@@ -51,13 +51,19 @@
 }
 
 .floatingBtn {
-  @include mixins.transition(transform);
-  background-color: rgba(white, 0.5);
+  @include mixins.transition(transform color);
+  background-color: rgba(#333c64, 0.3);
   margin: 1rem 1rem 1rem auto;
+  backdrop-filter: blur(3px);
   border-radius: 0.25rem;
   position: sticky;
   bottom: 1rem;
   z-index: 10;
+  color: colors.getColor(neutral-50);
+
+  &:hover, &:active, &:focus {
+    color: lighten(#2d948c, 10%);
+  }
 }
 
 .hide {
