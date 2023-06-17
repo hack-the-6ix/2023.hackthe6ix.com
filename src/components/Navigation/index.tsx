@@ -57,7 +57,7 @@ function Navigation({
 }: NavigationProps) {
   const [show, setShow] = useState(false);
   const [top, setTop] = useState(0);
-  const [isAtTop, setIsAtTop] = useState(false);
+  const [isAtTop, setIsAtTop] = useState(true);
 
   const getItemTops = useCallback(() => {
     if (!useScrollSpy) return [];
