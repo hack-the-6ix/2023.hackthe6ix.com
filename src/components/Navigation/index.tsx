@@ -35,7 +35,7 @@ function setHash(event: MouseEvent, path: string, scroll?: boolean) {
     try {
       top = document.querySelector<HTMLElement>(path)?.offsetTop ?? 0;
     } catch {}
-    const offset = window.innerHeight * 0.2;
+    const offset = window.innerHeight * 0.1;
     window.scrollTo({ top: top - offset, behavior: 'smooth' });
   }
 }
@@ -72,7 +72,7 @@ function Navigation({
 
     const scrollHandler = () => {
       setTop(window.scrollY + window.innerHeight * 0.8);
-      setIsAtTop(window.scrollY <= 100)
+      setIsAtTop(window.scrollY <= 50)
     }
     window.addEventListener('scroll', scrollHandler, true);
 

@@ -57,7 +57,7 @@ const stats = [
 
 function About() {
   return (
-    <PageSection className={cx(container)}>
+    <PageSection className={cx(container)} id='about'>
       <div>
         <ul className={items}>
           {stats.map(({ label, stat , background: statBackground, border: statBorder}, key) => (

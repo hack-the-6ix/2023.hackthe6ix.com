@@ -85,6 +85,10 @@
   &:hover::before {
     opacity: 1;
   }
+
+  &.linkItemActive::before {
+    opacity: 1;
+  }
 }
 
 .mobileNav {
