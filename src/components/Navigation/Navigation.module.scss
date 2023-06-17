@@ -113,24 +113,25 @@
   display: block;
   min-width: 1px;
   width: clamp(1px, 100%, 11rem);
+  color: colors.getColor(neutral-50);
 
   @include localMixins.media(mobile) {
     width: 100%;
   }
 
   &Active {
-    background-color: colors.getColor(primary-700, hover, 0.1);
-    color: colors.getColor(primary-700);
+    background-color: colors.getColor(primary-200, hover, 0.1);
+    color: colors.getColor(primary-500);
   }
 
   &:hover,
   &:focus,
   &Active {
-    color: colors.getColor(primary-700);
+    background-color: colors.getColor(primary-200, hover, 0.1);
   }
 
   &:active {
-    background-color: colors.getColor(primary-700, hover, 0.06);
+    background-color: colors.getColor(primary-200, hover, 0.06);
   }
 }
 
