@@ -31,11 +31,6 @@ const navLinks: NavigationProps['links'] = [
     linkStyle: "pure"
   },
   {
-    children: 'Past Speakers',
-    href: '#past-speakers',
-    linkStyle: "pure"
-  },
-  {
     children: 'FAQ',
     href: '#faq',
     linkStyle: "pure"
