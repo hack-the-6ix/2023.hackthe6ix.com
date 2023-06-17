@@ -16,7 +16,8 @@ import {
   hide,
   img,
   ht6,
-  footerbg
+  footerbg,
+  copyright
 } from './Footer.module.scss';
 import Bg from '../../images/Footer-Bg.svg';
 import Socials from '../Socials';
@@ -97,13 +98,13 @@ function Footer() {
         </div>
         <div className={row}>
           <Typography
-            className={text}
+            className={cx(text, copyright)}
             textColor='copy-light'
             textType='paragraph1'
           >
             © Copyright 2023 Hack the 6ix | Made with ♡ in Toronto
           </Typography>
-          <Socials baseColor='copy-light' activeColor='warning-400' gap='2rem' />
+          <Socials baseColor='copy-light' activeColor='warning-400' gap='1.75rem' />
         </div>
       </PageSection>
     </>
