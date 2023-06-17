@@ -3498,11 +3498,6 @@ type StaticImageSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
-type PageQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PageQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description'>> }> };
-
 type PastSpeakersSectionQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3511,13 +3506,6 @@ type PastSpeakersSectionQueryQuery = { readonly allFile: { readonly nodes: Reado
       & { readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
     )> } };
 
-type PastSponsorsQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PastSponsorsQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<(
-      Pick<File, 'base'>
-      & { readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
-    )> } };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 

@@ -15,18 +15,14 @@ import {
   floatingBtn,
   hide,
   img,
+  ht6,
+  footerbg,
+  copyright
 } from './Footer.module.scss';
+import Bg from '../../images/Footer-Bg.svg';
 import Socials from '../Socials';
 
 const links: Omit<BasicLinkProps, 'linkType'>[] = [
-  {
-    children: '2021 Website',
-    href: 'https://2021.hackthe6ix.com',
-  },
-  {
-    children: '2020 Website',
-    href: 'https://2020.hackthe6ix.com',
-  },
   {
     children: 'Privacy Policy',
     href: 'http://cdn.hackthe6ix.com/privacy-policy.pdf',
@@ -34,6 +30,10 @@ const links: Omit<BasicLinkProps, 'linkType'>[] = [
   {
     children: 'MLH Code of Conduct',
     href: 'https://static.mlh.io/docs/mlh-code-of-conduct.pdf',
+  },
+  {
+    children: 'Covid-19 Safety',
+    href: '#', // where is this supposed to go
   },
 ];
 
@@ -70,25 +70,15 @@ function Footer() {
         containerClassName={root}
         as='footer'
       >
+        <Bg className={footerbg}/>
         <div className={row}>
           <Typography
-            className={text}
+            className={ht6}
             textColor='primary-200'
             textType='heading2'
             as='p'
           >
             Hack the 6ix
-          </Typography>
-          <Socials baseColor='copy-light' activeColor='warning-400' gap='2rem' />
-        </div>
-        <div className={row}>
-          <Typography
-            className={text}
-            textColor='copy-light'
-            textType='paragraph1'
-          >
-            © Copyright 2022 <strong>Hack the 6ix</strong> | Made with ♡ in
-            Toronto
           </Typography>
           <Typography className={items} textType='subheading' as='ul'>
             {links.map((linkProps, key) => (
@@ -105,6 +95,16 @@ function Footer() {
               </li>
             ))}
           </Typography>
+        </div>
+        <div className={row}>
+          <Typography
+            className={cx(text, copyright)}
+            textColor='copy-light'
+            textType='paragraph1'
+          >
+            © Copyright 2023 Hack the 6ix | Made with ♡ in Toronto
+          </Typography>
+          <Socials baseColor='copy-light' activeColor='warning-400' gap='1.75rem' />
         </div>
       </PageSection>
     </>

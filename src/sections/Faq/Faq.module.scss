@@ -3,41 +3,47 @@
 
 .container {
   padding: 7.25rem 0 3.75rem;
-}
+  width: 100%;
+  box-sizing: border-box;
 
-.root {
-  justify-items: center;
-  padding: 1rem;
+  @include localMixins.media(tablet) {
+    padding: 0;
+    padding: 0 16px;
+  }
 }
 
 .faq-heading {
   font-size: 2.5rem;
   line-height: 3rem;
+  padding: 0 2rem;
   font-weight: 800;
   letter-spacing: normal;
   margin: 0 0 2.25rem;
+  width: 100%;
 
   @include localMixins.media(tablet){
     padding-left: 1rem;
     margin: 0 0 calc(28.5rem / 14);
-    font-size: 3rem;
+    font-size: 36px;
     line-height: 3.66rem;
   }
 
   @include localMixins.media(mobile){
     margin: 0 0 calc(35rem / 12);
+    padding: 0;
   }
 }
 
 .faqs {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 0.25rem 0rem;
-  margin: 0 -2rem;
+  grid-gap: 0.25rem 3rem;
+  padding: 0 2rem;
 
   @include localMixins.media(tablet) {
     grid-template-columns: 1fr;
     grid-gap: calc(30.5rem / 14);
+    padding: 0;
   }
 
   @include localMixins.media(mobile){

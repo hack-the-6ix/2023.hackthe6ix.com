@@ -31,11 +31,6 @@ const navLinks: NavigationProps['links'] = [
     linkStyle: "pure"
   },
   {
-    children: 'Past Speakers',
-    href: '#past-speakers',
-    linkStyle: "pure"
-  },
-  {
     children: 'FAQ',
     href: '#faq',
     linkStyle: "pure"
@@ -47,6 +42,7 @@ const pageBackground = {
   backgroundImage: `url(${WebsiteFullBackground})`,
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
+  // overflow: 'hidden'
 }
 
 function IndexPage() {

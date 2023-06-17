@@ -4,13 +4,12 @@
 
 .root {
   overflow: hidden;
-  @include localMixins.media(tablet){
-    padding: 0 2rem 1rem 1rem;
-  }
+  width: 100%;
 }
 
 .header {
-  padding: 0.75rem 2rem;
+  width: 100%;
+  padding-right: 0;
   margin: 0;
   @include localMixins.media(tablet) {
     margin: 0 0 calc(5rem / 14);
@@ -22,8 +21,9 @@
 
 .list {
   flex-direction: column;
-  margin: 0.0625rem 1.5rem 1rem;
+  // margin: 0.0625rem 1.5rem 1rem;
   display: flex;
+  width: 100%;
 }
 
 .trigger {
@@ -33,14 +33,15 @@
   align-items: center;
   text-align: start;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   display: flex;
   border: none;
   width: 100%;
   font-weight: 600;
   
-
-  &:hover{
+  &:hover {
     background-color: colors.getColor(primary-700, $alpha: 0.06);
   }
 

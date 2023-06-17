@@ -1,8 +1,10 @@
+import { BasicLink } from '@ht6/react-ui'
+
 const questionGroups: Array<{
   category: string;
   questions: Array<{
     question: string;
-    answer: string;
+    answer: JSX.Element | string;
   }>;
 }> = [
   {
@@ -16,8 +18,7 @@ const questionGroups: Array<{
       {
         question:
           'What kind of workshops, talks, and activities will there be at Hack the 6ix?',
-        answer:
-          'We’ll be hosting a variety of workshops ranging from introductory to advanced topics facilitated by our amazing sponsors and mentors. In addition, there will also be interesting tech talks by industry leaders from different companies. For breaks, we’ll have a ton of fun activities planned for you, such as games, contests, and more! Hack the 6ix is much more than just a hackathon – we want it to be an event that you’ll thoroughly enjoy while expanding your skillset and network.',
+        answer: (<>We'll be hosting a variety of workshops ranging from introductory to advanced topics facilitated by our amazing sponsors and mentors. There will also be interesting tech talks by industry leaders from different companies. <br/><br/>For breaks, we'll have a ton of fun activities planned for you, such as games, contests, and more! Hack the 6ix is much more than just a hackathon - we want it to be an event that you'll thoroughly enjoy while expanding your skillset and network.</>)
       },
       {
         question: 'Can I work on my hack before the event?',
@@ -31,18 +32,17 @@ const questionGroups: Array<{
     questions: [
       {
         question: 'When do hacker applications open?',
-        answer:
-          'Hack the 6ix applications for the 2022 year have closed. Subscribe here if you’d like us to notify you when applications are out next year!',
+        answer: (<>Hack the 6ix applications for the 2023 year are going to be opening soon. Subscribe <BasicLink linkStyle='styled' href='#notify'>here</BasicLink> if you'd like us to notify you when applications are out!</>),
       },
       {
         question: 'Am I eligible to participate?',
         answer:
-          'Any post-secondary students or recent graduates (>1 years of graduating) are eligible to participate in our event.',
+          'Any high-school, post-secondary students, or recent graduates (>1 years of graduating) are eligible to participate in our event.',
       },
       {
         question: 'Do I need to know how to code?',
         answer:
-          'Nope! Our mentors and workshops make sure that even if you’re new to coding, you’ll definitely pick up enough skills at the event to make a project. In addition, if you’re a designer or business student, your design and pitching skills are also very valuable!',
+          'Nope! Our mentors and workshops make sure that even if you\'re new to coding, you\'ll definitely pick up enough skills at the event to make a project. In addition, if you\'re a designer or business student, your design and pitching skills are also very valuable!',
       },
       {
         question: 'Can I sign up with a team?',
@@ -50,9 +50,9 @@ const questionGroups: Array<{
           'We allow team sign-ups of up to 4 people. All team members must sign up individually and specify the other team members on their application.',
       },
       {
-        question: 'What if I don’t have a team or idea?',
+        question: 'What if I don\'t have a team or idea?',
         answer:
-          'Don’t worry, you will have a chance to form or join a team by messaging the participant groups/chats that we’ll put you in during the weeks leading up to the weekend, as well as through team formation activities during the event.',
+          'Don\'t worry, you will have a chance to form or join a team by messaging the participant groups/chats that we\'ll put you in during the weeks leading up to the weekend, as well as through team formation activities during the event.',
       },
     ],
   },
@@ -61,8 +61,7 @@ const questionGroups: Array<{
     questions: [
       {
         question: 'How do I get to Hack the 6ix?',
-        answer:
-          'On Saturday, August 20th from 8:30am to 5pm, there will be an in-person venue for optional use for hackers hosted at Wealthsimple offices located at 80 Spadina Avenue, 4th Floor. Toronto, ON M5V 2J4. Attendance is limited by RSVP to accepted hackers ONLY.',
+        answer: (<>This year, the event will be held at the <BasicLink linkStyle='styled' href='https://www.google.com/maps/place/George+Vari+Engineering+and+Computing+Centre,+Toronto,+ON+M5B+1Z4/@43.6579706,-79.3777686,18z/data=!4m6!3m5!1s0x89d4cb358310e403:0x95c795af1dd61a3b!8m2!3d43.6577!4d-79.3773!16zL20vMDh0aF81?hl=en' target='_blank' rel='noreferrer'>George Vari Engineering and Computing Centre</BasicLink> in Toronto. Participants will be responsible for parking and payment. There may be limited parking spots, so we highly suggest taking the TTC instead!</>)
       },
       {
         question: 'What should I bring?',
@@ -72,13 +71,17 @@ const questionGroups: Array<{
       {
         question: 'Will there be hardware provided at the event?',
         answer:
-          'We have a variety of hardware that can be borrowed at our hardware station for free, including Raspberry Pi’s, Arduinos, sensors, and breadboards. Due to limited quantity, hardware will be lent out on a first come, first serve basis. If you are unsure whether or not we have a certain piece of hardware that you will need for your hack, bring your own to the event!',
+          'We have a variety of hardware that can be borrowed at our hardware station for free, including Raspberry Pi\'s, Arduinos, sensors, and breadboards. Due to limited quantity, hardware will be lent out on a first come, first serve basis. If you are unsure whether or not we have a certain piece of hardware that you will need for your hack, bring your own to the event!',
       },
       {
         question: 'How much does it cost to attend?',
         answer:
           'Absolutely nothing! Hack the 6ix is a completely free event run by a non-profit organization. All food, resources, and accommodations for hacking for the entire event will be provided free of charge.',
       },
+      {
+        question: "Will you be providing travel reimbursements?",
+        answer: "Unfortunately, we will not be covering travel reimbursements at this time."
+      }
     ],
   },
   {

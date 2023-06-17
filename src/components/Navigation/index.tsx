@@ -1,9 +1,8 @@
-import { RiMenuLine } from '@react-icons/all-files/ri/RiMenuLine';
+import Hamborgre from '../../images/menu-icon.svg';
 import { useCallback, useEffect, useRef, useState, MouseEvent } from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
-import {BasicLinkProps, Typography} from '@ht6/react-ui';
+import { Button, BasicLink, BasicLinkProps, Typography } from '@ht6/react-ui';
 import cx from 'classnames';
-import { BasicLink } from '@ht6/react-ui';
 import PageSection from '../PageSection';
 import Popup from '../Popup';
 import Logo from '../../images/logo.svg';
@@ -24,8 +23,9 @@ import {
   apply,
   applyContainer,
   applyMobile,
+  scrolled
 } from './Navigation.module.scss';
-import {Link as GatsbyLink} from 'gatsby';
+import { Link as GatsbyLink } from 'gatsby';
 
 function setHash(event: MouseEvent, path: string, scroll?: boolean) {
   event.preventDefault();
@@ -35,7 +35,7 @@ function setHash(event: MouseEvent, path: string, scroll?: boolean) {
     try {
       top = document.querySelector<HTMLElement>(path)?.offsetTop ?? 0;
     } catch {}
-    const offset = window.innerHeight * 0.2;
+    const offset = window.innerHeight * 0.1;
     window.scrollTo({ top: top - offset, behavior: 'smooth' });
   }
 }
@@ -45,6 +45,7 @@ export interface NavigationProps {
   useScrollSpy?: boolean;
   links: BasicLinkProps[];
   base?: string;
+  showApply?: boolean;
 }
 
 function Navigation({
@@ -52,9 +53,11 @@ function Navigation({
   useScrollSpy,
   base = '/',
   links,
+  showApply
 }: NavigationProps) {
   const [show, setShow] = useState(false);
   const [top, setTop] = useState(0);
+  const [isAtTop, setIsAtTop] = useState(true);
 
   const getItemTops = useCallback(() => {
     if (!useScrollSpy) return [];
@@ -67,13 +70,14 @@ function Navigation({
   useEffect(() => {
     if (!useScrollSpy) return;
 
-    const scrollHandler = () =>
+    const scrollHandler = () => {
       setTop(window.scrollY + window.innerHeight * 0.8);
+      setIsAtTop(window.scrollY <= 50)
+    }
     window.addEventListener('scroll', scrollHandler, true);
 
     const resizeHandler = () => {
       itemTops.current = getItemTops();
-      setTop(window.scrollY);
     };
     window.addEventListener('resize', resizeHandler, true);
     resizeHandler();
@@ -92,7 +96,7 @@ function Navigation({
   }, -1);
 
   return (
-    <PageSection containerClassName={root} className={content} as='nav'>
+    <PageSection containerClassName={cx(root, (isAtTop) ? "" : scrolled)} className={content} as='nav'>
       <BasicLink
         onClick={(...args) => setHash(...args, '#', true)}
         className={logo}
@@ -100,9 +104,6 @@ function Navigation({
         as={GatsbyLink}
       >
         <Logo className={logoSvg} />
-        <Typography textType='heading3' textColor='primary-500'>
-          Hack the 6ix
-        </Typography>
       </BasicLink>
       {links && (
         <ul className={linkItems}>
@@ -126,14 +127,16 @@ function Navigation({
               </Typography>
             );
           })}
+          <Button buttonVariant='secondary' onClick={() => window.open('mailto:hello@hackthe6ix.com')}>Contact us</Button>
+          {showApply && <Button onClick={() => window.open('https://dash.hackthe6ix.com')}>Apply now</Button>}
         </ul>
       )}
       <button onClick={() => setShow(true)} className={menu}>
-        <RiMenuLine className={menuIcon} />
+        <Hamborgre />
       </button>
       <Popup
         onClose={() => setShow(false)}
-        label='Navigate to Section'
+        label='Navigation Menu'
         className={mobileNav}
         show={show}
         as='ul'
@@ -162,6 +165,8 @@ function Navigation({
             </Typography>
           );
         })}
+        <Button buttonVariant='secondary' onClick={() => window.open('mailto:hello@hackthe6ix.com')}>Contact us</Button>
+        {showApply && <Button onClick={() => window.open('https://dash.hackthe6ix.com')}>Apply now</Button>}
       </Popup>
       {showMlhBanner && (
         <BasicLink
@@ -171,8 +176,8 @@ function Navigation({
           target='_blank'
         >
           <StaticImage
-            alt='MLH 2022 Season Banner'
-            src='../../images/mlh.png'
+            alt='MLH 2024 Season Banner'
+            src='../../images/mlh.svg'
             placeholder='none'
             quality={100}
             width={200}

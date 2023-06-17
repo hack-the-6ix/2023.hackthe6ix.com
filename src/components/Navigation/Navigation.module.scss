@@ -4,19 +4,24 @@
 @use '../../styles/mixins.module' as localMixins;
 
 .root {
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.12);
-  background-color: localColors.$bg-2;
-  padding-bottom: 0;
-  position: sticky;
-  padding-top: 0;
+  padding: 0;
+  position: fixed;
   z-index: 100;
   top: 0;
+  width: 100vw;
+  transition: background-color 0.4s ease, border-bottom 0.4s ease;
+
+  &.scrolled {
+    background-color: #020F26;
+    border-bottom: 1px solid #F3F6F6;
+  }
 }
 
 .content {
   justify-content: space-between;
-  align-items: center;
   display: flex;
+  padding: 0 1.25rem;
+  width: auto;
 }
 
 .logo {
@@ -38,6 +43,17 @@
   display: flex;
   padding: 0;
   margin: 0;
+  align-items: center;
+  gap: 4rem;
+
+  button {
+    margin-left: -24px;
+    margin-right: -24px;
+
+    &:last-child {
+      margin-right: 41px;
+    }
+  }
 
   @include localMixins.media(nav) {
     display: none;
@@ -48,37 +64,30 @@
   @include mixins.transition(color);
   box-sizing: border-box;
   position: relative;
-  padding: 1.5rem;
-  display: block;
-  height: 100%;
+  display: inline-block;
+  color: colors.getColor(neutral-50) !important;
 
   &::before {
-    @include mixins.transition(background-color);
-    background-color: transparent;
-    border-radius: 999px;
-    margin: 0 auto auto;
+    content: "";
     position: absolute;
-    height: 0.25rem;
-    width: 100%;
-    content: '';
-    inset: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% + 3rem);
+    height: calc(100% + 1rem);
+    background-color: #1e2b40;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
   }
 
-  &:hover,
-  &:focus {
-    color: colors.getColor(primary-700, hover);
+  &:hover::before {
+    opacity: 1;
   }
 
-  &:active {
-    color: colors.getColor(primary-700, active);
-  }
-
-  &Active {
-    color: colors.getColor(primary-700);
-
-    &::before {
-      background-color: currentColor;
-    }
+  &.linkItemActive::before {
+    opacity: 1;
   }
 }
 
@@ -90,6 +99,10 @@
   width: 100%;
   padding: 0;
   margin: 0;
+
+  button {
+    grid-column: 1/-1;
+  }
 
   @include localMixins.media(mobile) {
     grid-template-columns: 1fr;
@@ -104,24 +117,25 @@
   display: block;
   min-width: 1px;
   width: clamp(1px, 100%, 11rem);
+  color: colors.getColor(neutral-50);
 
   @include localMixins.media(mobile) {
     width: 100%;
   }
 
   &Active {
-    background-color: colors.getColor(primary-700, hover, 0.1);
-    color: colors.getColor(primary-700);
+    background-color: colors.getColor(primary-200, hover, 0.1);
+    color: colors.getColor(primary-500);
   }
 
   &:hover,
   &:focus,
   &Active {
-    color: colors.getColor(primary-700);
+    background-color: colors.getColor(primary-200, hover, 0.1);
   }
 
   &:active {
-    background-color: colors.getColor(primary-700, hover, 0.06);
+    background-color: colors.getColor(primary-200, hover, 0.06);
   }
 }
 
@@ -133,6 +147,8 @@
   aspect-ratio: 1;
   display: none;
   border: none;
+  padding: 0;
+  margin-right: 24px;
 
   &:hover,
   &:focus {
@@ -149,18 +165,15 @@
   }
 }
 
-.menuIcon {
-  width: 1.75rem;
-  height: 1.75rem;
-  display: flex;
-}
-
 .banner {
-  margin-bottom: auto;
-  margin-left: 1.5rem;
+  // margin-left: 40px;
   overflow-y: visible;
   width: 5.25rem;
   height: 1px;
+
+  @include localMixins.media(nav) {
+    // margin-left: 12px;
+  }
 }
 
 .applyContainer {

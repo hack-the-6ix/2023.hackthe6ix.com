@@ -10,6 +10,7 @@ import {
   category,
   link,
   image,
+  sponsorCTA
 } from './PastSponsors.module.scss';
 
 const query = graphql`
@@ -59,7 +60,8 @@ function PastSponsors() {
       </Typography>
       <Button
         buttonColor='primary-500'
-        >
+        className={sponsorCTA}
+      >
           Become a sponsor
       </Button>
       {data.map((group, i) => (

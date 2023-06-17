@@ -36,10 +36,16 @@ const stats = [
     border: <ProjectsBorder className={cx(statsImg)} />
   },
   {
-    label: 'WORKSHOPS',
-    stat: '20+',
+    label: 'MENTORS',
+    stat: '15',
     background: <WorkshopsBackground className={cx(statsImg)} />,
     border: <WorkshopsBorder className={cx(statsImg)} />
+  },
+  {
+    label: 'SCHOOLS',
+    stat: '197',
+    background: <MentorBackground className={cx(statsImg)} />,
+    border: <MentorBorder className={cx(statsImg)} />
   },
   {
     label: 'IN PRIZES',
@@ -47,17 +53,11 @@ const stats = [
     background: <PrizesBackground className={cx(statsImg)} />,
     border: <PrizesBorder className={cx(statsImg)} />
   },
-  {
-    label: 'MENTORS',
-    stat: '8',
-    background: <MentorBackground className={cx(statsImg)} />,
-    border: <MentorBorder className={cx(statsImg)} />
-  },
 ];
 
 function About() {
   return (
-    <PageSection className={cx(container)}>
+    <PageSection className={cx(container)} id='about'>
       <div>
         <ul className={items}>
           {stats.map(({ label, stat , background: statBackground, border: statBorder}, key) => (
@@ -93,19 +93,18 @@ function About() {
         <div style={{ marginBottom: '-2.5rem' }}>
           <Typography
             textType='heading2'
-            as='h3'
+            as='h2'
             textColor='shades-0'
           >
             We're back <wbr /><span style={{ color: '#FBBF24', whiteSpace: "nowrap" }}>in-person</span>
           </Typography>
         </div>
-        <div
-            className={cx(bottomSubtext)}
-        >
+        <div>
           <Typography
               textType='paragraph1'
               as='p'
               textColor='shades-0'
+              className={cx(bottomSubtext)}
           >
             Join hundreds of students from diverse backgrounds, disciplines, and skill levels to work together on projects that have real-world impact. We'll handle the back-end, so just show up and have fun!
           </Typography>
