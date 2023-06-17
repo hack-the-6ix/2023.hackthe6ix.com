@@ -15,6 +15,8 @@ function Question() {
     message: '',
   });
 
+  
+
   const onSubmit = async () => {
     const id = toast.loading('Loading...');
     try {
@@ -44,7 +46,6 @@ function Question() {
     name: keyof typeof inputs,
     placeholder?: string
   ): InputProps => ({
-    outlineColor: 'grey',
     placeholder: placeholder ?? label,
     hideLabel: false,
     label,
@@ -86,7 +87,7 @@ function Question() {
           return false;
         }}
       >
-        <Input className={input} {...inputProps('Name', 'name', 'Enter name')} />
+        <Input className={input} {...inputProps('Name', 'name', 'Enter name')} noBorder={true} />
         <Input className={input} {...inputProps('Email', 'email', 'Enter email')} type='email' />
         <Textarea
           {...(inputProps('Enter your question', 'message') as any)}
