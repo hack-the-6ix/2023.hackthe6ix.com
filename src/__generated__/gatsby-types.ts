@@ -3506,15 +3506,6 @@ type PastSpeakersSectionQueryQuery = { readonly allFile: { readonly nodes: Reado
       & { readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
     )> } };
 
-type PageQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PageQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description'>> }> };
-
-type SocialsQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type SocialsQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ readonly siteMetadata: Maybe<{ readonly socials: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataSocials, 'link' | 'type'>>>> }> }> } };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
@@ -3542,23 +3533,20 @@ type GatsbyImageSharpFluid_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio
 
 type GatsbyImageSharpFluid_withWebp_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
-type PastSponsorsQueryQueryVariables = Exact<{ [key: string]: never; }>;
+type SocialsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type PastSponsorsQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<(
-      Pick<File, 'base'>
-      & { readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
-    )> } };
+type SocialsQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ readonly siteMetadata: Maybe<{ readonly socials: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataSocials, 'link' | 'type'>>>> }> }> } };
+
+type staticHomejeffreyZangCode01Ht6Ht6Landing2023NodeModulesgatsbyPluginTurnstilesrcpluginOptionsTs2103136062QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type staticHomejeffreyZangCode01Ht6Ht6Landing2023NodeModulesgatsbyPluginTurnstilesrcpluginOptionsTs2103136062Query = { readonly sitePlugin: Maybe<Pick<SitePlugin, 'pluginOptions'>> };
 
 type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
-
-type staticHomejeffreyZangCodeht6Landing2023NodeModulesgatsbyPluginTurnstilesrcpluginOptionsTs2103136062QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type staticHomejeffreyZangCodeht6Landing2023NodeModulesgatsbyPluginTurnstilesrcpluginOptionsTs2103136062Query = { readonly sitePlugin: Maybe<Pick<SitePlugin, 'pluginOptions'>> };
 
 type WhySectionQueryQueryVariables = Exact<{ [key: string]: never; }>;
 

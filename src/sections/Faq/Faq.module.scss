@@ -5,17 +5,42 @@
   padding: 7.25rem 0 3.75rem;
 }
 
-.title {
+.root {
+  justify-items: center;
+  padding: 1rem;
+}
+
+.faq-heading {
+  font-size: 2.5rem;
+  line-height: 3rem;
+  font-weight: 800;
+  letter-spacing: normal;
   margin: 0 0 2.25rem;
+
+  @include localMixins.media(tablet){
+    padding-left: 1rem;
+    margin: 0 0 calc(28.5rem / 14);
+    font-size: 3rem;
+    line-height: 3.66rem;
+  }
+
+  @include localMixins.media(mobile){
+    margin: 0 0 calc(35rem / 12);
+  }
 }
 
 .faqs {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 2.5rem 1.25rem;
+  grid-gap: 0.25rem 0rem;
+  margin: 0 -2rem;
 
   @include localMixins.media(tablet) {
     grid-template-columns: 1fr;
-    grid-gap: 1.25rem;
+    grid-gap: calc(30.5rem / 14);
+  }
+
+  @include localMixins.media(mobile){
+    grid-gap: calc(43rem / 12);
   }
 }

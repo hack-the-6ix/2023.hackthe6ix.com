@@ -10,6 +10,9 @@ import PastSponsors from '../sections/PastSponsors';
 import Question from '../sections/Question';
 import Splash from '../sections/Splash';
 import Why from '../sections/Why';
+import Journey from "../sections/Journey";
+import WebsiteFullBackground from "../../static/website-full-background.svg";
+
 
 const navLinks: NavigationProps['links'] = [
   {
@@ -34,20 +37,33 @@ const navLinks: NavigationProps['links'] = [
   },
 ];
 
+const pageBackground = {
+  backgroundColor: "#020F29",
+  backgroundImage: `url(${WebsiteFullBackground})`,
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+}
+
 function IndexPage() {
   const location = useLocation();
   return (
-    <Page title='Home'>
-      <Navigation links={navLinks} showMlhBanner useScrollSpy /> {/* when apps are open, add showApply as a prop*/}
-      <Splash />
-      <About />
-      <Why />
-      <PastSponsors />
-      <PastSpeakers />
-      <Faq />
-      <Question />
-      <Footer />
-    </Page>
+    <div id="page-container" style={pageBackground}>
+      <Page title='Home'>
+        <Navigation links={navLinks} showMlhBanner useScrollSpy />
+          <Splash />
+          <About />
+          <div style={{height: "450px"}} />
+          <Journey />
+          <div style={{height: "430px"}} />
+          <Why />
+          <PastSponsors />
+          <Notify />
+          {/* <PastSpeakers /> */}
+          <Faq />
+          <Question />
+          <Footer />
+      </Page>
+    </div>
   );
 }
 

@@ -1,25 +1,65 @@
 @use '../../styles/mixins.module';
-@use '../../styles/colors.module';
+@use '~@ht6/react-ui/dist/styles/colors.module';
+@use '../../styles/colors.module' as localColors;
+@use '../../styles/mixins.module' as localMixins;
 
 .root {
-  background-color: colors.$bg-1;
   padding-bottom: 6.5rem;
   padding-top: 6.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0;
+}
+
+.bg {
+  // idk
+}
+
+.contentIntro {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.whyTitle {
+  color: colors.getColor(warning-400);
+}
+
+.slidesWrapper {
+  margin-top: 172px;
+
+  @include localMixins.media(mobile) {
+    margin-top: 58px
+  }
 }
 
 .title {
-  margin: 0 0 2.5rem;
+  text-align: center;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
 }
 
-.content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 2rem;
+.titleDesc {
+  margin: 0;
+  font-size: 20px !important;
+  line-height: 28px;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
 
-  @include mixins.media(laptop) {
-    grid-template-columns: 1fr;
-    justify-items: center;
-  }
+.italicsTitle {
+  font-style: italic;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: center;
+  letter-spacing: -0.02em;
 }
 
 .points {
