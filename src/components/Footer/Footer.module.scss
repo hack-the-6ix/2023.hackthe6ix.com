@@ -17,7 +17,11 @@
 }
 
 .footerbg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
+  z-index: 1;
 }
 
 .text {
@@ -61,6 +65,9 @@
   align-items: center;
   flex-wrap: wrap;
   display: flex;
+  z-index: 3;
+  position: relative;
+  color: colors.getColor(neutral-50);
 }
 
 .floatingBtn {

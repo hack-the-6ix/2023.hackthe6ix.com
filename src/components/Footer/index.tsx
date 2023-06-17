@@ -48,7 +48,6 @@ function Footer() {
   }, []);
   return (
     <>
-      {/* <Bg className={footerbg}/> */}
       <IconButton
         onClick={() => {
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -71,6 +70,7 @@ function Footer() {
         containerClassName={root}
         as='footer'
       >
+        <Bg className={footerbg}/>
         <div className={row}>
           <Typography
             className={ht6}
