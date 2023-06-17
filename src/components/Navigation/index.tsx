@@ -1,4 +1,4 @@
-import { RiMenuLine } from '@react-icons/all-files/ri/RiMenuLine';
+import Hamborgre from '../../images/menu-icon.svg';
 import { useCallback, useEffect, useRef, useState, MouseEvent } from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
 import { Button, BasicLink, BasicLinkProps, Typography } from '@ht6/react-ui';
@@ -132,7 +132,7 @@ function Navigation({
         </ul>
       )}
       <button onClick={() => setShow(true)} className={menu}>
-        <RiMenuLine className={menuIcon} size={14}/>
+        <Hamborgre className={menuIcon}/>
       </button>
       <Popup
         onClose={() => setShow(false)}
