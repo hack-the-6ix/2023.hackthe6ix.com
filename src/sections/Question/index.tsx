@@ -65,7 +65,7 @@ function Question() {
           textType='heading2'
           as='h2'
         >
-          Still have a <span className={questionSpan}>question</span>?
+          Still have a <span className={questionSpan}>question?</span>
         </Typography>
         <Typography
           className={text}
