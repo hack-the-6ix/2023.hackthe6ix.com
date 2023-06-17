@@ -3,14 +3,30 @@
 @use '../../styles/mixins.module' as localMixins;
 
 .root {
-  background-color: colors.getColor(primary-700);
   padding: 3.25rem 1.5rem 1.75rem;
   position: relative;
+}
+
+.ht6 {
+  text-transform: uppercase;
+  color: #F3F6F6;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  margin: 0;
+}
+
+.footerbg {
+  width: 100%;
 }
 
 .text {
   margin: 0;
   margin-right: 2.5rem;
+
+  &.copyright {
+    font-size: 20px;
+  }
 
   @include localMixins.media(mobile) {
     margin-right: 0;
@@ -19,11 +35,11 @@
 
 .link {
   color: colors.getColor(copy-light);
-  display: block;
+  display: block; 
+  font-size: 14px;
 }
 
 .linkItem {
-  margin-right: 1.75rem;
   &:last-child {
     margin-right: 0;
   }
@@ -36,6 +52,7 @@
   display: flex;
   padding: 0;
   margin: 0;
+  gap: 4rem;
 }
 
 .row {
@@ -44,10 +61,6 @@
   align-items: center;
   flex-wrap: wrap;
   display: flex;
-
-  & > * {
-    margin-bottom: 1rem;
-  }
 }
 
 .floatingBtn {
