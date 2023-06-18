@@ -17,7 +17,7 @@ import {
   img,
   ht6,
   footerbg,
-  copyright
+  copyright,
 } from './Footer.module.scss';
 import Bg from '../../images/Footer-Bg.svg';
 import Socials from '../Socials';
