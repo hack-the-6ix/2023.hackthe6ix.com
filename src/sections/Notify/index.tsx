@@ -116,6 +116,12 @@ function Notify() {
             label='Enter email'
             name='Enter email'
             buttonText='Notify me'
+            inputProps={{
+              translucentBackground: true,
+              noBorder: true,
+              placeHolderColor: "primary-50",
+              textColor: "shades-0",
+            }}
             // onSubmit={(e) => {
             //   e.preventDefault();
             //   setSubmitting(true);

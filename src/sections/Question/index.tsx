@@ -46,6 +46,10 @@ function Question() {
     name: keyof typeof inputs,
     placeholder?: string
   ): InputProps => ({
+    translucentBackground: true,
+    noBorder: true,
+    placeHolderColor: "primary-50",
+    textColor: "shades-0",
     placeholder: placeholder ?? label,
     hideLabel: false,
     label,
@@ -87,7 +91,7 @@ function Question() {
           return false;
         }}
       >
-        <Input className={input} {...inputProps('Name', 'name', 'Enter name')} noBorder={true} />
+        <Input className={input} {...inputProps('Name', 'name', 'Enter name')} />
         <Input className={input} {...inputProps('Email', 'email', 'Enter email')} type='email' />
         <Textarea
           {...(inputProps('Enter your question', 'message') as any)}
@@ -101,6 +105,7 @@ function Question() {
           className={cx(long, textArea)}
           limit={200}
           rows={3}
+          
         />
         <div className={cx(long, btn)}>
           <Button className={button} disabled={isSubmitting} type='submit'>
