@@ -8,6 +8,10 @@
   overflow-x: clip;
   height: auto;
   margin-top: 5rem;
+
+  @include localMixins.media(tablet) {
+    margin-top: 10rem;
+  }
 }
 
 .ht6 {
@@ -17,6 +21,19 @@
   font-size: 24px;
   line-height: 32px;
   margin: 0;
+  display: block;
+
+  @include localMixins.media(tablet) {
+    display: none;
+  }
+}
+
+.logo {
+  display: none;
+
+  @include localMixins.media(tablet) {
+    display: block;
+  }
 }
 
 .footerbg {
@@ -25,6 +42,11 @@
   left: -10rem;
   width: 2000px;
   z-index: 1;
+
+  @include localMixins.media(tablet) {
+    left: -30rem;
+    bottom: 8rem;
+  }
 }
 
 .text {
@@ -37,6 +59,11 @@
 
   @include localMixins.media(mobile) {
     margin-right: 0;
+
+    &.copyright {
+      font-size: 18px;
+      line-height: 24px;
+    }
   }
 }
 
@@ -60,6 +87,10 @@
   padding: 0;
   margin: 0;
   gap: 4rem;
+
+  @include localMixins.media(tablet) {
+    display: none;
+  }
 }
 
 .row {
@@ -71,6 +102,24 @@
   z-index: 3;
   position: relative;
   color: colors.getColor(neutral-50);
+
+  .itemsmobile {
+    display: none;
+    gap: 2rem;
+  }
+
+  @include localMixins.media(tablet) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    gap: 2rem;
+
+    .itemsmobile {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }
 
 .floatingBtn {
@@ -91,15 +140,4 @@
 
 .hide {
   transform: translateY(100%) translateY(1rem);
-}
-
-.img {
-  transform: translateY(-100%);
-  position: absolute !important;
-  height: fit-content;
-  min-height: 10rem;
-  width: 100%;
-  z-index: -1;
-  margin: 0;
-  inset: 0;
 }
