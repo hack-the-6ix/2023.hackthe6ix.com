@@ -46,7 +46,6 @@ function Question() {
     name: keyof typeof inputs,
     placeholder?: string
   ): InputProps => ({
-    translucentBackground: true,
     noBorder: true,
     placeHolderColor: "primary-50",
     textColor: "shades-0",

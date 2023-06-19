@@ -117,7 +117,6 @@ function Notify() {
             name='Enter email'
             buttonText='Notify me'
             inputProps={{
-              translucentBackground: true,
               noBorder: true,
               placeHolderColor: "primary-50",
               textColor: "shades-0",
