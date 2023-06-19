@@ -5,6 +5,12 @@
 .root {
   overflow: hidden;
   width: 100%;
+  box-sizing: border-box;
+
+  background-color: rgba(17, 24, 39, 0.4);
+  padding: 1rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(6px);
 }
 
 .header {
@@ -27,27 +33,26 @@
 }
 
 .trigger {
-  @include mixins.transition(background-color);
+  @include mixins.transition(color);
   background-color: transparent;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   align-items: center;
   text-align: start;
   cursor: pointer;
-  padding: 0;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding: 0.5rem 0;
   display: flex;
   border: none;
   width: 100%;
   font-weight: 600;
   
-  &:hover {
-    background-color: colors.getColor(primary-700, $alpha: 0.06);
-  }
+  &:hover, &:active {
+    color: colors.getColor(neutral-400);
 
-  &:active {
-    background-color: colors.getColor(primary-700, $alpha: 0.12);
+    %iconLine {
+      background-color: colors.getColor(neutral-400);
+    }
   }
+  
 }
 
 .label {
@@ -66,7 +71,7 @@
 }
 
 %iconLine {
-  @include mixins.transition(transform, fast);
+  @include mixins.transition(transform background-color);
   background-color: colors.getColor(shades-0);
   border-radius: 999px;
   position: absolute;
@@ -78,6 +83,7 @@
 
 .iconLineH {
   @extend %iconLine;
+  
   .closed & {
     transform: rotate(180deg);
   }
@@ -93,7 +99,7 @@
 
 .content {
   overflow: hidden;
-  margin: 0 0.5rem;
+  margin: 0;
 }
 
 .text {

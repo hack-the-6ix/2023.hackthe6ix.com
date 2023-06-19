@@ -2,7 +2,6 @@
 @use '../../styles/mixins.module' as localMixins;
 
 .container {
-  padding: 7.25rem 0 3.75rem;
   width: 100%;
   box-sizing: border-box;
 
@@ -15,7 +14,7 @@
 .faq-heading {
   font-size: 2.5rem;
   line-height: 3rem;
-  padding: 0 2rem;
+  // padding-left: 2rem;
   font-weight: 800;
   letter-spacing: normal;
   margin: 0 0 2.25rem;
@@ -37,8 +36,7 @@
 .faqs {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 0.25rem 3rem;
-  padding: 0 2rem;
+  grid-gap: 2rem;
 
   @include localMixins.media(tablet) {
     grid-template-columns: 1fr;

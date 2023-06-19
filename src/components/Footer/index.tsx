@@ -17,9 +17,12 @@ import {
   img,
   ht6,
   footerbg,
-  copyright
+  copyright,
+  logo,
+  itemsmobile,
 } from './Footer.module.scss';
 import Bg from '../../images/Footer-Bg.svg';
+import Logo from '../../images/logo.svg';
 import Socials from '../Socials';
 
 const links: Omit<BasicLinkProps, 'linkType'>[] = [
@@ -58,15 +61,6 @@ function Footer() {
         icon={FaArrowUp}
       />
       <PageSection
-        append={
-          <StaticImage
-            alt='fictional artwork of toronto skyline'
-            src='../../images/footer.png'
-            layout='fullWidth'
-            className={img}
-            quality={100}
-          />
-        }
         containerClassName={root}
         as='footer'
       >
@@ -80,6 +74,7 @@ function Footer() {
           >
             Hack the 6ix
           </Typography>
+          <Logo className={logo}/>
           <Typography className={items} textType='subheading' as='ul'>
             {links.map((linkProps, key) => (
               <li className={linkItem} key={key}>
@@ -103,6 +98,21 @@ function Footer() {
             textType='paragraph1'
           >
             © Copyright 2023 Hack the 6ix | Made with ♡ in Toronto
+          </Typography>
+          <Typography className={cx(items, itemsmobile)} textType='subheading' as='ul'>
+            {links.map((linkProps, key) => (
+              <li className={linkItem} key={key}>
+                <BasicLink
+                  {...linkProps}
+                  rel='noopener noreferrer'
+                  className={link}
+                  linkColor='warning-400'
+                  linkStyle='styled'
+                  target='_blank'
+                  href={linkProps.href}
+                />
+              </li>
+            ))}
           </Typography>
           <Socials baseColor='copy-light' activeColor='warning-400' gap='1.75rem' />
         </div>
