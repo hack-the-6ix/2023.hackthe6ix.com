@@ -46,6 +46,9 @@ function Question() {
     name: keyof typeof inputs,
     placeholder?: string
   ): InputProps => ({
+    noBorder: true,
+    placeHolderColor: "primary-50",
+    textColor: "shades-0",
     placeholder: placeholder ?? label,
     hideLabel: false,
     label,
@@ -54,6 +57,8 @@ function Question() {
     onChange: (e) => setInputs({ ...inputs, [name]: e.currentTarget.value }),
     required: true,
     status: undefined,
+    opacity: 38,
+    opacityOnHover: 50
   });
 
   return (
@@ -87,7 +92,7 @@ function Question() {
           return false;
         }}
       >
-        <Input className={input} {...inputProps('Name', 'name', 'Enter name')} noBorder={true} />
+        <Input className={input} {...inputProps('Name', 'name', 'Enter name')} />
         <Input className={input} {...inputProps('Email', 'email', 'Enter email')} type='email' />
         <Textarea
           {...(inputProps('Enter your question', 'message') as any)}

@@ -6,8 +6,17 @@
   padding: 0.5rem 0.75rem;
   border-radius: 20px;
   border-style: solid;
-  border-width: 1px;
+  border-width: 0px;
   resize: vertical;
+  background-color: colors.getColor(neutral-50, null, 0.38);
+  
+  &:focus{
+    background-color: colors.getColor(neutral-50, null, 0.5);
+  }
+}
+
+::placeholder{
+  color: colors.getColor(primary-50);
 }
 
 .outline {
@@ -23,4 +32,5 @@
   text-align: end;
   line-height: 1;
   margin: 0;
+  color: colors.getColor(shades-0)
 }
