@@ -118,6 +118,8 @@ function Notify() {
             buttonText='Notify me'
             inputProps={{
               noBorder: true,
+              opacity: 38,
+              opacityOnHover: 50,
               placeHolderColor: "primary-50",
               textColor: "shades-0",
             }}

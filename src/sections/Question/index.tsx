@@ -57,6 +57,8 @@ function Question() {
     onChange: (e) => setInputs({ ...inputs, [name]: e.currentTarget.value }),
     required: true,
     status: undefined,
+    opacity: 38,
+    opacityOnHover: 50
   });
 
   return (
@@ -104,7 +106,6 @@ function Question() {
           className={cx(long, textArea)}
           limit={200}
           rows={3}
-          
         />
         <div className={cx(long, btn)}>
           <Button className={button} disabled={isSubmitting} type='submit'>
