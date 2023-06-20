@@ -170,7 +170,7 @@ function Navigation({
       </Popup>
       {showMlhBanner && (
         <BasicLink
-          href='https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2023-season&utm_content=yellow'
+          href='https://mlh.io/seasons/2024/events'
           rel='noreferrer noopener'
           className={banner}
           target='_blank'

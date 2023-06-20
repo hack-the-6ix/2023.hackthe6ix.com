@@ -11,7 +11,7 @@ import Question from '../sections/Question';
 import Splash from '../sections/Splash';
 import Why from '../sections/Why';
 import Journey from "../sections/Journey";
-import WebsiteFullBackground from "../../static/website-full-background.svg";
+import WebsiteFullBackground from '../../static//website-full-background.svg';
 
 
 const navLinks: NavigationProps['links'] = [

@@ -34,10 +34,6 @@ const links: Omit<BasicLinkProps, 'linkType'>[] = [
     children: 'MLH Code of Conduct',
     href: 'https://static.mlh.io/docs/mlh-code-of-conduct.pdf',
   },
-  {
-    children: 'Covid-19 Safety',
-    href: '#', // where is this supposed to go
-  },
 ];
 
 function Footer() {
