@@ -12,8 +12,8 @@
   transition: background-color 0.4s ease, border-bottom 0.4s ease;
 
   &.scrolled {
-    background-color: #020F26;
-    border-bottom: 1px solid #F3F6F6;
+    background-color: #091630;
+    border-bottom: 1px solid #aaa;
   }
 }
 
@@ -124,18 +124,14 @@
   }
 
   &Active {
-    background-color: colors.getColor(primary-200, hover, 0.1);
     color: colors.getColor(primary-500);
   }
 
   &:hover,
   &:focus,
-  &Active {
-    background-color: colors.getColor(primary-200, hover, 0.1);
-  }
-
+  &Active,
   &:active {
-    background-color: colors.getColor(primary-200, hover, 0.06);
+    background-color: colors.getColor(primary-200, hover, 0.1);
   }
 }
 
