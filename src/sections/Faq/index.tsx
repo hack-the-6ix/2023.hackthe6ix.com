@@ -2,7 +2,7 @@ import { Typography } from "@ht6/react-ui";
 import PageSection from "../../components/PageSection";
 import AccordionGroup from "../../components/AccordionGroup";
 import data from "./Faq.data";
-import { faqs, container, faqHeading, root } from "./Faq.module.scss";
+import { faqs, container, faqHeading } from "./Faq.module.scss";
 import { useEffect, useState } from "react";
 import cx from 'classnames';
 
@@ -21,7 +21,7 @@ function Faq() {
   }, []);
 
   return (
-    <PageSection className={root} containerClassName={container} id='faq'>
+    <PageSection containerClassName={container} id='faq'>
       <Typography
         className={cx(faqHeading)}
         id="faq"
