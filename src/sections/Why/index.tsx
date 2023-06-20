@@ -20,7 +20,7 @@ import {
 const slides = [
   {
     image: 'samson.png',
-    title: 'Thank you so much for this amazing opportunity.1',
+    title: 'Thank you so much for this amazing opportunity.',
     content:
       'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
     name: 'Samson Hua',
@@ -28,70 +28,35 @@ const slides = [
   },
   {
     image: 'wilson.png',
-    title: 'Thank you so much for this amazing opportunity.2',
+    title: 'Inspiring, challenging, and exciting.',
     content:
-      'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
-    name: 'Samson Hua',
+      'Just a few words I would use to describe the past weekend I had at Hack the 6ix, all from the comfort of my own home! Working on our hackathon project remotely was definitely a unique experience and had its own set of challenges, but it was super rewarding and was an incredible learning opportunity.',
+    name: 'Wilson Wang',
     role: 'Hacker',
   },
   {
     image: 'aaiman.png',
-    title: 'Thank you so much for this amazing opportunity.3',
+    title: 'So honoured to chat about diversity & inclusion at @HackThe6ix today.',
     content:
-      'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
-    name: 'Samson Hua',
-    role: 'Hacker',
-  },
-  {
-    image: 'wilson.png',
-    title: 'Thank you so much for this amazing opportunity.4',
-    content:
-      'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
-    name: 'Samson Hua',
-    role: 'Hacker',
+      'It\'s the most organized hackathon I\'ve ever been to (from what feels like millions)! Well-moderated, great questions, diverse backgrounds+views of the panelists. Kudos to the HT6 team 👏🏻',
+    name: 'Aaiman Aamir',
+    role: 'Speaker',
   },
   {
     image: 'sam.png',
-    title: 'Thank you so much for this amazing opportunity.5',
+    title: 'It was so nice to guide students through their projects.',
     content:
-      'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
-    name: 'Samson Hua',
-    role: 'Hacker',
+      'Whether it was simply providing feedback on project ideas, or helping hackers deploy apps, connect their React apps to backends, and build API\'s for their projects, I had a great time.',
+    name: 'Sam Eskandar',
+    role: 'Mentor',
   },
   {
-    image: 'sam.png',
-    title: 'Thank you so much for this amazing opportunity.5',
-    content:
-      'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
-    name: 'Samson Hua',
-    role: 'Hacker',
-  },
-
-  {
-    image: 'sam.png',
-    title: 'Thank you so much for this amazing opportunity.5',
-    content:
-      'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
-    name: 'Samson Hua',
-    role: 'Hacker',
-  },
-
-  {
-    image: 'sam.png',
-    title: 'Thank you so much for this amazing opportunity.5',
-    content:
-      'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
-    name: 'Samson Hua',
-    role: 'Hacker',
-  },
-  // {
-  //   image: 'sam.png',
-  //   title: 'It was so nice to guide students through their projects.',
-  //   content:
-  //     "Whether it was simply providing feedback on project ideas, or helping hackers deploy apps, connect their React apps to backends, and build API's for their projects, I had a great time.",
-  //   name: 'Sam Eskandar',
-  //   role: 'Mentor',
-  // },
+    image: "ham.jpeg",
+    title: "It was a really great hackathon.",
+    content: "I don't think it could be improved in any way really. I think you did everything well. I liked the fact that we did not feel left out even though we were participating from another country. They don't have live presentations at a lot of other hackathons so it was great to see it.",
+    name: "Hamish Starling",
+    role: "Hacker"
+  }
 ];
 
 const query = graphql`

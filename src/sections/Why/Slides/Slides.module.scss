@@ -80,7 +80,8 @@
   justify-content: center;
   min-width: 33.3333333%;
   scroll-snap-align: center;
-  // aspect-ratio: 468 / 270; // in accordance to design
+  align-self: stretch;
+
   gap: 18px;
   
   display: flex;
