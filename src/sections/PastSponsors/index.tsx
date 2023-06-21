@@ -61,6 +61,7 @@ function PastSponsors() {
       <Button
         buttonColor='primary-500'
         className={sponsorCTA}
+        onClick={() => {window.open('http://go.hackthe6ix.com/2023-sponsorpack')}}
       >
           Become a sponsor
       </Button>
