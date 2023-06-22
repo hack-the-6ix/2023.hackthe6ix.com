@@ -13,6 +13,8 @@ import {
   sponsorCTA
 } from './PastSponsors.module.scss';
 
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+
 const query = graphql`
   query PastSponsorsQuery {
     allFile(filter: { relativeDirectory: { eq: "past-sponsors" } }) {
@@ -36,6 +38,7 @@ function PastSponsors() {
   }, {});
   return (
     <PageSection className={container}>
+      <AnimationOnScroll animateIn="animate__fadeInDown">
       <Typography
         id='sponsors'
         className={title}
@@ -58,6 +61,7 @@ function PastSponsors() {
         <br />
         <span style={{ display: 'inline-block', width: '100%', textAlign: 'center' }}>Want to help us make it even better?</span>
       </Typography>
+      </AnimationOnScroll>
       <Button
         buttonColor='primary-500'
         className={sponsorCTA}

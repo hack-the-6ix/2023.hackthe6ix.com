@@ -5,6 +5,9 @@ import Highlight from '../../components/Highlight';
 import PageSection from '../../components/PageSection';
 import cx from 'classnames';
 import InputButton from '../../components/InputButton';
+import TurnstileChallenge from '../../components/TurnstileChallenge';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+
 import {
   container,
   text,
@@ -19,7 +22,6 @@ import {
 import React from 'react';
 import toast from "react-hot-toast";
 import {ApiService, ApiServiceError} from "../../utils";
-import TurnstileChallenge from '../../components/TurnstileChallenge';
 
 const appsOpen = false;
 
@@ -52,6 +54,7 @@ function Notify() {
   };
 
   return (
+    <AnimationOnScroll animateIn="animate__fadeInUp">
     <PageSection className={root} containerClassName={container} id='notify'>
       <StaticImage
         src='../../images/Rocket.svg'
@@ -149,6 +152,7 @@ function Notify() {
       }
       
     </PageSection>
+    </AnimationOnScroll>
   );
 }
 
