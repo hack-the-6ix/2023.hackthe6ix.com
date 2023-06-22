@@ -12,7 +12,7 @@ import Splash from '../sections/Splash';
 import Why from '../sections/Why';
 import Journey from "../sections/Journey";
 import WebsiteFullBackground from '../../static//website-full-background.svg';
-
+import "animate.css/animate.min.css";
 
 const navLinks: NavigationProps['links'] = [
   {

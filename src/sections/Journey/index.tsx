@@ -13,6 +13,8 @@ import {
   imageConnectionsAdjustment
 } from "./Journey.module.scss";
 
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+
 const textItems = [
   {
     title: "Make Memories",
@@ -41,7 +43,7 @@ const textItems = [
 
 function JourneyPoint({ item }: { item: (typeof textItems)[number] }) {
   return (
-      <>
+    <AnimationOnScroll animateIn="animate__fadeIn">
         <div className={cx(iconImage)}>
           <item.image className={item.classNames}/>
         </div>
@@ -65,7 +67,7 @@ function JourneyPoint({ item }: { item: (typeof textItems)[number] }) {
             {item.content}
           </Typography>
         </div>
-      </>
+    </AnimationOnScroll>
   );
 }
 
@@ -74,6 +76,7 @@ function Journey() {
 
   return (
     <PageSection containerClassName={root}>
+      <AnimationOnScroll animateIn="animate__fadeInDown">
       <PaperAirplane className={airplane} />
       <div id="journey">
         <Typography
@@ -95,9 +98,10 @@ function Journey() {
           journey
         </Typography>
       </div>
+      </AnimationOnScroll>
       <div className={cx(iconContainer)}>
           {
-              textItems.map((item, key) => (<JourneyPoint item={item} key={key} />))
+            textItems.map((item, key) => (<JourneyPoint item={item} key={key} />))
           }
       </div>
     </PageSection>

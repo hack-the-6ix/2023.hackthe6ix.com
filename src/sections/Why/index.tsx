@@ -17,6 +17,8 @@ import {
   slidesWrapper
 } from './Why.module.scss';
 
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+
 const slides = [
   {
     image: 'samson.png',
@@ -130,6 +132,7 @@ function Why() {
   return (
     <div className={root}>
       {/*<Bg className={bg} />*/}
+      <AnimationOnScroll animateIn="animate__fadeInUp">
       <div className={contentIntro}>
         <Typography
           className={title}
@@ -162,6 +165,7 @@ function Why() {
           </Typography>
         </Typography>
       </div>
+      </AnimationOnScroll>
       <div className={slidesWrapper}>
         <Slides headingLevel='h3' slides={transformedData} />
       </div>

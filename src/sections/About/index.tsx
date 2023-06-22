@@ -22,6 +22,8 @@ import ProjectsBorder from '../../images/about-us/projects-border.svg';
 import WorkshopsBackground from '../../images/about-us/projects-background.svg';
 import WorkshopsBorder from '../../images/about-us/projects-border.svg';
 
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+
 const stats = [
   {
     label: 'HACKERS',
@@ -58,6 +60,7 @@ const stats = [
 function About() {
   return (
     <PageSection className={cx(container)} id='about'>
+      <AnimationOnScroll animateIn="animate__fadeIn">
       <div>
         <ul className={items}>
           {stats.map(({ label, stat , background: statBackground, border: statBorder}, key) => (
@@ -89,6 +92,8 @@ function About() {
           ))}
         </ul>
       </div>
+      </AnimationOnScroll>
+      <AnimationOnScroll animateIn="animate__fadeInDown">
       <div className={cx(bottomTextContainer)}>
         <div style={{ marginBottom: '-2.5rem' }}>
           <Typography
@@ -109,9 +114,8 @@ function About() {
             Join hundreds of students from diverse backgrounds, disciplines, and skill levels to work together on projects that have real-world impact. We'll handle the back-end, so just show up and have fun!
           </Typography>
         </div>
-
-
       </div>
+      </AnimationOnScroll>
     </PageSection>
   );
 }

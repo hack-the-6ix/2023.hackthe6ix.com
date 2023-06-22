@@ -17,6 +17,7 @@ import {
   faqCta,
 } from './Notify.module.scss';
 import React from 'react';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 const appsOpen = false;
 
@@ -54,6 +55,7 @@ function Notify() {
   // };
 
   return (
+    <AnimationOnScroll animateIn="animate__fadeInUp">
     <PageSection className={root} containerClassName={container} id='notify'>
       <StaticImage
         src='../../images/Rocket.svg'
@@ -158,6 +160,7 @@ function Notify() {
       }
       
     </PageSection>
+    </AnimationOnScroll>
   );
 }
 
