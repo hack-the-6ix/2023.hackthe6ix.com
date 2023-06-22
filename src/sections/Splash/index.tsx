@@ -32,8 +32,13 @@ import {
   hideDesktop,
   featureObject,
   splashContent,
+  ship,
+  cloud,
+  shipWrapper
 } from './Splash.module.scss';
 import { ApiService, ApiServiceError } from '../../utils';
+import Ship from '../../images/ship.svg'
+import Cloud from '../../images/cloud.svg'
 
 const query = graphql`
   query SplashQuery {
@@ -107,6 +112,10 @@ function Splash() {
       containerClassName={container}
       className={splashContent}
     >
+      <div className={shipWrapper}>
+        <Cloud className={cloud}/>
+        <Ship className={ship}/>
+      </div>
         <Typography
           className={cx(text, dates)}
           textColor='neutral-50'

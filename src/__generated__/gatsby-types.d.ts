@@ -2454,6 +2454,11 @@ type PastSpeakersSectionQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PastSpeakersSectionQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<{ readonly base: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
 
+type PastSponsorsQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type PastSponsorsQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<{ readonly base: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
+
 type SocialsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 

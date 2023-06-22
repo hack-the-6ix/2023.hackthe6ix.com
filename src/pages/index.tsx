@@ -42,7 +42,7 @@ const pageBackground = {
   backgroundImage: `url(${WebsiteFullBackground})`,
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
-  // overflow: 'hidden'
+  overflow: 'clip'
 }
 
 function IndexPage() {
