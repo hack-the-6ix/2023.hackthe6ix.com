@@ -19,7 +19,7 @@
     }
   },
   "dependencies": {
-    "@ht6/react-ui": "3.2.1",
+    "@ht6/react-ui": "3.2.2",
     "@react-icons/all-files": "^4.1.0",
     "classnames": "^2.3.1",
     "gatsby": "^5.9.0",
@@ -31,6 +31,7 @@
     "gatsby-plugin-sass": "^6.9.0",
     "gatsby-plugin-sharp": "^5.9.0",
     "gatsby-plugin-sitemap": "^6.9.0",
+    "gatsby-plugin-turnstile": "^1.1.1",
     "gatsby-plugin-typegen": "^3.1.0",
     "gatsby-source-filesystem": "^5.9.0",
     "gatsby-transformer-sharp": "^5.9.0",

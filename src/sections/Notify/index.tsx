@@ -17,41 +17,39 @@ import {
   faqCta,
 } from './Notify.module.scss';
 import React from 'react';
+import toast from "react-hot-toast";
+import {ApiService, ApiServiceError} from "../../utils";
+import TurnstileChallenge from '../../components/TurnstileChallenge';
 
 const appsOpen = false;
 
 function Notify() {
-  // const [emailInput, setEmailInput] = useState({email: ''});
-  // const [submitting, setSubmitting] = useState(false);
+  const [email, setEmail] = useState('');
+  const [token, setToken] = useState('');
 
-  // Email Submission
-  // const onSubmit = async () => {
-  //   const id = toast.loading('Loading...');
-  //   try {
-  //     const { response } = ApiService.subscribe(emailInput, 'subscribe', 'reset');
-  //     toast.success(await response, {id});
-  //     setEmailInput({email: ''});
-  //   } catch (err) {
-  //     switch ((err as any).name) {
-  //       case 'AbbortError':
-  //         break;
-  //       case 'ApiServiceError':
-  //         toast.error((err as ApiServiceError).getHumanError(), { id });
-  //         console.error(err);
-  //         break;
-  //       default:
-  //         toast.error('Unexpected error. Please try again later', { id });
-  //         console.error(err);
-  //         break;
-  //     }
-  //   }
-    
-  //   // To validate provided email address
-  //   if (!/\S+@\S+\.\S+/.test(emailInput.email)) {
-  //     toast.error("Please enter a valid email address");
-  //     return;
-  //   };
-  // };
+  const onSubmit = async () => {
+    const id = toast.loading('Loading...');
+    try {
+      const { response } = ApiService.subscribe({
+        email, captchaToken: token
+      }, 'subscribe', 'reset');
+      toast.success(await response, {id});
+      setEmail('');
+    } catch (err) {
+      switch ((err as any).name) {
+        case 'AbbortError':
+          break;
+        case 'ApiServiceError':
+          toast.error((err as ApiServiceError).getHumanError(), { id });
+          console.error(err);
+          break;
+        default:
+          toast.error('Unexpected error. Please try again later', { id });
+          console.error(err);
+          break;
+      }
+    }
+  };
 
   return (
     <PageSection className={root} containerClassName={container} id='notify'>
@@ -114,7 +112,7 @@ function Notify() {
         (<React.Fragment>
           <InputButton
             label='Enter email'
-            name='Enter email'
+            name='email'
             buttonText='Notify me'
             inputProps={{
               noBorder: true,
@@ -122,26 +120,19 @@ function Notify() {
               opacityOnHover: 50,
               placeHolderColor: "primary-50",
               textColor: "shades-0",
+              required: true,
+              value: email,
+              type: 'email',
+              onChange: (e) => setEmail(e.currentTarget.value)
             }}
-            // onSubmit={(e) => {
-            //   e.preventDefault();
-            //   setSubmitting(true);
-            //   onSubmit();
-            //   return false;
-            // }}
-            // onChange={(e) => {
-            //   setEmailInput({
-            //     ...inputProps,
-            //     [e.currentTarget.name]: e.currentTarget.value.slice(0, 200),
-            //   });
-            // }}
+            onSubmit={(e) => {
+              e.preventDefault();
+              onSubmit();
+              return false;
+            }}
            >
-            <Button
-              type='submit'
-            >
-              Notify me
-            </Button>
           </InputButton>
+          <TurnstileChallenge onToken={(token) => setToken(token)}/>
           <Typography
           className={cx(text, faqCta)}
           textColor='neutral-50'

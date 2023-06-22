@@ -95,6 +95,12 @@ const config: GatsbyConfig = {
     },
     'gatsby-plugin-netlify',
     !isDev && 'gatsby-plugin-mini-css-class-name',
+    {
+      resolve: 'gatsby-plugin-turnstile',
+      options: {
+        siteKey: process.env.CAPTCHA_SITE_KEY,
+      },
+    }
   ].filter(Boolean) as PluginRef[],
 };
 

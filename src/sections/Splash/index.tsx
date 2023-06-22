@@ -1,7 +1,7 @@
 import { Button, Typography } from '@ht6/react-ui';
 import { graphql, useStaticQuery } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { FaArrowDown } from '@react-icons/all-files/fa/FaArrowDown';
 import cx from 'classnames';
 import PageSection from '../../components/PageSection';
@@ -11,6 +11,8 @@ import IconButton from '../../components/IconButton';
 import VCarousel from './VCarousel/VCarousel';
 import Link from '../../components/Link';
 import InputButton from '../../components/InputButton';
+import TurnstileChallenge from "../../components/TurnstileChallenge";
+
 import toast from 'react-hot-toast';
 import {
   container,
@@ -67,6 +69,8 @@ function Splash() {
   const endDate = new Date(data.allSite.nodes[0].siteMetadata!.event!.end!);
   const isSameMonth = startDate.getMonth() === endDate.getMonth();
   // const [emailInput, setEmailInput] = useState({email: ''});
+  const [email, setEmail] = useState('');
+  const [token, setToken] = useState('');
   // const [submitting, setSubmitting] = useState(false);
 
   const startFormat = new Intl.DateTimeFormat('en-CA', {
@@ -79,33 +83,29 @@ function Splash() {
   });
 
   // Email Submission
-  // const onSubmit = async () => {
-  //   const id = toast.loading('Loading...');
-  //   try {
-  //     const { response } = ApiService.subscribe(emailInput, 'subscribe', 'reset');
-  //     toast.success(await response, {id});
-  //     setEmailInput({email: ''});
-  //   } catch (err) {
-  //     switch ((err as any).name) {
-  //       case 'AbbortError':
-  //         break;
-  //       case 'ApiServiceError':
-  //         toast.error((err as ApiServiceError).getHumanError(), { id });
-  //         console.error(err);
-  //         break;
-  //       default:
-  //         toast.error('Unexpected error. Please try again later', { id });
-  //         console.error(err);
-  //         break;
-  //     }
-  //   }
-    
-  //   // To validate provided email address
-  //   if (!/\S+@\S+\.\S+/.test(emailInput.email)) {
-  //     toast.error("Please enter a valid email address");
-  //     return;
-  //   };
-  // };
+  const onSubmit = async () => {
+    const id = toast.loading('Loading...');
+    try {
+      const { response } = ApiService.subscribe({
+          email, captchaToken: token
+      }, 'subscribe', 'reset');
+      toast.success(await response, {id});
+      setEmail('');
+    } catch (err) {
+      switch ((err as any).name) {
+        case 'AbbortError':
+          break;
+        case 'ApiServiceError':
+          toast.error((err as ApiServiceError).getHumanError(), { id });
+          console.error(err);
+          break;
+        default:
+          toast.error('Unexpected error. Please try again later', { id });
+          console.error(err);
+          break;
+      }
+    }
+  }
 
   return (
     <PageSection
@@ -145,59 +145,34 @@ function Splash() {
         </Typography>
         <InputButton
           label='Enter email'
-          name='Enter email'
+          name='email'
           buttonText='Notify me'
           inputProps={{
-            noBorder: true,
-            opacity: 38,
-            opacityOnHover: 50,
-            placeHolderColor: "primary-50",
-            textColor: "shades-0",
+              noBorder: true,
+              required: true,
+              opacity: 38,
+              opacityOnHover: 50,
+              placeHolderColor: "primary-50",
+              textColor: "shades-0",
+              value: email,
+              type: 'email',
+              onChange: (e) => setEmail(e.currentTarget.value)
           }}
-          // onSubmit={(e) => {
-          //   e.preventDefault();
-          //   setSubmitting(true);
-          //   onSubmit();
-          //   return false;
-          // }}
-          // onChange={(e) => {
-          //   setEmailInput({
-          //     ...inputProps,
-          //     [e.currentTarget.name]: e.currentTarget.value.slice(0, 200),
-          //   });
-          // }}
+          onSubmit={(e) => {
+            e.preventDefault();
+            onSubmit();
+            return false;
+          }}
+
         >
-          <Button
-            type='submit'
-          >
-            Notify me
-          </Button>
         </InputButton>
+        <TurnstileChallenge onToken={(token) => setToken(token)}/>
         <Socials
           className={socials}
           baseColor='shades-0'
           activeColor='primary-500' 
           gap='1rem'
         />
-
-
-      {/* From 2022:
-      <IconButton
-        onClick={(e: MouseEvent) => {
-          e.preventDefault();
-          history.replaceState({}, '', '#about');
-          let top = 0;
-          try {
-            top = document.querySelector<HTMLElement>('#about')?.offsetTop ?? 0;
-          } catch {}
-          const offset = window.innerHeight * 0.2;
-          window.scrollTo({ top: top - offset, behavior: 'smooth' });
-        }}
-        icon={FaArrowDown}
-        label='Learn More'
-        href='#about'
-        as='a'
-      /> */}
     </PageSection>
   );
 }

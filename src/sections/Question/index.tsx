@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import PageSection from '../../components/PageSection';
 import { Input, Button, Typography, InputProps } from '@ht6/react-ui';
 import { content, title, text, form, long, btn, input, questionSpan, textArea, button } from './Question.module.scss';
@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import cx from 'classnames';
 import { ApiActions, ApiService, ApiServiceError } from '../../utils';
 import Textarea from '../../components/Textarea';
+import TurnstileChallenge from "../../components/TurnstileChallenge";
 
 function Question() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -15,12 +16,15 @@ function Question() {
     message: '',
   });
 
-  
+  const [token, setToken] = useState('');
 
   const onSubmit = async () => {
     const id = toast.loading('Loading...');
     try {
-      const { response } = ApiService.ask(inputs, 'question--ask', 'reset');
+      const { response } = ApiService.ask({
+        ...inputs,
+        captchaToken: token
+      }, 'question--ask', 'reset');
       toast.success(await response, { id });
       setInputs({ name: '', email: '', message: '' });
     } catch (err) {
@@ -107,6 +111,7 @@ function Question() {
           limit={200}
           rows={3}
         />
+        <TurnstileChallenge onToken={(token) => setToken(token)}/>
         <div className={cx(long, btn)}>
           <Button className={button} disabled={isSubmitting} type='submit'>
             Send
