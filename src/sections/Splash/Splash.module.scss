@@ -38,8 +38,8 @@
 .shipWrapper {
   position: absolute;
   z-index: 0;
-  right: 0;
-  width: 35rem;
+  right: 5rem;
+  width: 40rem;
   animation: fadeIn 1.5s ease-in-out;
 
   @include localMixins.media(desktop) {

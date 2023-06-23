@@ -7,6 +7,8 @@ import cx from 'classnames';
 import { ApiActions, ApiService, ApiServiceError } from '../../utils';
 import Textarea from '../../components/Textarea';
 
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+
 function Question() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [inputs, setInputs] = useState({
@@ -64,14 +66,16 @@ function Question() {
   return (
     <PageSection className={content} id='question'>
       <div>
+        <AnimationOnScroll animateIn="animate__fadeInDown">
         <Typography
           className={title}
           textColor='neutral-50'
           textType='heading2'
           as='h2'
-        >
+          >
           Still have a <span className={questionSpan}>question?</span>
         </Typography>
+        </AnimationOnScroll>
         <Typography
           className={text}
           textColor='neutral-50'
