@@ -1,4 +1,5 @@
 import { useLocation } from '@reach/router';
+import {StaticImage} from "gatsby-plugin-image";
 import Footer from '../components/Footer';
 import Navigation, { NavigationProps } from '../components/Navigation';
 import Page from '../components/Page';
@@ -11,7 +12,7 @@ import Question from '../sections/Question';
 import Splash from '../sections/Splash';
 import Why from '../sections/Why';
 import Journey from "../sections/Journey";
-import WebsiteFullBackground from '../../static//website-full-background.svg';
+import WebsiteFullBackgroundNoBackground from '../../static/bgnoheronobg.webp';
 import "animate.css/animate.min.css";
 
 const navLinks: NavigationProps['links'] = [
@@ -38,17 +39,56 @@ const navLinks: NavigationProps['links'] = [
 ];
 
 const pageBackground = {
-  backgroundColor: "#020F29",
-  backgroundImage: `url(${WebsiteFullBackground})`,
+  // backgroundColor: "#020F29",
+  backgroundImage: `url(${WebsiteFullBackgroundNoBackground})`,
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
-  overflow: 'clip'
+  top: 0,
+  bottom: 0,
+  left: 0,
+  right: 0,
+  position: "absolute"
 }
 
 function IndexPage() {
   const location = useLocation();
   return (
-    <div id="page-container" style={pageBackground}>
+    <div id="page-container" style={{
+      position: "relative",
+      overflow: 'clip',
+      backgroundColor: "#000E28",
+    }}>
+      <StaticImage
+          src={"../../static/bghero.svg"} alt={"A background"}
+          loading={"eager"}
+          objectPosition={"73% 0%"}
+          quality={80}
+          style={{
+            position: "absolute",
+            top: "0",
+            height: "420vh"
+          }}/>
+      {/*<img*/}
+      {/*    style={{*/}
+      {/*      position: "absolute",*/}
+      {/*      top: "0",*/}
+      {/*    }}*/}
+      {/*    src={BgHero}></img>*/}
+      <div
+        style={pageBackground}
+        ></div>
+
+      {/*<StaticImage*/}
+      {/*    src={"../../static/bghero.svg"} alt={"A background"}*/}
+      {/*    loading={"eager"}*/}
+      {/*    objectPosition={"73% 0%"}*/}
+      {/*    style={{*/}
+      {/*      position: "absolute",*/}
+      {/*      top: "0",*/}
+      {/*      // bottom: "0",*/}
+      {/*      right: "0",*/}
+      {/*      // zIndex: "-10000"*/}
+      {/*    }}/>*/}
       <Page title='Home'>
         <Navigation links={navLinks} showMlhBanner useScrollSpy />
           <Splash />
