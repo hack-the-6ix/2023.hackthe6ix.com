@@ -50,7 +50,7 @@ function IndexPage() {
   return (
     <div id="page-container" style={pageBackground}>
       <Page title='Home'>
-        <Navigation links={navLinks} showMlhBanner useScrollSpy />
+        <Navigation links={navLinks} showMlhBanner useScrollSpy/>
           <Splash />
           <About />
           <div style={{height: "450px"}} />

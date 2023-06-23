@@ -17,14 +17,19 @@ import {
   menu,
   menuIcon,
   mobileNav,
+  mobileNavShow,
+  mobileNavWrapper,
   mobileNavItem,
   mobileNavItemActive,
   banner,
   apply,
   applyContainer,
   applyMobile,
-  scrolled
+  scrolled,
+  hamborgreClass,
+  mobileNavCTAWrapper
 } from './Navigation.module.scss';
+import Xicon from '../../images/xIcon.svg';
 import { Link as GatsbyLink } from 'gatsby';
 
 function setHash(event: MouseEvent, path: string, scroll?: boolean) {
@@ -131,16 +136,23 @@ function Navigation({
           {showApply && <Button onClick={() => window.open('https://dash.hackthe6ix.com')}>Apply now</Button>}
         </ul>
       )}
-      <button onClick={() => setShow(true)} className={menu}>
+      <button onClick={() => setShow(!show)} className={hamborgreClass}>
         <Hamborgre />
       </button>
-      <Popup
-        onClose={() => setShow(false)}
-        label='Navigation Menu'
-        className={mobileNav}
-        show={show}
-        as='ul'
+      <div
+        className={cx(mobileNav, (show) ? mobileNavShow : "")}
       >
+        <div className={mobileNavWrapper}>
+          <BasicLink
+            onClick={(...args) => setHash(...args, '#', true)}
+            className={logo}
+            to={base}
+            as={GatsbyLink}
+          >
+            <Logo className={logoSvg} />
+          </BasicLink>
+          <Xicon onClick={() => setShow(false)} />
+        </div>
         {links.map((link, key) => {
           return (
             <Typography
@@ -148,7 +160,7 @@ function Navigation({
               textType='paragraph2'
               textWeight={650}
               textColor='grey'
-              as='li'
+              as='span'
             >
               <BasicLink
                 {...link}
@@ -165,10 +177,12 @@ function Navigation({
             </Typography>
           );
         })}
-        <Button buttonVariant='secondary' onClick={() => window.open('mailto:hello@hackthe6ix.com')}>Contact us</Button>
-        {showApply && <Button onClick={() => window.open('https://dash.hackthe6ix.com')}>Apply now</Button>}
-      </Popup>
-      {showMlhBanner && (
+        <div className={mobileNavCTAWrapper}>
+          {showApply && <Button onClick={() => window.open('https://dash.hackthe6ix.com')}>Apply now</Button>}
+          <Button buttonVariant='secondary' onClick={() => window.open('mailto:hello@hackthe6ix.com')}>Contact us</Button>
+        </div>
+      </div>
+      {(showMlhBanner) && (
         <BasicLink
           href='https://mlh.io/seasons/2024/events'
           rel='noreferrer noopener'
