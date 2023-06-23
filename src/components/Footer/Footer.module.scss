@@ -42,6 +42,7 @@
   left: -10rem;
   width: 2000px;
   z-index: 1;
+  pointer-events: none;
 
   @include localMixins.media(tablet) {
     left: -30rem;
