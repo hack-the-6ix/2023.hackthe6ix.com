@@ -14,8 +14,6 @@ import {
   linkItems,
   linkItem,
   linkItemActive,
-  menu,
-  menuIcon,
   mobileNav,
   mobileNavShow,
   mobileNavWrapper,
@@ -27,7 +25,8 @@ import {
   applyMobile,
   scrolled,
   hamborgreClass,
-  mobileNavCTAWrapper
+  mobileNavCTAWrapper,
+  xicon
 } from './Navigation.module.scss';
 import Xicon from '../../images/xIcon.svg';
 import { Link as GatsbyLink } from 'gatsby';
@@ -136,9 +135,7 @@ function Navigation({
           {showApply && <Button onClick={() => window.open('https://dash.hackthe6ix.com')}>Apply now</Button>}
         </ul>
       )}
-      <button onClick={() => setShow(!show)} className={hamborgreClass}>
-        <Hamborgre />
-      </button>
+      <Hamborgre onClick={() => setShow(!show)} className={hamborgreClass}/>
       <div
         className={cx(mobileNav, (show) ? mobileNavShow : "")}
       >
@@ -151,7 +148,7 @@ function Navigation({
           >
             <Logo className={logoSvg} />
           </BasicLink>
-          <Xicon onClick={() => setShow(false)} />
+          <Xicon className={xicon} onClick={() => setShow(false)} />
         </div>
         {links.map((link, key) => {
           return (

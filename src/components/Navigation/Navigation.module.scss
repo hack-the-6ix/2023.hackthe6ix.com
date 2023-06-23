@@ -93,8 +93,7 @@
 
 .mobileNav {
   @include mixins.transition(width opacity);
-  width: 0%;
-  background-color: #010f29;
+  background-color: #091630;
   position: fixed;
   right: 0;
   top: 0;
@@ -105,7 +104,9 @@
   flex-direction: column;
   gap: 12px;
   opacity: 0;
-  
+  pointer-events: none;
+  width: 100%;
+
   .mobileNavWrapper {
     display: flex;
     justify-content: space-between;
@@ -114,8 +115,8 @@
   }
 
   &.mobileNavShow {
-    width: 100%;
     opacity: 1;
+    pointer-events: all;
   }
   
   .mobileNavCTAWrapper {
@@ -141,6 +142,20 @@
   }
 }
 
+.xicon {
+  @include mixins.transition(background-color outline);
+  cursor: pointer;
+  outline: 0.5rem solid transparent;
+  // border-radius: 0.5rem;
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: 0.5rem solid colors.getColor(primary-500, $alpha: 0.14);
+    background-color: colors.getColor(primary-500, $alpha: 0.14);
+  }
+}
+
 .mobileNavItem {
   margin: 0 1.25rem;
   @include mixins.transition(background-color color);
@@ -160,22 +175,17 @@
 }
 
 .hamborgreClass {
-  @include mixins.transition(background-color color);
+  @include mixins.transition(background-color);
   background-color: transparent;
-  border-radius: 0.25rem;
-  padding: 0.5rem;
-  aspect-ratio: 1;
   display: none;
   border: none;
-  padding: 0;
-  margin-right: 24px;
+  padding: 1rem;
+  margin: auto 0;
+  margin-right: 12px;
+  cursor: pointer;
 
   &:hover,
-  &:focus {
-    background-color: colors.getColor(primary-500, $alpha: 0.08);
-    color: colors.getColor(primary-500);
-  }
-
+  &:focus,
   &:active {
     background-color: colors.getColor(primary-500, $alpha: 0.14);
   }
