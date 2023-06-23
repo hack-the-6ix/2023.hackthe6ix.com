@@ -66,29 +66,11 @@ function IndexPage() {
           style={{
             position: "absolute",
             top: "0",
-            height: "420vh"
+            height: "420vh",
           }}/>
-      {/*<img*/}
-      {/*    style={{*/}
-      {/*      position: "absolute",*/}
-      {/*      top: "0",*/}
-      {/*    }}*/}
-      {/*    src={BgHero}></img>*/}
       <div
         style={pageBackground}
         ></div>
-
-      {/*<StaticImage*/}
-      {/*    src={"../../static/bghero.svg"} alt={"A background"}*/}
-      {/*    loading={"eager"}*/}
-      {/*    objectPosition={"73% 0%"}*/}
-      {/*    style={{*/}
-      {/*      position: "absolute",*/}
-      {/*      top: "0",*/}
-      {/*      // bottom: "0",*/}
-      {/*      right: "0",*/}
-      {/*      // zIndex: "-10000"*/}
-      {/*    }}/>*/}
       <Page title='Home'>
         <Navigation links={navLinks} showMlhBanner useScrollSpy />
           <Splash />
