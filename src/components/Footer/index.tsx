@@ -67,7 +67,7 @@ function Footer() {
             textColor='primary-200'
             textType='heading2'
             as='p'
-          >
+            >
             Hack the 6ix
           </Typography>
           <Logo className={logo}/>

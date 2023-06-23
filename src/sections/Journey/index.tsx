@@ -43,7 +43,7 @@ const textItems = [
 
 function JourneyPoint({ item }: { item: (typeof textItems)[number] }) {
   return (
-    <AnimationOnScroll animateIn="animate__fadeIn">
+    <AnimationOnScroll animateIn="animate__zoomIn animate__fast">
         <div className={cx(iconImage)}>
           <item.image className={item.classNames}/>
         </div>
