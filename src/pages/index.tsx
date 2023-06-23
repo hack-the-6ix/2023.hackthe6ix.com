@@ -67,6 +67,7 @@ function IndexPage() {
             position: "absolute",
             top: "0",
             height: "420vh",
+            pointerEvents: "none"
           }}/>
       <div
         style={pageBackground}
