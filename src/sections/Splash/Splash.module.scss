@@ -8,6 +8,7 @@
   padding-top: 11.5625rem;
   padding-left: 2rem;
   padding-right: 2rem;
+  animation: fadeIn 1.5s ease-in-out;
 
   @include localMixins.media(tablet) {
     // TODO: Check that ship is not cut off in mobile

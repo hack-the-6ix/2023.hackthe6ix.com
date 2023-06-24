@@ -61,7 +61,7 @@ const query = graphql`
   }
 `;
 
-const words = ['network.', 'learn.', 'win.', 'create a project.', 'collaborate.'];
+const words = ['learn.', 'network.', 'win.', 'create a project.', 'collaborate.'];
 
 function Splash() {
   const data = useStaticQuery<GatsbyTypes.SplashQueryQuery>(query);

@@ -24,6 +24,9 @@
 
 .link {
   display: block;
+  &:hover {
+    color: darken(#fff, 20%);
+  }
   @each $color in map-keys(colors.$config) {
     &--#{$color} {
       color: colors.getColor($color);
