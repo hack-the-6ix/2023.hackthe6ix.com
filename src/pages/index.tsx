@@ -47,33 +47,45 @@ const pageBackground = {
   bottom: 0,
   left: 0,
   right: 0,
-  position: "absolute"
+  position: "absolute",
+  pointerEvents: "none"
 }
 
 function IndexPage() {
   const location = useLocation();
   return (
-    <div id="page-container" style={{
-      position: "relative",
-      overflow: 'clip',
-      backgroundColor: "#000E28",
-    }}>
-      <StaticImage
-          src={"../../static/bghero.svg"} alt={"A background"}
-          loading={"eager"}
-          objectPosition={"73% 0%"}
-          quality={80}
-          style={{
-            position: "absolute",
-            top: "0",
-            height: "420vh",
-            pointerEvents: "none"
-          }}/>
-      <div
-        style={pageBackground}
-        ></div>
-      <Page title='Home'>
-        <Navigation links={navLinks} showMlhBanner useScrollSpy />
+    <>
+      <div id="page-container" style={{
+        overflow: 'clip',
+        position: "relative"
+      }}>
+        <div id="background-container" style={{
+          position: "absolute",
+          backgroundColor: "#000E28",
+          top: 0,
+          right: 0,
+          left: 0,
+          bottom: 0,
+          zIndex: "-10000"
+        }}>
+          <StaticImage
+              src={"../../static/bghero.svg"} alt={"A background"}
+              loading={"eager"}
+              objectPosition={"73% 0%"}
+              quality={80}
+              style={{
+                position: "absolute",
+                top: "0",
+                height: "400vh",
+                minWidth: "100vw",
+                pointerEvents: "none",
+              }}/>
+          <div
+              style={pageBackground}
+          ></div>
+        </div>
+        <Page title='Home'>
+          <Navigation links={navLinks} showMlhBanner useScrollSpy />
           <Splash />
           <About />
           <div style={{height: "450px"}} />
@@ -86,8 +98,9 @@ function IndexPage() {
           <Faq />
           <Question />
           <Footer />
-      </Page>
-    </div>
+        </Page>
+      </div>
+    </>
   );
 }
 

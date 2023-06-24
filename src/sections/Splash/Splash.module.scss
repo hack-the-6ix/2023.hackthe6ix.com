@@ -4,10 +4,12 @@
 .container {
   box-sizing: border-box;
   position: relative;
-  padding-bottom: 36.3125rem;
-  padding-top: 11.5625rem;
+  //padding-bottom: 36.3125rem;
+  //padding-top: 11.5625rem;
   padding-left: 2rem;
   padding-right: 2rem;
+  padding-top: 25vh;
+  min-height: 150vh;
 
   @include localMixins.media(tablet) {
     // TODO: Check that ship is not cut off in mobile
