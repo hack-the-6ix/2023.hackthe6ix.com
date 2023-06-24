@@ -39,26 +39,34 @@
 
 .shipWrapper {
   position: absolute;
-  z-index: 0;
+  z-index: -1;
   right: 5rem;
-  width: 40rem;
+  //width: 40rem;
+  width: 40vw;
   animation: fadeIn 1.5s ease-in-out;
+  top: 35vh;
 
   @include localMixins.media(desktop) {
     right: -5rem;
   }
   @include localMixins.media(laptop) {
-    width: 30rem;
+    //width: 30rem;
+    top: 30vh;
+    width: 60vw;
   }
   @include localMixins.media(nav) {
-    bottom: 15rem;
+    //bottom: 15rem;
   }
   @include localMixins.media(tablet) {
-    bottom: 3rem;
+    //top: 35vh;
     // right: 0;
+    top: 50vh;
+    width: 80vw;
   }
   @include localMixins.media(mobile) {
-    bottom: -2rem;
+    //top: 35vh;
+    top: 60vh;
+    width: 100vw;
   }
 
   .ship {
@@ -66,26 +74,35 @@
     z-index: 1;
     position: relative;
     width: 100%;
+    //transform: translateY(40%);
+    bottom: 10vh;
 
-    @include localMixins.media(laptop) {
-      margin-top: 4rem;
+    @include localMixins.media(mobile) {
+      //top: 35vh;
+      bottom: 5vh;
     }
+
+
+    //@include localMixins.media(laptop) {
+    //  margin-top: 4rem;
+    //}
   } 
   .cloud {
-    position: relative;
-    margin-bottom: -39rem;
+    position: absolute;
+    //margin-bottom: -39rem;
     z-index: 2;
     width: 100%;
+    bottom: 0;
     
-    @include localMixins.media(laptop) {
-      margin-bottom: -41rem;
-    }
-    @include localMixins.media(tablet) {
-      margin-bottom: -44rem;
-    }
-    @include localMixins.media(mobile) {
-      margin-bottom: -49rem;
-    }
+    //@include localMixins.media(laptop) {
+    //  margin-bottom: -41rem;
+    //}
+    //@include localMixins.media(tablet) {
+    //  margin-bottom: -44rem;
+    //}
+    //@include localMixins.media(mobile) {
+    //  margin-bottom: -49rem;
+    //}
   }
 }
 
