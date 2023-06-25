@@ -2,8 +2,8 @@ import { ElementType, useCallback, useEffect, useRef, useState } from 'react';
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import { Typography } from '@ht6/react-ui';
 import cx from 'classnames';
-import LeftArrow from '../../../images/why-section/icons/left-arrow.png';
-import RightArrow from '../../../images/why-section/icons/right-arrow.png';
+import LeftArrow from '../../../images/why-section/icons/left-arrow.webp';
+import RightArrow from '../../../images/why-section/icons/right-arrow.webp';
 import {
   root,
   control,

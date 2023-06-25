@@ -17,12 +17,12 @@ const pastSponsors: PastSponsorGroup[] = [
     items: [
       {
         name: 'Buf',
-        fileName: 'buf.png',
+        fileName: 'buf.webp',
         url: 'https://buf.build/',
       },
       {
         name: 'Wealthsimple',
-        fileName: 'wealthsimple.png',
+        fileName: 'wealthsimple.webp',
         url: 'https://wealthsimple.com',
       },
     ],
@@ -34,13 +34,13 @@ const pastSponsors: PastSponsorGroup[] = [
     items: [
       {
         name: 'Staples Studio',
-        fileName: 'staplesstudio.png',
+        fileName: 'staplesstudio.webp',
         url: 'https://studio.staples.ca/studio/torontocorktown',
         // offset: -25
       },
       {
         name: 'Ontario Teachers Pension Plan',
-        fileName: 'otpp.png',
+        fileName: 'otpp.webp',
         url: 'https://www.otpp.com/en-ca/careers',
       },
     ],
@@ -52,22 +52,22 @@ const pastSponsors: PastSponsorGroup[] = [
     items: [
       {
         name: 'PWC',
-        fileName: 'pwc.png',
+        fileName: 'pwc.webp',
         url: 'https://www.pwc.com/ca/en/careers/campus-recruiting/job-search.html',
       },
       {
         name: 'FDM',
-        fileName: 'fdm.png',
+        fileName: 'fdm.webp',
         url: 'https://apply.fdmgroup.com/?chkCategory=1&chkCategory=3&lstRegion=10',
       },
       {
         name: 'AMD',
-        fileName: 'amd.png',
+        fileName: 'amd.webp',
         url: 'https://www.amd.com/en',
       },
       {
         name: 'Balsamiq',
-        fileName: 'balsamiq.png',
+        fileName: 'balsamiq.webp',
         url: 'https://balsamiq.com/wireframes/',
       },
     ],
@@ -79,22 +79,22 @@ const pastSponsors: PastSponsorGroup[] = [
     items: [
       {
         name: 'Echo3D',
-        fileName: 'echo3d.png',
+        fileName: 'echo3d.webp',
         url: 'https://www.echo3d.co',
       },
       {
         name: 'StandOut Stickers',
-        fileName: 'standoutstickers.png',
+        fileName: 'standoutstickers.webp',
         url: 'https://www.standoutstickers.com/',
       },
       {
         name: 'Unity',
-        fileName: 'unity.png',
+        fileName: 'unity.webp',
         url: 'https://unity.com/students',
       },
       {
         name: 'Voiceflow',
-        fileName: 'voiceflow.png',
+        fileName: 'voiceflow.webp',
         url: 'https://www.voiceflow.com/',
       },
     ],

@@ -21,7 +21,7 @@ import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 const slides = [
   {
-    image: 'samson.png',
+    image: 'samson.webp',
     title: 'Thank you so much for this amazing opportunity.',
     content:
       'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
@@ -29,7 +29,7 @@ const slides = [
     role: 'Hacker',
   },
   {
-    image: 'wilson.png',
+    image: 'wilson.webp',
     title: 'Inspiring, challenging, and exciting.',
     content:
       'Just a few words I would use to describe the past weekend I had at Hack the 6ix, all from the comfort of my own home! Working on our hackathon project remotely was definitely a unique experience and had its own set of challenges, but it was super rewarding and was an incredible learning opportunity.',
@@ -37,7 +37,7 @@ const slides = [
     role: 'Hacker',
   },
   {
-    image: 'aaiman.png',
+    image: 'aaiman.webp',
     title: 'So honoured to chat about diversity & inclusion at @HackThe6ix today.',
     content:
       'It\'s the most organized hackathon I\'ve ever been to (from what feels like millions)! Well-moderated, great questions, diverse backgrounds+views of the panelists. Kudos to the HT6 team 👏🏻',
@@ -45,7 +45,7 @@ const slides = [
     role: 'Speaker',
   },
   {
-    image: 'sam.png',
+    image: 'sam.webp',
     title: 'It was so nice to guide students through their projects.',
     content:
       'Whether it was simply providing feedback on project ideas, or helping hackers deploy apps, connect their React apps to backends, and build API\'s for their projects, I had a great time.',
@@ -53,7 +53,7 @@ const slides = [
     role: 'Mentor',
   },
   {
-    image: "ham.jpeg",
+    image: "ham.webp",
     title: "It was a really great hackathon.",
     content: "I don't think it could be improved in any way really. I think you did everything well. I liked the fact that we did not feel left out even though we were participating from another country. They don't have live presentations at a lot of other hackathons so it was great to see it.",
     name: "Hamish Starling",

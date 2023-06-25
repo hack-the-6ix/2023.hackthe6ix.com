@@ -2449,11 +2449,6 @@ type PageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PageQueryQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null, readonly description: string | null } | null } | null };
 
-type PastSpeakersSectionQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PastSpeakersSectionQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<{ readonly base: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
-
 type PastSponsorsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
