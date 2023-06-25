@@ -1,16 +1,15 @@
-import { ElementType, useCallback, useEffect, useRef, useState } from 'react';
-import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import { Typography } from '@ht6/react-ui';
-import cx from 'classnames';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
+import { ElementType } from 'react';
 import {
-    card,
-    image,
-    text,
-    title,
-    content,
-    label,
-    name
-  } from './Card.module.scss';
+  card,
+  content,
+  image,
+  label,
+  name,
+  text,
+  title
+} from './Card.module.scss';
 
 export interface CardProps {
   slide: {

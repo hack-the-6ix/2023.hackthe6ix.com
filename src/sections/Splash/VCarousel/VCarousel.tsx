@@ -1,3 +1,4 @@
+import cx from 'classnames';
 import {
   CSSProperties,
   HTMLAttributes,
@@ -7,8 +8,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import cx from 'classnames';
-import { root, item, active } from './VCarousel.module.scss';
+import { active, item, root } from './VCarousel.module.scss';
 
 export interface VCarouselProps
   extends Omit<HTMLAttributes<HTMLUListElement>, 'children'> {

@@ -1,23 +1,23 @@
-import { ElementType, useCallback, useEffect, useRef, useState } from 'react';
-import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import { Typography } from '@ht6/react-ui';
 import cx from 'classnames';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
+import { ElementType, useCallback, useEffect, useRef, useState } from 'react';
 import LeftArrow from '../../../images/why-section/icons/left-arrow.webp';
 import RightArrow from '../../../images/why-section/icons/right-arrow.webp';
 import {
-  root,
-  control,
-  items,
-  item,
-  title,
   content,
-  label,
-  wrapper,
-  imgwrapper,
-  mobilecontroller,
+  control,
   current,
-  rightArrow,
+  imgwrapper,
+  item,
+  items,
+  label,
   leftArrow,
+  mobilecontroller,
+  rightArrow,
+  root,
+  title,
+  wrapper,
 } from './Slides.module.scss';
 
 export interface SlidesProps {

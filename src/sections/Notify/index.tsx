@@ -1,27 +1,26 @@
-import {Typography, Button, BasicLink} from '@ht6/react-ui';
+import { BasicLink, Button, Typography } from '@ht6/react-ui';
+import cx from 'classnames';
 import { StaticImage } from 'gatsby-plugin-image';
 import { useState } from 'react';
-import Highlight from '../../components/Highlight';
-import PageSection from '../../components/PageSection';
-import cx from 'classnames';
-import InputButton from '../../components/InputButton';
-import TurnstileChallenge from '../../components/TurnstileChallenge';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
+import InputButton from '../../components/InputButton';
+import PageSection from '../../components/PageSection';
+import TurnstileChallenge from '../../components/TurnstileChallenge';
 
-import {
-  container,
-  text,
-  root,
-  headline,
-  image,
-  apply,
-  textHighlight,
-  ctaHeading,
-  faqCta,
-} from './Notify.module.scss';
 import React from 'react';
 import toast from "react-hot-toast";
-import {ApiService, ApiServiceError} from "../../utils";
+import { ApiService, ApiServiceError } from "../../utils";
+import {
+  apply,
+  container,
+  ctaHeading,
+  faqCta,
+  headline,
+  image,
+  root,
+  text,
+  textHighlight,
+} from './Notify.module.scss';
 
 const appsOpen = false;
 

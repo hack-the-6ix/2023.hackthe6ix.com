@@ -1,16 +1,16 @@
-import { Typography, Button } from '@ht6/react-ui';
+import { Button, Typography } from '@ht6/react-ui';
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { CSSProperties } from 'react';
 import PageSection from '../../components/PageSection';
 import data from './PastSponsors.data';
 import {
-  container,
-  title,
   category,
-  link,
+  container,
   image,
-  sponsorCTA
+  link,
+  sponsorCTA,
+  title
 } from './PastSponsors.module.scss';
 
 import { AnimationOnScroll } from 'react-animation-on-scroll';
@@ -32,7 +32,7 @@ function PastSponsors() {
   const { allFile } = useStaticQuery<GatsbyTypes.PastSponsorsQueryQuery>(query);
   const imageMap = allFile.nodes.reduce<{
     [base: string]: GatsbyTypes.PastSponsorsQueryQuery['allFile']['nodes'][0];
-  }>((acc, img) => {
+  }>((acc:any, img:any) => {
     acc[img.base] = img;
     return acc;
   }, {});

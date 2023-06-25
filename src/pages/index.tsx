@@ -6,7 +6,6 @@ import Page from '../components/Page';
 import About from '../sections/About';
 import Faq from '../sections/Faq';
 import Notify from '../sections/Notify';
-import PastSpeakers from '../sections/PastSpeakers';
 import PastSponsors from '../sections/PastSponsors';
 import Question from '../sections/Question';
 import Splash from '../sections/Splash';
@@ -52,7 +51,7 @@ const pageBackground = {
 }
 
 function IndexPage() {
-  const location = useLocation();
+
   return (
     <>
       <div id="page-container" style={{
@@ -81,7 +80,7 @@ function IndexPage() {
                 pointerEvents: "none",
               }}/>
           <div
-              style={pageBackground}
+            style={pageBackground}
           ></div>
         </div>
         <Page title='Home'>
@@ -94,7 +93,6 @@ function IndexPage() {
           <Why />
           <PastSponsors />
           <Notify />
-          {/* <PastSpeakers /> */}
           <Faq />
           <Question />
           <Footer />

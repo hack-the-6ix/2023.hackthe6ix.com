@@ -12,6 +12,7 @@ const config: GatsbyConfig = {
   jsxRuntime: 'automatic',
   siteMetadata: {
     title: `Hack the 6ix`,
+    description: "Hack the 6ix is the largest summer student-run, not-for-profit hackathon now in its ninth iteration, based in Toronto. Join hundreds of students from diverse backgrounds, disciplines, and skill levels to work together on projects that have real-world impact.",
     siteUrl:
       process.env.SITE_URL ??
       process.env.DEPLOY_PRIME_URL ??

@@ -1,46 +1,34 @@
-import { Button, Typography } from '@ht6/react-ui';
-import { graphql, useStaticQuery } from 'gatsby';
-import { StaticImage } from 'gatsby-plugin-image';
-import React, { useState } from 'react';
-import { FaArrowDown } from '@react-icons/all-files/fa/FaArrowDown';
+import { Typography } from '@ht6/react-ui';
 import cx from 'classnames';
-import PageSection from '../../components/PageSection';
-import Highlight from '../../components/Highlight';
-import Socials from '../../components/Socials';
-import IconButton from '../../components/IconButton';
-import VCarousel from './VCarousel/VCarousel';
-import Link from '../../components/Link';
+import { graphql, useStaticQuery } from 'gatsby';
+import { useState } from 'react';
 import InputButton from '../../components/InputButton';
+import PageSection from '../../components/PageSection';
+import Socials from '../../components/Socials';
 import TurnstileChallenge from "../../components/TurnstileChallenge";
+import VCarousel from './VCarousel/VCarousel';
 
 import toast from 'react-hot-toast';
+import Cloud from '../../images/cloud.svg';
+import Ship from '../../images/ship.svg';
+import { ApiService, ApiServiceError } from '../../utils';
 import {
-  container,
-  content,
-  backdrop,
   carousel,
-  text,
-  title,
-  banner,
-  aside,
-  socials,
-  apply,
-  applyContainer,
-  textHighlight,
+  cloud,
+  container,
   dates,
   eventType,
-  hideMobile,
-  signUpText,
   hideDesktop,
-  featureObject,
-  splashContent,
+  hideMobile,
   ship,
-  cloud,
-  shipWrapper
+  shipWrapper,
+  signUpText,
+  socials,
+  splashContent,
+  text,
+  textHighlight,
+  title
 } from './Splash.module.scss';
-import { ApiService, ApiServiceError } from '../../utils';
-import Ship from '../../images/ship.svg'
-import Cloud from '../../images/cloud.svg'
 
 const query = graphql`
   query SplashQuery {
@@ -148,15 +136,15 @@ function Splash() {
           name='email'
           buttonText='Notify me'
           inputProps={{
-              noBorder: true,
-              required: true,
-              opacity: 38,
-              opacityOnHover: 50,
-              placeHolderColor: "primary-50",
-              textColor: "shades-0",
-              value: email,
-              type: 'email',
-              onChange: (e) => setEmail(e.currentTarget.value)
+            noBorder: true,
+            required: true,
+            opacity: 38,
+            opacityOnHover: 50,
+            placeHolderColor: "primary-50",
+            textColor: "shades-0",
+            value: email,
+            type: 'email',
+            onChange: (e) => setEmail(e.currentTarget.value)
           }}
           onSubmit={(e) => {
             e.preventDefault();

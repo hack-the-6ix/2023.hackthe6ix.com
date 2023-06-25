@@ -1,20 +1,16 @@
-import { Button, Typography } from '@ht6/react-ui';
-import { graphql, useStaticQuery } from 'gatsby';
-import { StaticImage } from 'gatsby-plugin-image';
+import { Typography } from '@ht6/react-ui';
 import cx from 'classnames';
-import { useMemo, useState } from 'react';
-import PageSection from '../../components/PageSection';
-import Bg from '../../images/why-section/Testimonial-Bg.svg'
+import { graphql, useStaticQuery } from 'gatsby';
+import { useMemo } from 'react';
 import Slides from './Slides';
 import {
-  root,
-  bg,
-  title,
-  whyTitle,
-  titleDesc,
-  italicsTitle,
   contentIntro,
-  slidesWrapper
+  italicsTitle,
+  root,
+  slidesWrapper,
+  title,
+  titleDesc,
+  whyTitle
 } from './Why.module.scss';
 
 import { AnimationOnScroll } from 'react-animation-on-scroll';
