@@ -88,43 +88,6 @@ function Why() {
     }));
   }, [data]);
 
-  // const textItems = [
-  //   {
-  //     title: 'Want to land your next internship?',
-  //     icon: require('../../images/why-section/icons/laptop.svg'),
-  //     content:
-  //       "Hackathons are an amazing place to meet mentors and industry professionals in the tech community. A pandemic won't stop us from fostering important conversations.",
-  //   },
-  //   {
-  //     title: 'Looking to learn from experts?',
-  //     icon: require('../../images/why-section/icons/star.svg'),
-  //     content:
-  //       "We value sharing knowledge and applying the things we learned. We'll host live workshops all weekend to give you the inspiration you need to get your project off the ground.",
-  //   },
-  //   {
-  //     title: 'Want to be rewarded for your work?',
-  //     icon: require('../../images/why-section/icons/money.svg'),
-  //     content: "With $17K+ worth of prizes, there's something for everyone.",
-  //     action: {
-  //       onClick: () => setShowPopup(true),
-  //       children: 'Prizes',
-  //     },
-  //   },
-  //   {
-  //     title: 'Need projects for your portfolio?',
-  //     icon: require('../../images/why-section/icons/light-bulb.svg'),
-  //     content:
-  //       'Complete a project worth showcasing within 48 hours from scratch and land your next job. Check out what our hackers created last year!',
-  //     action: {
-  //       children: '2021 Project Gallery',
-  //       as: 'a' as any,
-  //       href: 'https://hackthe6ix2021.devpost.com',
-  //       rel: 'noreferrer noopener',
-  //       target: '_blank',
-  //     },
-  //   },
-  // ];
-
   return (
     <div className={root}>
       {/*<Bg className={bg} />*/}
@@ -149,16 +112,12 @@ function Why() {
         >
           We understand making a change is difficult. At Hack the 6ix, we aim to inspire young hackers to tackle complex challenges, explore the possibilities of technology, and to build the world of tomorrow by giving the support they need.
           <br/><br/>
-          <Typography
+          <span
             className={cx(titleDesc, italicsTitle)}
-            textColor='shades-0'
-            textType='heading6'
-            textWeight='700'
             id='sub-details'
-            as='h6'
           >
             Join us in our <span className={whyTitle}>9th iteration</span> to discover, collaborate, and push the boundaries of technology.         
-          </Typography>
+          </span>
         </Typography>
       </div>
       </AnimationOnScroll>

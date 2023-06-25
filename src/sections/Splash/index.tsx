@@ -127,7 +127,7 @@ function Splash() {
           className={cx(text, signUpText)}
           textColor='neutral-50'
           textType='paragraph1'
-          as='paragraph'
+          as='p'
         >
           Applications opening soon! Receive the latest updates in your inbox.
         </Typography>

@@ -38,7 +38,6 @@ const navLinks: NavigationProps['links'] = [
 ];
 
 const pageBackground = {
-  // backgroundColor: "#020F29",
   backgroundImage: `url(${WebsiteFullBackgroundNoBackground})`,
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
@@ -68,17 +67,18 @@ function IndexPage() {
           zIndex: "-10000"
         }}>
           <StaticImage
-              src={"../../static/bghero.svg"} alt={"A background"}
-              loading={"eager"}
-              objectPosition={"73% 0%"}
-              quality={80}
-              style={{
-                position: "absolute",
-                top: "0",
-                height: "400vh",
-                minWidth: "100vw",
-                pointerEvents: "none",
-              }}/>
+            src={"../../static/bghero.svg"} alt={"A background"}
+            loading={"eager"}
+            objectPosition={"73% 0%"}
+            quality={80}
+            style={{
+              position: "absolute",
+              top: "0",
+              height: "400vh",
+              minWidth: "100vw",
+              pointerEvents: "none",
+            }}
+          />
           <div
             style={pageBackground}
           ></div>
