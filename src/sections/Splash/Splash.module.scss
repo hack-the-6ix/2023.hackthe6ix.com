@@ -40,34 +40,31 @@
 .shipWrapper {
   position: absolute;
   z-index: -1;
-  right: 5rem;
-  //width: 40rem;
+  right: -5rem;
   width: 40vw;
   animation: fadeIn 1.5s ease-in-out;
   top: 35vh;
 
-  @include localMixins.media(desktop) {
-    right: -5rem;
-  }
   @include localMixins.media(laptop) {
-    //width: 30rem;
     top: 30vh;
     width: 60vw;
   }
-  @include localMixins.media(nav) {
-    //bottom: 15rem;
-  }
+
   @include localMixins.media(tablet) {
-    //top: 35vh;
-    // right: 0;
     top: 50vh;
     width: 80vw;
   }
+
   @include localMixins.media(mobile) {
-    //top: 35vh;
     top: 60vh;
     width: 100vw;
   }
+
+  @media only screen and (max-height: 700px) {
+    display: none;
+  }
+
+
 
   .ship {
     animation: bob 3s ease-in-out infinite;

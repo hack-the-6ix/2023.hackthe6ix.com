@@ -11,6 +11,9 @@ import React from 'react';
 import toast from "react-hot-toast";
 import { ApiService, ApiServiceError } from "../../utils";
 import {
+  sectionBg,
+  cloudRight,
+  cloudLeft,
   apply,
   container,
   ctaHeading,
@@ -21,6 +24,9 @@ import {
   text,
   textHighlight,
 } from './Notify.module.scss';
+
+import CloudRight from '../../images/notify-section/notify-bg-right.svg';
+import CloudLeft from '../../images/notify-section/notify-bg-left.svg';
 
 const appsOpen = false;
 
@@ -53,10 +59,15 @@ function Notify() {
   };
 
   return (
-    <AnimationOnScroll animateIn="animate__fadeInUp">
+
     <PageSection className={root} containerClassName={container} id='notify'>
+      <div className={sectionBg}>
+        <CloudRight className={cloudRight}/>
+        <CloudLeft className={cloudLeft}/>
+      </div>
+      <AnimationOnScroll animateIn="animate__fadeInUp">
       <StaticImage
-        src='../../images/Rocket.svg'
+        src='../../images/notify-section/rocket.svg'
         alt='laptop'
         quality={100}
         className={image}
@@ -149,9 +160,9 @@ function Notify() {
         </Typography>
         </React.Fragment>)
       }
+      </AnimationOnScroll>
       
     </PageSection>
-    </AnimationOnScroll>
   );
 }
 

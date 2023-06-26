@@ -1,0 +1,41 @@
+@use '../styles/mixins.module' as localMixins;
+
+.pastHeroSectionSpacer {
+  height: 50vh;
+}
+
+.sectionSpacer {
+  height: 40vh;
+}
+
+.bgHero {
+  position: absolute;
+  top: 0;
+  height: 380vh;
+  min-width: 100vw;
+  pointer-events: none;
+
+  @include localMixins.media(mobile) {
+    height: 450vh;
+  }
+}
+
+.bgHeroImg {
+  object-position: 73% 200%;
+
+  @media only screen and (max-width: 2559px) {
+    object-position: 73% 50%;
+  }
+
+  @include localMixins.media(mobile) {
+    object-position: 73% 0;
+  }
+
+}
+
+.testimonialSpacerBg {
+  margin-top: -10vh;
+  left: 0;
+  min-width: 100vw;
+  min-height: 60vh;
+}

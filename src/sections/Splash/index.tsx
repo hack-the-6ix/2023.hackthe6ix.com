@@ -9,8 +9,8 @@ import TurnstileChallenge from "../../components/TurnstileChallenge";
 import VCarousel from './VCarousel/VCarousel';
 
 import toast from 'react-hot-toast';
-import Cloud from '../../images/cloud.svg';
-import Ship from '../../images/ship.svg';
+import Cloud from '../../images/splash/cloud.svg';
+import Ship from '../../images/splash/ship.svg';
 import { ApiService, ApiServiceError } from '../../utils';
 import {
   carousel,

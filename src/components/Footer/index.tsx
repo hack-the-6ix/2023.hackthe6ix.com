@@ -21,7 +21,7 @@ import {
   logo,
   itemsmobile,
 } from './Footer.module.scss';
-import Bg from '../../images/Footer-Bg.svg';
+import Bg from '../../images/footer-bg.svg';
 import Logo from '../../images/logo.svg';
 import Socials from '../Socials';
 

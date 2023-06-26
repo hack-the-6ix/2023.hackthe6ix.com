@@ -1,3 +1,4 @@
+import type React from "react";
 import { useLocation } from '@reach/router';
 import {StaticImage} from "gatsby-plugin-image";
 import Footer from '../components/Footer';
@@ -11,8 +12,18 @@ import Question from '../sections/Question';
 import Splash from '../sections/Splash';
 import Why from '../sections/Why';
 import Journey from "../sections/Journey";
-import WebsiteFullBackgroundNoBackground from '../../static/bgnoheronobg.webp';
+import WebsiteFullBackgroundNoBackground from '../images/page-background/effects.webp';
+import TestimonialBg from '../images/why-section/testimonial-bg.svg';
 import "animate.css/animate.min.css";
+
+import {
+  pastHeroSectionSpacer,
+  sectionSpacer,
+  bgHero,
+  bgHeroImg,
+  testimonialSpacerBg
+} from './index.module.scss';
+
 
 const navLinks: NavigationProps['links'] = [
   {
@@ -45,8 +56,8 @@ const pageBackground = {
   bottom: 0,
   left: 0,
   right: 0,
-  position: "absolute",
-  pointerEvents: "none"
+  position: "absolute" as React.CSSProperties["position"],
+  pointerEvents: "none" as React.CSSProperties["pointerEvents"]
 }
 
 function IndexPage() {
@@ -67,17 +78,12 @@ function IndexPage() {
           zIndex: "-10000"
         }}>
           <StaticImage
-            src={"../../static/bghero.svg"} alt={"A background"}
+            src={"../images/page-background/bghero.svg"} alt={"A background"}
             loading={"eager"}
-            objectPosition={"73% 0%"}
+            // objectPosition={"73% 50%"}
             quality={80}
-            style={{
-              position: "absolute",
-              top: "0",
-              height: "400vh",
-              minWidth: "100vw",
-              pointerEvents: "none",
-            }}
+            className={bgHero}
+            imgClassName={bgHeroImg}
           />
           <div
             style={pageBackground}
@@ -87,9 +93,13 @@ function IndexPage() {
           <Navigation links={navLinks} showMlhBanner useScrollSpy />
           <Splash />
           <About />
-          <div style={{height: "450px"}} />
+          <div className={pastHeroSectionSpacer}>
+
+          </div>
           <Journey />
-          <div style={{height: "430px"}} />
+          <div className={sectionSpacer}>
+            <TestimonialBg className={testimonialSpacerBg}/>
+          </div>
           <Why />
           <PastSponsors />
           <Notify />
