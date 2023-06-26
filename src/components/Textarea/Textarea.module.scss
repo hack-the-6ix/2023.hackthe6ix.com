@@ -2,17 +2,20 @@
 @use '~@ht6/react-ui/dist/styles/mixins.module';
 
 .field {
-  @include mixins.transition(border-color);
+  @include mixins.transition(border-color background-color);
   padding: 0.5rem 0.75rem;
   border-radius: 20px;
   border-style: solid;
   border-width: 0px;
-  resize: vertical;
+  resize: none;
   background-color: colors.getColor(neutral-50, null, 0.38);
-  
-  &:focus{
+
+  &:focus {
+    outline: none;
+    border-color: colors.getColor(primary-500);
     background-color: colors.getColor(neutral-50, null, 0.5);
   }
+
 }
 
 ::placeholder{
