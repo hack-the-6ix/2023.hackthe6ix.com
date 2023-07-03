@@ -10,6 +10,7 @@
   padding-right: 2rem;
   padding-top: 25vh;
   min-height: 150vh;
+  animation: fadeIn 1.5s ease-in-out;
 
   @include localMixins.media(tablet) {
     // TODO: Check that ship is not cut off in mobile
@@ -83,14 +84,14 @@
     //@include localMixins.media(laptop) {
     //  margin-top: 4rem;
     //}
-  } 
+  }
   .cloud {
     position: absolute;
     //margin-bottom: -39rem;
     z-index: 2;
     width: 100%;
     bottom: 0;
-    
+
     //@include localMixins.media(laptop) {
     //  margin-bottom: -41rem;
     //}

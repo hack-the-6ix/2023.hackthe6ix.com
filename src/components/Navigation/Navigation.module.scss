@@ -92,14 +92,47 @@
 }
 
 .mobileNav {
-  grid-template-columns: 1fr 1fr;
-  list-style-type: none;
-  grid-gap: 0.5rem;
-  display: grid;
+  @include mixins.transition(width opacity);
+  background-color: #091630;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 3;
+  box-sizing: border-box;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  pointer-events: none;
   width: 100%;
-  padding: 0;
-  margin: 0;
 
+  .mobileNavWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.25rem;
+  }
+
+  &.mobileNavShow {
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  .mobileNavCTAWrapper {
+    margin-top: auto;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 1.25rem;
+
+    button {
+      width: 100%;
+      font-size: 14px;
+    }
+  }
+  
   button {
     grid-column: 1/-1;
   }
@@ -109,49 +142,50 @@
   }
 }
 
+.xicon {
+  @include mixins.transition(background-color outline);
+  cursor: pointer;
+  outline: 0.5rem solid transparent;
+  // border-radius: 0.5rem;
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: 0.5rem solid colors.getColor(primary-500, $alpha: 0.14);
+    background-color: colors.getColor(primary-500, $alpha: 0.14);
+  }
+}
+
 .mobileNavItem {
+  margin: 0 1.25rem;
   @include mixins.transition(background-color color);
   box-sizing: border-box;
-  border-radius: 0.25rem;
-  padding: 0.75rem 1rem;
   display: block;
-  min-width: 1px;
-  width: clamp(1px, 100%, 11rem);
   color: colors.getColor(neutral-50);
-
-  @include localMixins.media(mobile) {
-    width: 100%;
-  }
-
-  &Active {
-    color: colors.getColor(primary-500);
-  }
+  font-size: 14px;
+  border-radius: 64px;
+  padding: 12px 24px;
 
   &:hover,
   &:focus,
   &Active,
   &:active {
-    background-color: colors.getColor(primary-200, hover, 0.1);
+    background-color: #26384e;
   }
 }
 
-.menu {
-  @include mixins.transition(background-color color);
+.hamborgreClass {
+  @include mixins.transition(background-color);
   background-color: transparent;
-  border-radius: 0.25rem;
-  padding: 0.5rem;
-  aspect-ratio: 1;
   display: none;
   border: none;
-  padding: 0;
-  margin-right: 24px;
+  padding: 1rem;
+  margin: auto 0;
+  margin-right: 12px;
+  cursor: pointer;
 
   &:hover,
-  &:focus {
-    background-color: colors.getColor(primary-500, $alpha: 0.08);
-    color: colors.getColor(primary-500);
-  }
-
+  &:focus,
   &:active {
     background-color: colors.getColor(primary-500, $alpha: 0.14);
   }
