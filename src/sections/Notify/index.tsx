@@ -1,31 +1,59 @@
-import {Typography, Button, BasicLink} from '@ht6/react-ui';
+import { BasicLink, Button, Typography } from '@ht6/react-ui';
+import cx from 'classnames';
 import { StaticImage } from 'gatsby-plugin-image';
 import { useState } from 'react';
-import Highlight from '../../components/Highlight';
-import PageSection from '../../components/PageSection';
-import cx from 'classnames';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
 import InputButton from '../../components/InputButton';
-import {
-  container,
-  text,
-  root,
-  headline,
-  image,
-  apply,
-  textHighlight,
-  ctaHeading,
-  faqCta,
-} from './Notify.module.scss';
-import React from 'react';
-import toast from "react-hot-toast";
-import {ApiService, ApiServiceError} from "../../utils";
+import PageSection from '../../components/PageSection';
 import TurnstileChallenge from '../../components/TurnstileChallenge';
 
-const appsOpen = false;
+import React from 'react';
+import toast from "react-hot-toast";
+import { ApiService, ApiServiceError } from "../../utils";
+import {
+  sectionBg,
+  cloudRight,
+  cloudLeft,
+  apply,
+  container,
+  ctaHeading,
+  faqCta,
+  headline,
+  image,
+  root,
+  text,
+  textHighlight,
+} from './Notify.module.scss';
+
+import CloudRight from '../../images/notify-section/notify-bg-right.svg';
+import CloudLeft from '../../images/notify-section/notify-bg-left.svg';
+import {graphql, useStaticQuery} from "gatsby";
+
+const query = graphql`
+  query NotifyQuery {
+    allSite {
+      nodes {
+        siteMetadata {
+          applications {
+            start
+            end
+          }
+        }
+      }
+    }
+  }
+`;
 
 function Notify() {
   const [email, setEmail] = useState('');
   const [token, setToken] = useState('');
+
+  const data = useStaticQuery<GatsbyTypes.NotifyQueryQuery>(query);
+  const startDate = new Date(data.allSite.nodes[0].siteMetadata!.applications!.start!);
+  const endDate = new Date(data.allSite.nodes[0].siteMetadata!.applications!.end!);
+  const currentDate = new Date();
+
+  const appsOpen = startDate < currentDate && currentDate < endDate;
 
   const onSubmit = async () => {
     const id = toast.loading('Loading...');
@@ -52,9 +80,15 @@ function Notify() {
   };
 
   return (
+
     <PageSection className={root} containerClassName={container} id='notify'>
+      <div className={sectionBg}>
+        <CloudRight className={cloudRight}/>
+        <CloudLeft className={cloudLeft}/>
+      </div>
+      <AnimationOnScroll animateIn="animate__fadeInUp">
       <StaticImage
-        src='../../images/Rocket.svg'
+        src='../../images/notify-section/rocket.svg'
         alt='laptop'
         quality={100}
         className={image}
@@ -79,7 +113,7 @@ function Notify() {
             textType='p'
             as='p'
             >
-              Let's hack, learn, collaborate, and meet new people. Applications close <span>[deadline here in format Month day]</span>
+              Let's hack, learn, collaborate, and meet new people.
             </Typography>
           </React.Fragment>
           )
@@ -147,6 +181,7 @@ function Notify() {
         </Typography>
         </React.Fragment>)
       }
+      </AnimationOnScroll>
       
     </PageSection>
   );

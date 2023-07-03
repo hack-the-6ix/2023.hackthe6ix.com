@@ -32,7 +32,7 @@ const questionGroups: Array<{
     questions: [
       {
         question: 'When do hacker applications open?',
-        answer: (<>Hack the 6ix applications for the 2023 year are going to be opening soon. Subscribe <BasicLink linkStyle='styled' href='#notify'>here</BasicLink> if you'd like us to notify you when applications are out!</>),
+        answer: (<>Hack the 6ix applications for the 2023 year are open now! Head over to the <BasicLink linkStyle='styled' href='https://dash.hackthe6ix.com'>Hacker Dashboard</BasicLink> to start your application.</>),
       },
       {
         question: 'Am I eligible to participate?',
@@ -61,7 +61,7 @@ const questionGroups: Array<{
     questions: [
       {
         question: 'How do I get to Hack the 6ix?',
-        answer: (<>This year, the event will be held at the <BasicLink linkStyle='styled' href='https://www.google.com/maps/place/George+Vari+Engineering+and+Computing+Centre,+Toronto,+ON+M5B+1Z4/@43.6579706,-79.3777686,18z/data=!4m6!3m5!1s0x89d4cb358310e403:0x95c795af1dd61a3b!8m2!3d43.6577!4d-79.3773!16zL20vMDh0aF81?hl=en' target='_blank' rel='noreferrer'>George Vari Engineering and Computing Centre</BasicLink> in Toronto. Participants will be responsible for parking and payment. There may be limited parking spots, so we highly suggest taking the TTC instead!</>)
+        answer: 'We\'re still finalizing our venue details for 2023, but Hack the 6ix is usually held somewhere in Toronto. Subscribe to email updates and check out our social media pages to be the first to know!'
       },
       {
         question: 'What should I bring?',
@@ -71,7 +71,7 @@ const questionGroups: Array<{
       {
         question: 'Will there be hardware provided at the event?',
         answer:
-          'We have a variety of hardware that can be borrowed at our hardware station for free, including Raspberry Pi\'s, Arduinos, sensors, and breadboards. Due to limited quantity, hardware will be lent out on a first come, first serve basis. If you are unsure whether or not we have a certain piece of hardware that you will need for your hack, bring your own to the event!',
+          'We have a variety of hardware that can be borrowed at our hardware station for free, including Raspberry Pis, Arduinos, sensors, and breadboards. Due to limited quantity, hardware will be lent out on a first come, first serve basis. If you are unsure whether or not we have a certain piece of hardware that you will need for your hack, bring your own to the event!',
       },
       {
         question: 'How much does it cost to attend?',

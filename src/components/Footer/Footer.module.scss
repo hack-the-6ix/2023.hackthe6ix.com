@@ -39,13 +39,15 @@
 .footerbg {
   position: absolute;
   bottom: 0;
-  left: -10rem;
   width: 2000px;
   z-index: 1;
   pointer-events: none;
+  transform: translateX(-50%);
+  left: 50%;
 
   @include localMixins.media(tablet) {
     left: -30rem;
+    transform: none;
     bottom: 8rem;
   }
 }
@@ -129,8 +131,9 @@
   margin: 1rem 1rem 1rem auto;
   backdrop-filter: blur(3px);
   border-radius: 0.25rem;
-  position: sticky;
+  position: fixed;
   bottom: 1rem;
+  right: 1rem;
   z-index: 10;
   color: colors.getColor(neutral-50);
 
@@ -140,5 +143,5 @@
 }
 
 .hide {
-  transform: translateY(100%) translateY(1rem);
+  transform: translateY(100%) translateY(2rem);
 }

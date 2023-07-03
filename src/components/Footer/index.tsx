@@ -21,7 +21,7 @@ import {
   logo,
   itemsmobile,
 } from './Footer.module.scss';
-import Bg from '../../images/Footer-Bg.svg';
+import Bg from '../../images/footer-bg.svg';
 import Logo from '../../images/logo.svg';
 import Socials from '../Socials';
 
@@ -67,7 +67,7 @@ function Footer() {
             textColor='primary-200'
             textType='heading2'
             as='p'
-          >
+            >
             Hack the 6ix
           </Typography>
           <Logo className={logo}/>

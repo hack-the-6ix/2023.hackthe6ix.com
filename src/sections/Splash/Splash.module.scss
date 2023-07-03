@@ -4,11 +4,13 @@
 .container {
   box-sizing: border-box;
   position: relative;
-  padding-bottom: 36.3125rem;
-  padding-top: 11.5625rem;
+  //padding-bottom: 36.3125rem;
+  //padding-top: 11.5625rem;
   padding-left: 2rem;
   padding-right: 2rem;
-  animation: fadeIn 1.5s ease-in-out;
+  padding-top: 25vh;
+  min-height: 150vh;
+  animation: fadeIn 0.75s ease-in-out;
 
   @include localMixins.media(tablet) {
     // TODO: Check that ship is not cut off in mobile
@@ -38,53 +40,67 @@
 
 .shipWrapper {
   position: absolute;
-  z-index: 0;
-  right: 0;
-  width: 35rem;
-  animation: fadeIn 1.5s ease-in-out;
+  z-index: -1;
+  right: -5rem;
+  width: 40vw;
+  animation: fadeIn 0.75s ease-in-out;
+  top: 35vh;
 
-  @include localMixins.media(desktop) {
-    right: -5rem;
-  }
   @include localMixins.media(laptop) {
-    width: 30rem;
+    top: 30vh;
+    width: 60vw;
   }
-  @include localMixins.media(nav) {
-    bottom: 15rem;
-  }
+
   @include localMixins.media(tablet) {
-    bottom: 3rem;
-    // right: 0;
+    top: 50vh;
+    width: 80vw;
   }
+
   @include localMixins.media(mobile) {
-    bottom: -2rem;
+    top: 60vh;
+    width: 100vw;
   }
+
+  @media only screen and (max-height: 700px) {
+    display: none;
+  }
+
+
 
   .ship {
     animation: bob 3s ease-in-out infinite;
     z-index: 1;
     position: relative;
     width: 100%;
+    //transform: translateY(40%);
+    bottom: 10vh;
 
-    @include localMixins.media(laptop) {
-      margin-top: 4rem;
+    @include localMixins.media(mobile) {
+      //top: 35vh;
+      bottom: 5vh;
     }
-  } 
+
+
+    //@include localMixins.media(laptop) {
+    //  margin-top: 4rem;
+    //}
+  }
   .cloud {
-    position: relative;
-    margin-bottom: -39rem;
+    position: absolute;
+    //margin-bottom: -39rem;
     z-index: 2;
     width: 100%;
-    
-    @include localMixins.media(laptop) {
-      margin-bottom: -41rem;
-    }
-    @include localMixins.media(tablet) {
-      margin-bottom: -44rem;
-    }
-    @include localMixins.media(mobile) {
-      margin-bottom: -49rem;
-    }
+    bottom: 0;
+
+    //@include localMixins.media(laptop) {
+    //  margin-bottom: -41rem;
+    //}
+    //@include localMixins.media(tablet) {
+    //  margin-bottom: -44rem;
+    //}
+    //@include localMixins.media(mobile) {
+    //  margin-bottom: -49rem;
+    //}
   }
 }
 
@@ -176,6 +192,12 @@
 
 .apply {
   text-decoration: none;
+  margin-bottom: 1rem;
+
+  @include localMixins.media(mobile) {
+    padding: 1.1rem 3rem;
+    font-size: 1.5rem;
+  }
 }
 
 .apply-container {

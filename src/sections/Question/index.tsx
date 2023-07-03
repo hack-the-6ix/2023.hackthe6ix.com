@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
-import PageSection from '../../components/PageSection';
-import { Input, Button, Typography, InputProps } from '@ht6/react-ui';
-import { content, title, text, form, long, btn, input, questionSpan, textArea, button } from './Question.module.scss';
-import toast from 'react-hot-toast';
+import { Button, Input, InputProps, Typography } from '@ht6/react-ui';
 import cx from 'classnames';
-import { ApiActions, ApiService, ApiServiceError } from '../../utils';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
+import PageSection from '../../components/PageSection';
 import Textarea from '../../components/Textarea';
 import TurnstileChallenge from "../../components/TurnstileChallenge";
+import { ApiActions, ApiService, ApiServiceError } from '../../utils';
+import { btn, button, content, form, input, long, questionSpan, text, textArea, title } from './Question.module.scss';
+
+import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 function Question() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -68,14 +70,16 @@ function Question() {
   return (
     <PageSection className={content} id='question'>
       <div>
+        <AnimationOnScroll animateIn="animate__fadeInDown">
         <Typography
           className={title}
           textColor='neutral-50'
           textType='heading2'
           as='h2'
-        >
+          >
           Still have a <span className={questionSpan}>question?</span>
         </Typography>
+        </AnimationOnScroll>
         <Typography
           className={text}
           textColor='neutral-50'

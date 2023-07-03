@@ -1,46 +1,36 @@
-import { Button, Typography } from '@ht6/react-ui';
-import { graphql, useStaticQuery } from 'gatsby';
-import { StaticImage } from 'gatsby-plugin-image';
-import React, { useState } from 'react';
-import { FaArrowDown } from '@react-icons/all-files/fa/FaArrowDown';
+import {BasicLink, Button, Typography} from '@ht6/react-ui';
 import cx from 'classnames';
-import PageSection from '../../components/PageSection';
-import Highlight from '../../components/Highlight';
-import Socials from '../../components/Socials';
-import IconButton from '../../components/IconButton';
-import VCarousel from './VCarousel/VCarousel';
-import Link from '../../components/Link';
+import { graphql, useStaticQuery } from 'gatsby';
+import React, { useState } from 'react';
 import InputButton from '../../components/InputButton';
+import PageSection from '../../components/PageSection';
+import Socials from '../../components/Socials';
 import TurnstileChallenge from "../../components/TurnstileChallenge";
+import VCarousel from './VCarousel/VCarousel';
 
 import toast from 'react-hot-toast';
+import Cloud from '../../images/splash/cloud.svg';
+import Ship from '../../images/splash/ship.svg';
+import { ApiService, ApiServiceError } from '../../utils';
 import {
-  container,
-  content,
-  backdrop,
   carousel,
-  text,
-  title,
-  banner,
-  aside,
-  socials,
-  apply,
-  applyContainer,
-  textHighlight,
+  cloud,
+  container,
   dates,
   eventType,
-  hideMobile,
-  signUpText,
   hideDesktop,
-  featureObject,
-  splashContent,
+  hideMobile,
   ship,
-  cloud,
-  shipWrapper
+  shipWrapper,
+  signUpText,
+  socials,
+  splashContent,
+  text,
+  textHighlight,
+  title,
+  applyContainer,
+  apply
 } from './Splash.module.scss';
-import { ApiService, ApiServiceError } from '../../utils';
-import Ship from '../../images/ship.svg'
-import Cloud from '../../images/cloud.svg'
 
 const query = graphql`
   query SplashQuery {
@@ -48,6 +38,10 @@ const query = graphql`
       nodes {
         siteMetadata {
           event {
+            start
+            end
+          }
+          applications {
             start
             end
           }
@@ -68,6 +62,13 @@ function Splash() {
   const startDate = new Date(data.allSite.nodes[0].siteMetadata!.event!.start!);
   const endDate = new Date(data.allSite.nodes[0].siteMetadata!.event!.end!);
   const isSameMonth = startDate.getMonth() === endDate.getMonth();
+
+  const appsStartDate = new Date(data.allSite.nodes[0].siteMetadata!.applications!.start!);
+  const appsEndDate = new Date(data.allSite.nodes[0].siteMetadata!.applications!.end!);
+  const currentDate = new Date();
+
+  const appsOpen = appsStartDate < currentDate && currentDate < appsEndDate;
+
   // const [emailInput, setEmailInput] = useState({email: ''});
   const [email, setEmail] = useState('');
   const [token, setToken] = useState('');
@@ -136,37 +137,54 @@ function Splash() {
           <VCarousel className={carousel} items={words} />
         </Typography>
         <Typography
-          className={cx(text, signUpText)}
-          textColor='neutral-50'
-          textType='paragraph1'
-          as='paragraph'
+            className={cx(text, signUpText)}
+            textColor='neutral-50'
+            textType='paragraph1'
+            as='p'
         >
-          Applications opening soon! Receive the latest updates in your inbox.
+          {appsOpen ? "Applications are now open!" : "Applications opening soon! Receive the latest updates in your inbox."}
         </Typography>
-        <InputButton
-          label='Enter email'
-          name='email'
-          buttonText='Notify me'
-          inputProps={{
-              noBorder: true,
-              required: true,
-              opacity: 38,
-              opacityOnHover: 50,
-              placeHolderColor: "primary-50",
-              textColor: "shades-0",
-              value: email,
-              type: 'email',
-              onChange: (e) => setEmail(e.currentTarget.value)
-          }}
-          onSubmit={(e) => {
-            e.preventDefault();
-            onSubmit();
-            return false;
-          }}
+        {
+          appsOpen ?
+              <div className={applyContainer}>
+                <Button
+                    href='https://dash.hackthe6ix.com'
+                    rel='noreferrer noopener'
+                    className={apply}
+                    target='_blank'
+                    as={BasicLink}
+                >
+                  Apply Now
+                </Button>
+              </div>
+              :
+              <>
+                <InputButton
+                    label='Enter email'
+                    name='email'
+                    buttonText='Notify me'
+                    inputProps={{
+                      noBorder: true,
+                      required: true,
+                      opacity: 38,
+                      opacityOnHover: 50,
+                      placeHolderColor: "primary-50",
+                      textColor: "shades-0",
+                      value: email,
+                      type: 'email',
+                      onChange: (e) => setEmail(e.currentTarget.value)
+                    }}
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      onSubmit();
+                      return false;
+                    }}
 
-        >
-        </InputButton>
-        <TurnstileChallenge onToken={(token) => setToken(token)}/>
+                >
+                </InputButton>
+                <TurnstileChallenge onToken={(token) => setToken(token)}/>
+              </>
+        }
         <Socials
           className={socials}
           baseColor='shades-0'
