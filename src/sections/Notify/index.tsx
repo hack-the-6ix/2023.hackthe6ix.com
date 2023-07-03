@@ -27,12 +27,33 @@ import {
 
 import CloudRight from '../../images/notify-section/notify-bg-right.svg';
 import CloudLeft from '../../images/notify-section/notify-bg-left.svg';
+import {graphql, useStaticQuery} from "gatsby";
 
-const appsOpen = false;
+const query = graphql`
+  query NotifyQuery {
+    allSite {
+      nodes {
+        siteMetadata {
+          applications {
+            start
+            end
+          }
+        }
+      }
+    }
+  }
+`;
 
 function Notify() {
   const [email, setEmail] = useState('');
   const [token, setToken] = useState('');
+
+  const data = useStaticQuery<GatsbyTypes.NotifyQueryQuery>(query);
+  const startDate = new Date(data.allSite.nodes[0].siteMetadata!.applications!.start!);
+  const endDate = new Date(data.allSite.nodes[0].siteMetadata!.applications!.end!);
+  const currentDate = new Date();
+
+  const appsOpen = startDate < currentDate && currentDate < endDate;
 
   const onSubmit = async () => {
     const id = toast.loading('Loading...');
@@ -92,7 +113,7 @@ function Notify() {
             textType='p'
             as='p'
             >
-              Let's hack, learn, collaborate, and meet new people. Applications close <span>[deadline here in format Month day]</span>
+              Let's hack, learn, collaborate, and meet new people.
             </Typography>
           </React.Fragment>
           )

@@ -1,7 +1,7 @@
-import { Typography } from '@ht6/react-ui';
+import {BasicLink, Button, Typography} from '@ht6/react-ui';
 import cx from 'classnames';
 import { graphql, useStaticQuery } from 'gatsby';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import InputButton from '../../components/InputButton';
 import PageSection from '../../components/PageSection';
 import Socials from '../../components/Socials';
@@ -27,7 +27,9 @@ import {
   splashContent,
   text,
   textHighlight,
-  title
+  title,
+  applyContainer,
+  apply
 } from './Splash.module.scss';
 
 const query = graphql`
@@ -36,6 +38,10 @@ const query = graphql`
       nodes {
         siteMetadata {
           event {
+            start
+            end
+          }
+          applications {
             start
             end
           }
@@ -56,6 +62,13 @@ function Splash() {
   const startDate = new Date(data.allSite.nodes[0].siteMetadata!.event!.start!);
   const endDate = new Date(data.allSite.nodes[0].siteMetadata!.event!.end!);
   const isSameMonth = startDate.getMonth() === endDate.getMonth();
+
+  const appsStartDate = new Date(data.allSite.nodes[0].siteMetadata!.applications!.start!);
+  const appsEndDate = new Date(data.allSite.nodes[0].siteMetadata!.applications!.end!);
+  const currentDate = new Date();
+
+  const appsOpen = appsStartDate < currentDate && currentDate < appsEndDate;
+
   // const [emailInput, setEmailInput] = useState({email: ''});
   const [email, setEmail] = useState('');
   const [token, setToken] = useState('');
@@ -124,37 +137,54 @@ function Splash() {
           <VCarousel className={carousel} items={words} />
         </Typography>
         <Typography
-          className={cx(text, signUpText)}
-          textColor='neutral-50'
-          textType='paragraph1'
-          as='p'
+            className={cx(text, signUpText)}
+            textColor='neutral-50'
+            textType='paragraph1'
+            as='p'
         >
-          Applications opening soon! Receive the latest updates in your inbox.
+          {appsOpen ? "Applications are now open!" : "Applications opening soon! Receive the latest updates in your inbox."}
         </Typography>
-        <InputButton
-          label='Enter email'
-          name='email'
-          buttonText='Notify me'
-          inputProps={{
-            noBorder: true,
-            required: true,
-            opacity: 38,
-            opacityOnHover: 50,
-            placeHolderColor: "primary-50",
-            textColor: "shades-0",
-            value: email,
-            type: 'email',
-            onChange: (e) => setEmail(e.currentTarget.value)
-          }}
-          onSubmit={(e) => {
-            e.preventDefault();
-            onSubmit();
-            return false;
-          }}
+        {
+          appsOpen ?
+              <div className={applyContainer}>
+                <Button
+                    href='https://dash.hackthe6ix.com'
+                    rel='noreferrer noopener'
+                    className={apply}
+                    target='_blank'
+                    as={BasicLink}
+                >
+                  Apply Now
+                </Button>
+              </div>
+              :
+              <>
+                <InputButton
+                    label='Enter email'
+                    name='email'
+                    buttonText='Notify me'
+                    inputProps={{
+                      noBorder: true,
+                      required: true,
+                      opacity: 38,
+                      opacityOnHover: 50,
+                      placeHolderColor: "primary-50",
+                      textColor: "shades-0",
+                      value: email,
+                      type: 'email',
+                      onChange: (e) => setEmail(e.currentTarget.value)
+                    }}
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      onSubmit();
+                      return false;
+                    }}
 
-        >
-        </InputButton>
-        <TurnstileChallenge onToken={(token) => setToken(token)}/>
+                >
+                </InputButton>
+                <TurnstileChallenge onToken={(token) => setToken(token)}/>
+              </>
+        }
         <Socials
           className={socials}
           baseColor='shades-0'

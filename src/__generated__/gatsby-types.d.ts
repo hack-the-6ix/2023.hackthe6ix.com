@@ -2444,6 +2444,11 @@ type WebPOptions = {
   readonly quality: InputMaybe<Scalars['Int']>;
 };
 
+type NotifyQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type NotifyQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ readonly siteMetadata: { readonly applications: { readonly start: string | null, readonly end: string | null } | null } | null }> } };
+
 type PageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2462,7 +2467,7 @@ type SocialsQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ r
 type SplashQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type SplashQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ readonly siteMetadata: { readonly event: { readonly start: string | null, readonly end: string | null } | null, readonly socials: ReadonlyArray<{ readonly link: string | null, readonly type: string | null } | null> | null } | null }> } };
+type SplashQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ readonly siteMetadata: { readonly event: { readonly start: string | null, readonly end: string | null } | null, readonly applications: { readonly start: string | null, readonly end: string | null } | null, readonly socials: ReadonlyArray<{ readonly link: string | null, readonly type: string | null } | null> | null } | null }> } };
 
 type WhySectionQueryQueryVariables = Exact<{ [key: string]: never; }>;
 

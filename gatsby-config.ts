@@ -24,8 +24,8 @@ const config: GatsbyConfig = {
       end: new Date('2023-8-20 23:59:59 GMT-0400'),
     },
     applications: {
-      start: new Date(),
-      end: new Date(),
+      start: new Date('2023-7-3 00:00:00 GMT-0400'),
+      end: new Date('2023-7-31 23:59:59 GMT-0400'),
     },
     socials: [
       {

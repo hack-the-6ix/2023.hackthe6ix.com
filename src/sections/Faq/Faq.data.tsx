@@ -32,7 +32,7 @@ const questionGroups: Array<{
     questions: [
       {
         question: 'When do hacker applications open?',
-        answer: (<>Hack the 6ix applications for the 2023 year are going to be opening soon. Subscribe <BasicLink linkStyle='styled' href='#notify'>here</BasicLink> if you'd like us to notify you when applications are out!</>),
+        answer: (<>Hack the 6ix applications for the 2023 year are open now! Head over to the <BasicLink linkStyle='styled' href='https://dash.hackthe6ix.com'>Hacker Dashboard</BasicLink> to start your application.</>),
       },
       {
         question: 'Am I eligible to participate?',

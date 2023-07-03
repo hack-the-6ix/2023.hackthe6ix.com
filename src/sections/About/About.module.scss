@@ -93,6 +93,8 @@
 
 .bottomSubtext {
   width: 50vw;
+  font-size: 18px;
+  line-height: 24px;
 
   @include localMixins.media(tablet) {
     width: 80vw;
@@ -100,7 +102,5 @@
 
   @include localMixins.media(mobile) {
     width: auto;
-    font-size: 18px;
-    line-height: 24px;
   }
 }
