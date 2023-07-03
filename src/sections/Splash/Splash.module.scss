@@ -10,7 +10,7 @@
   padding-right: 2rem;
   padding-top: 25vh;
   min-height: 150vh;
-  animation: fadeIn 1.5s ease-in-out;
+  animation: fadeIn 0.75s ease-in-out;
 
   @include localMixins.media(tablet) {
     // TODO: Check that ship is not cut off in mobile
@@ -43,7 +43,7 @@
   z-index: -1;
   right: -5rem;
   width: 40vw;
-  animation: fadeIn 1.5s ease-in-out;
+  animation: fadeIn 0.75s ease-in-out;
   top: 35vh;
 
   @include localMixins.media(laptop) {
