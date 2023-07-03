@@ -12,18 +12,20 @@ const config: GatsbyConfig = {
   jsxRuntime: 'automatic',
   siteMetadata: {
     title: `Hack the 6ix`,
+    description: "Hack the 6ix is the largest summer student-run, not-for-profit hackathon now in its ninth iteration, based in Toronto. Join hundreds of students from diverse backgrounds, disciplines, and skill levels to work together on projects that have real-world impact.",
     siteUrl:
       process.env.SITE_URL ??
       process.env.DEPLOY_PRIME_URL ??
       process.env.DEPLOY_URL ??
+      process.env.CF_PAGES_URL ??
       '',
     event: {
-      start: new Date('2022-8-19 GMT-0400'),
-      end: new Date('2022-8-21 23:59:59 GMT-0400'),
+      start: new Date('2023-8-18 09:00:00 GMT-0400'),
+      end: new Date('2023-8-20 23:59:59 GMT-0400'),
     },
     applications: {
-      start: new Date(),
-      end: new Date(),
+      start: new Date('2023-7-3 00:00:00 GMT-0400'),
+      end: new Date('2023-7-31 23:59:59 GMT-0400'),
     },
     socials: [
       {
@@ -64,14 +66,16 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /images\/.*\.svg/,
+          include: /images[\/\\].*\.svg/,
         },
       },
     },
     {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: 'gatsby-plugin-google-gtag',
       options: {
-        trackingId: process.env.GOOGLE_ANALYTICS_ID,
+        trackingIds: [
+          process.env.GOOGLE_ANALYTICS_ID
+        ]
       },
     },
     'gatsby-plugin-image',
@@ -94,6 +98,12 @@ const config: GatsbyConfig = {
     },
     'gatsby-plugin-netlify',
     !isDev && 'gatsby-plugin-mini-css-class-name',
+    {
+      resolve: 'gatsby-plugin-turnstile',
+      options: {
+        siteKey: process.env.CAPTCHA_SITE_KEY,
+      },
+    }
   ].filter(Boolean) as PluginRef[],
 };
 

@@ -2,49 +2,22 @@
 @use '~@ht6/react-ui/dist/styles/fonts.module';
 @use '../../styles/mixins.module' as localMixins;
 
+// TODO: Need to properly format text at bottom of section, br tag interferes with mobile text formatting
+
 .container {
   padding: 4rem 0;
 }
 
-.about {
-  grid-template-columns: 2fr 3fr;
-  align-items: end;
-  display: grid;
-  gap: 2.5rem;
-
-  @include localMixins.media(tablet) {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-}
-
-.content {
-  grid-template-columns: 1fr;
-  display: grid;
-  gap: 1.25rem;
-
-  & > * {
-    margin: 0;
-  }
-}
-
-.action {
-  text-decoration: none;
-  display: inline-block;
-  margin-top: 1.25rem;
-}
-
-.title {
-  margin: 4rem 0 1.375rem;
-}
-
 .items {
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   list-style-type: none;
-  display: grid;
   gap: 1.25rem;
   padding: 0;
   margin: 0;
+  gap: 2rem;
+  margin: 0 0 8rem 0;
 
   @include localMixins.media(laptop) {
     grid-template-columns: repeat(2, 1fr);
@@ -56,7 +29,7 @@
 }
 
 .item {
-  background-color: colors.getColor(primary-2);
+  position: relative;
   grid-template-columns: 1fr;
   text-transform: uppercase;
   border-radius: 0.25rem;
@@ -64,12 +37,70 @@
   align-items: center;
   text-align: center;
   padding: 1.25rem;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   height: 100%;
-  gap: 0.5rem;
   margin: 0;
+  z-index: 1;
+  width: 23.5rem;
+  height: 8rem;
+  
+  @include localMixins.media(tablet) {
+    flex-basis: 20rem;
+    
+    &:nth-child(odd) {
+      margin-right: auto;
+    }
+    
+    &:nth-child(even) {
+      margin-left: auto;
+    }
+  }
+}
+
+.itemBackgroundContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .itemLabel {
   letter-spacing: map-get(fonts.$config, heading2, letter-spacing);
+}
+
+.statsImg {
+  position: absolute;
+  z-index: -1;
+  transform: scale(0.75);
+
+  @include localMixins.media(mobile) {
+    transform: scale(0.60);
+  }
+}
+
+.bottomTextContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.bottomSubtext {
+  width: 50vw;
+  font-size: 18px;
+  line-height: 24px;
+
+  @include localMixins.media(tablet) {
+    width: 80vw;
+  }
+
+  @include localMixins.media(mobile) {
+    width: auto;
+  }
 }

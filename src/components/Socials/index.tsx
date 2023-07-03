@@ -4,8 +4,8 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { CSSProperties, HTMLAttributes } from 'react';
 import cx from 'classnames';
 import { colorClassName } from '../../utils';
-import Link from '../Link';
 import * as styles from './Socials.module.scss';
+import {BasicLink} from "@ht6/react-ui";
 
 const mediaIcons: { [type: string]: IconType } = {
   facebook: require('@react-icons/all-files/fa/FaFacebook').FaFacebook,
@@ -47,7 +47,7 @@ function Socials({ baseColor, activeColor, gap, ...props }: SocialsProps) {
         const Icon = mediaIcons[social!.type!];
         return (
           <li className={styles.iconItem} key={key}>
-            <Link
+            <BasicLink
               rel='noopener noreferrer'
               className={cx(
                 styles[colorClassName(baseColor, 'link')],
@@ -55,12 +55,11 @@ function Socials({ baseColor, activeColor, gap, ...props }: SocialsProps) {
               )}
               linkColor={activeColor ?? baseColor}
               linkStyle='styled'
-              to={social!.link!}
-              linkType='anchor'
+              href={social!.link!}
               target='_blank'
             >
               <Icon className={styles.icon} />
-            </Link>
+            </BasicLink>
           </li>
         );
       })}

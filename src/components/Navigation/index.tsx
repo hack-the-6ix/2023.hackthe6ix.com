@@ -1,9 +1,8 @@
-import { RiMenuLine } from '@react-icons/all-files/ri/RiMenuLine';
+import Hamborgre from '../../images/menu-icon.svg';
 import { useCallback, useEffect, useRef, useState, MouseEvent } from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
-import { Button, Typography } from '@ht6/react-ui';
+import { Button, BasicLink, BasicLinkProps, Typography } from '@ht6/react-ui';
 import cx from 'classnames';
-import Link, { LinkProps } from '../Link';
 import PageSection from '../PageSection';
 import Popup from '../Popup';
 import Logo from '../../images/logo.svg';
@@ -15,16 +14,22 @@ import {
   linkItems,
   linkItem,
   linkItemActive,
-  menu,
-  menuIcon,
   mobileNav,
+  mobileNavShow,
+  mobileNavWrapper,
   mobileNavItem,
   mobileNavItemActive,
   banner,
   apply,
   applyContainer,
   applyMobile,
+  scrolled,
+  hamborgreClass,
+  mobileNavCTAWrapper,
+  xicon
 } from './Navigation.module.scss';
+import Xicon from '../../images/xIcon.svg';
+import { Link as GatsbyLink } from 'gatsby';
 
 function setHash(event: MouseEvent, path: string, scroll?: boolean) {
   event.preventDefault();
@@ -34,7 +39,7 @@ function setHash(event: MouseEvent, path: string, scroll?: boolean) {
     try {
       top = document.querySelector<HTMLElement>(path)?.offsetTop ?? 0;
     } catch {}
-    const offset = window.innerHeight * 0.2;
+    const offset = window.innerHeight * 0.1;
     window.scrollTo({ top: top - offset, behavior: 'smooth' });
   }
 }
@@ -42,8 +47,9 @@ function setHash(event: MouseEvent, path: string, scroll?: boolean) {
 export interface NavigationProps {
   showMlhBanner?: boolean;
   useScrollSpy?: boolean;
-  links: LinkProps[];
+  links: BasicLinkProps[];
   base?: string;
+  showApply?: boolean;
 }
 
 function Navigation({
@@ -51,14 +57,16 @@ function Navigation({
   useScrollSpy,
   base = '/',
   links,
+  showApply
 }: NavigationProps) {
   const [show, setShow] = useState(false);
   const [top, setTop] = useState(0);
+  const [isAtTop, setIsAtTop] = useState(true);
 
   const getItemTops = useCallback(() => {
     if (!useScrollSpy) return [];
     return links.map(
-      (link) => document.querySelector<HTMLElement>(link.to)?.offsetTop ?? -999
+      (link) => document.querySelector<HTMLElement>(link.href)?.offsetTop ?? -999
     );
   }, [links, useScrollSpy]);
 
@@ -66,13 +74,14 @@ function Navigation({
   useEffect(() => {
     if (!useScrollSpy) return;
 
-    const scrollHandler = () =>
+    const scrollHandler = () => {
       setTop(window.scrollY + window.innerHeight * 0.8);
+      setIsAtTop(window.scrollY <= 50)
+    }
     window.addEventListener('scroll', scrollHandler, true);
 
     const resizeHandler = () => {
       itemTops.current = getItemTops();
-      setTop(window.scrollY);
     };
     window.addEventListener('resize', resizeHandler, true);
     resizeHandler();
@@ -91,19 +100,15 @@ function Navigation({
   }, -1);
 
   return (
-    <PageSection containerClassName={root} className={content} as='nav'>
-      <Link
+    <PageSection containerClassName={cx(root, (isAtTop) ? "" : scrolled)} className={content} as='nav'>
+      <BasicLink
         onClick={(...args) => setHash(...args, '#', true)}
         className={logo}
         to={base}
-        linkType='gatsby'
-        linkStyle='pure'
+        as={GatsbyLink}
       >
         <Logo className={logoSvg} />
-        <Typography textType='heading3' textColor='primary-500'>
-          Hack the 6ix
-        </Typography>
-      </Link>
+      </BasicLink>
       {links && (
         <ul className={linkItems}>
           {links.map((link, key) => {
@@ -115,30 +120,36 @@ function Navigation({
                 textColor='grey'
                 as='li'
               >
-                <Link
+                <BasicLink
                   {...link}
                   onClick={(...args) => {
-                    setHash(...args, link.to, true);
+                    setHash(...args, link.href, true);
                     link.onClick?.(...args);
                   }}
-                  linkStyle='pure'
                   className={cx(key === activeIdx && linkItemActive, linkItem)}
                 />
               </Typography>
             );
           })}
+          <Button buttonVariant='secondary' onClick={() => window.open('mailto:hello@hackthe6ix.com')}>Contact us</Button>
+          {showApply && <Button onClick={() => window.open('https://dash.hackthe6ix.com')}>Apply now</Button>}
         </ul>
       )}
-      <button onClick={() => setShow(true)} className={menu}>
-        <RiMenuLine className={menuIcon} />
-      </button>
-      <Popup
-        onClose={() => setShow(false)}
-        label='Navigate to Section'
-        className={mobileNav}
-        show={show}
-        as='ul'
+      <Hamborgre onClick={() => setShow(!show)} className={hamborgreClass}/>
+      <div
+        className={cx(mobileNav, (show) ? mobileNavShow : "")}
       >
+        <div className={mobileNavWrapper}>
+          <BasicLink
+            onClick={(...args) => setHash(...args, '#', true)}
+            className={logo}
+            to={base}
+            as={GatsbyLink}
+          >
+            <Logo className={logoSvg} />
+          </BasicLink>
+          <Xicon className={xicon} onClick={() => setShow(false)} />
+        </div>
         {links.map((link, key) => {
           return (
             <Typography
@@ -146,13 +157,12 @@ function Navigation({
               textType='paragraph2'
               textWeight={650}
               textColor='grey'
-              as='li'
+              as='span'
             >
-              <Link
+              <BasicLink
                 {...link}
-                linkStyle='pure'
                 onClick={(...args) => {
-                  setHash(...args, link.to, true);
+                  setHash(...args, link.href, true);
                   link.onClick?.(...args);
                   setShow(false);
                 }}
@@ -164,24 +174,26 @@ function Navigation({
             </Typography>
           );
         })}
-      </Popup>
-      {showMlhBanner && (
-        <Link
-          to='https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2023-season&utm_content=yellow'
+        <div className={mobileNavCTAWrapper}>
+          {showApply && <Button onClick={() => window.open('https://dash.hackthe6ix.com')}>Apply now</Button>}
+          <Button buttonVariant='secondary' onClick={() => window.open('mailto:hello@hackthe6ix.com')}>Contact us</Button>
+        </div>
+      </div>
+      {(showMlhBanner) && (
+        <BasicLink
+          href='https://mlh.io/seasons/2024/events'
           rel='noreferrer noopener'
           className={banner}
-          linkType='anchor'
-          linkStyle='pure'
           target='_blank'
         >
           <StaticImage
-            alt='MLH 2022 Season Banner'
-            src='../../images/mlh.png'
+            alt='MLH 2024 Season Banner'
+            src='../../images/mlh.svg'
             placeholder='none'
             quality={100}
             width={200}
           />
-        </Link>
+        </BasicLink>
       )}
     </PageSection>
   );

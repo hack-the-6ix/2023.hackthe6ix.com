@@ -1,9 +1,8 @@
 import { FaArrowUp } from '@react-icons/all-files/fa/FaArrowUp';
 import { StaticImage } from 'gatsby-plugin-image';
 import { useEffect, useState } from 'react';
-import { Typography } from '@ht6/react-ui';
+import {BasicLink, BasicLinkProps, Input, Link, Typography} from '@ht6/react-ui';
 import cx from 'classnames';
-import Link, { LinkProps } from '../Link';
 import PageSection from '../PageSection';
 import IconButton from '../IconButton';
 import {
@@ -16,25 +15,24 @@ import {
   floatingBtn,
   hide,
   img,
+  ht6,
+  footerbg,
+  copyright,
+  logo,
+  itemsmobile,
 } from './Footer.module.scss';
+import Bg from '../../images/footer-bg.svg';
+import Logo from '../../images/logo.svg';
 import Socials from '../Socials';
 
-const links: Omit<LinkProps, 'linkType'>[] = [
-  {
-    children: '2021 Website',
-    to: 'https://2021.hackthe6ix.com',
-  },
-  {
-    children: '2020 Website',
-    to: 'https://2020.hackthe6ix.com',
-  },
+const links: Omit<BasicLinkProps, 'linkType'>[] = [
   {
     children: 'Privacy Policy',
-    to: 'http://cdn.hackthe6ix.com/privacy-policy.pdf',
+    href: 'http://cdn.hackthe6ix.com/privacy-policy.pdf',
   },
   {
     children: 'MLH Code of Conduct',
-    to: 'https://static.mlh.io/docs/mlh-code-of-conduct.pdf',
+    href: 'https://static.mlh.io/docs/mlh-code-of-conduct.pdf',
   },
 ];
 
@@ -59,53 +57,60 @@ function Footer() {
         icon={FaArrowUp}
       />
       <PageSection
-        append={
-          <StaticImage
-            alt='fictional artwork of toronto skyline'
-            src='../../images/footer.png'
-            layout='fullWidth'
-            className={img}
-            quality={100}
-          />
-        }
         containerClassName={root}
         as='footer'
       >
+        <Bg className={footerbg}/>
         <div className={row}>
           <Typography
-            className={text}
+            className={ht6}
             textColor='primary-200'
             textType='heading2'
             as='p'
-          >
+            >
             Hack the 6ix
           </Typography>
-          <Socials baseColor='copy-light' activeColor='warning-400' gap='2rem' />
-        </div>
-        <div className={row}>
-          <Typography
-            className={text}
-            textColor='copy-light'
-            textType='paragraph1'
-          >
-            © Copyright 2022 <strong>Hack the 6ix</strong> | Made with ♡ in
-            Toronto
-          </Typography>
+          <Logo className={logo}/>
           <Typography className={items} textType='subheading' as='ul'>
             {links.map((linkProps, key) => (
               <li className={linkItem} key={key}>
-                <Link
+                <BasicLink
                   {...linkProps}
                   rel='noopener noreferrer'
                   className={link}
                   linkColor='warning-400'
                   linkStyle='styled'
-                  linkType='anchor'
                   target='_blank'
+                  href={linkProps.href}
                 />
               </li>
             ))}
           </Typography>
+        </div>
+        <div className={row}>
+          <Typography
+            className={cx(text, copyright)}
+            textColor='copy-light'
+            textType='paragraph1'
+          >
+            © Copyright 2023 Hack the 6ix | Made with ♡ in Toronto
+          </Typography>
+          <Typography className={cx(items, itemsmobile)} textType='subheading' as='ul'>
+            {links.map((linkProps, key) => (
+              <li className={linkItem} key={key}>
+                <BasicLink
+                  {...linkProps}
+                  rel='noopener noreferrer'
+                  className={link}
+                  linkColor='warning-400'
+                  linkStyle='styled'
+                  target='_blank'
+                  href={linkProps.href}
+                />
+              </li>
+            ))}
+          </Typography>
+          <Socials baseColor='copy-light' activeColor='warning-400' gap='1.75rem' />
         </div>
       </PageSection>
     </>

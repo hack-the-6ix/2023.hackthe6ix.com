@@ -1,45 +1,58 @@
 @use '~@ht6/react-ui/dist/styles/mixins.module';
 @use '~@ht6/react-ui/dist/styles/colors.module';
+@use '../../styles/mixins.module' as localMixins;
 
 .root {
-  border: 1px solid colors.getColor(primary-700);
-  border-radius: 0.25rem;
   overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+
+  background-color: rgba(10, 24, 49, 0.3);
+  padding: 1rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(6px);
 }
 
 .header {
-  border-bottom: 1px solid colors.getColor(primary-700);
-  background-color: colors.getColor(primary-2);
-  padding: 0.75rem 2rem;
+  width: 100%;
+  padding-right: 0;
   margin: 0;
+  @include localMixins.media(tablet) {
+    margin: 0 0 calc(5rem / 14);
+  }
+  @include localMixins.media(mobile){
+    margin: 0 0 calc(7.5rem / 12);
+  }
 }
 
 .list {
   flex-direction: column;
-  margin: 1rem 1.5rem;
+  // margin: 0.0625rem 1.5rem 1rem;
   display: flex;
+  width: 100%;
 }
 
 .trigger {
-  @include mixins.transition(background-color);
+  @include mixins.transition(color);
   background-color: transparent;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   align-items: center;
   text-align: start;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.5rem 0;
   display: flex;
   border: none;
   width: 100%;
+  font-weight: 600;
+  
+  &:hover, &:active {
+    color: colors.getColor(neutral-400);
 
-  &:hover,
-  &:focus {
-    background-color: colors.getColor(primary-700, $alpha: 0.06);
+    %iconLine {
+      background-color: colors.getColor(neutral-400);
+    }
   }
-
-  &:active {
-    background-color: colors.getColor(primary-700, $alpha: 0.12);
-  }
+  
 }
 
 .label {
@@ -51,18 +64,18 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  height: 1.25rem;
-  width: 1.25rem;
+  height: 1rem;
+  width: 1rem;
   flex-shrink: 0;
   display: flex;
 }
 
 %iconLine {
-  @include mixins.transition(transform, fast);
-  background-color: colors.getColor(copy-dark);
+  @include mixins.transition(transform background-color);
+  background-color: colors.getColor(shades-0);
   border-radius: 999px;
   position: absolute;
-  height: 0.25rem;
+  height: 0.15rem;
   width: 100%;
   margin: auto;
   inset: auto;
@@ -70,6 +83,7 @@
 
 .iconLineH {
   @extend %iconLine;
+  
   .closed & {
     transform: rotate(180deg);
   }
@@ -77,6 +91,7 @@
 
 .iconLineV {
   @extend %iconLine;
+  
   .closed & {
     transform: rotate(270deg);
   }
@@ -84,16 +99,26 @@
 
 .content {
   overflow: hidden;
-  margin: 0 0.5rem;
+  margin: 0;
 }
 
 .text {
   @include mixins.transition(padding max-height);
   box-sizing: border-box;
-  padding: 0.5rem 0;
+  padding: 0.25rem 0 0;
   max-height: 20rem;
   overflow: hidden;
-  margin: 0;
+  margin: 0 0 1.5rem;
+
+  @include localMixins.media(tablet){
+    padding: calc(4rem / 14) 0 0;
+    margin: calc(2.5rem / 14) 0 calc(17rem / 14);
+  }
+
+  @include localMixins.media(mobile){
+    padding: calc(4rem / 12) 0 0;
+    margin: calc(3.5rem / 12) 0 1.5rem;
+  }
 
   &.closed {
     max-height: 0;

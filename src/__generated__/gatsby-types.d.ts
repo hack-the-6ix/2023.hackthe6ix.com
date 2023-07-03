@@ -1749,12 +1749,14 @@ type SiteFieldSelector = {
   readonly buildTime: InputMaybe<FieldSelectorEnum>;
   readonly children: InputMaybe<NodeFieldSelector>;
   readonly graphqlTypegen: InputMaybe<FieldSelectorEnum>;
+  readonly host: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
   readonly jsxRuntime: InputMaybe<FieldSelectorEnum>;
   readonly parent: InputMaybe<NodeFieldSelector>;
   readonly pathPrefix: InputMaybe<FieldSelectorEnum>;
   readonly polyfill: InputMaybe<FieldSelectorEnum>;
+  readonly port: InputMaybe<FieldSelectorEnum>;
   readonly siteMetadata: InputMaybe<SiteSiteMetadataFieldSelector>;
   readonly trailingSlash: InputMaybe<FieldSelectorEnum>;
 };
@@ -2404,12 +2406,14 @@ type SiteSortInput = {
   readonly buildTime: InputMaybe<SortOrderEnum>;
   readonly children: InputMaybe<NodeSortInput>;
   readonly graphqlTypegen: InputMaybe<SortOrderEnum>;
+  readonly host: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
   readonly jsxRuntime: InputMaybe<SortOrderEnum>;
   readonly parent: InputMaybe<NodeSortInput>;
   readonly pathPrefix: InputMaybe<SortOrderEnum>;
   readonly polyfill: InputMaybe<SortOrderEnum>;
+  readonly port: InputMaybe<SortOrderEnum>;
   readonly siteMetadata: InputMaybe<SiteSiteMetadataSortInput>;
   readonly trailingSlash: InputMaybe<SortOrderEnum>;
 };
@@ -2440,15 +2444,15 @@ type WebPOptions = {
   readonly quality: InputMaybe<Scalars['Int']>;
 };
 
+type NotifyQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type NotifyQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ readonly siteMetadata: { readonly applications: { readonly start: string | null, readonly end: string | null } | null } | null }> } };
+
 type PageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type PageQueryQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null, readonly description: string | null } | null } | null };
-
-type PastSpeakersSectionQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PastSpeakersSectionQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<{ readonly base: string, readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null }> } };
 
 type PastSponsorsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2463,7 +2467,7 @@ type SocialsQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ r
 type SplashQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type SplashQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ readonly siteMetadata: { readonly event: { readonly start: string | null, readonly end: string | null } | null, readonly socials: ReadonlyArray<{ readonly link: string | null, readonly type: string | null } | null> | null } | null }> } };
+type SplashQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ readonly siteMetadata: { readonly event: { readonly start: string | null, readonly end: string | null } | null, readonly applications: { readonly start: string | null, readonly end: string | null } | null, readonly socials: ReadonlyArray<{ readonly link: string | null, readonly type: string | null } | null> | null } | null }> } };
 
 type WhySectionQueryQueryVariables = Exact<{ [key: string]: never; }>;
 

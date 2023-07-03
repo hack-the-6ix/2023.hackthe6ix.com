@@ -1,11 +1,14 @@
-import { useState } from 'react';
-import PageSection from '../../components/PageSection';
-import { Input, Button, Typography, InputProps } from '@ht6/react-ui';
-import { content, title, text, form, long, btn } from './Question.module.scss';
-import toast from 'react-hot-toast';
+import { Button, Input, InputProps, Typography } from '@ht6/react-ui';
 import cx from 'classnames';
-import { ApiActions, ApiService, ApiServiceError } from '../../utils';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
+import PageSection from '../../components/PageSection';
 import Textarea from '../../components/Textarea';
+import TurnstileChallenge from "../../components/TurnstileChallenge";
+import { ApiActions, ApiService, ApiServiceError } from '../../utils';
+import { btn, button, content, form, input, long, questionSpan, text, textArea, title } from './Question.module.scss';
+
+import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 function Question() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -15,10 +18,15 @@ function Question() {
     message: '',
   });
 
+  const [token, setToken] = useState('');
+
   const onSubmit = async () => {
     const id = toast.loading('Loading...');
     try {
-      const { response } = ApiService.ask(inputs, 'question--ask', 'reset');
+      const { response } = ApiService.ask({
+        ...inputs,
+        captchaToken: token
+      }, 'question--ask', 'reset');
       toast.success(await response, { id });
       setInputs({ name: '', email: '', message: '' });
     } catch (err) {
@@ -41,10 +49,13 @@ function Question() {
 
   const inputProps = (
     label: string,
-    name: keyof typeof inputs
+    name: keyof typeof inputs,
+    placeholder?: string
   ): InputProps => ({
-    outlineColor: 'grey',
-    placeholder: label,
+    noBorder: true,
+    placeHolderColor: "primary-50",
+    textColor: "shades-0",
+    placeholder: placeholder ?? label,
     hideLabel: false,
     label,
     name,
@@ -52,26 +63,30 @@ function Question() {
     onChange: (e) => setInputs({ ...inputs, [name]: e.currentTarget.value }),
     required: true,
     status: undefined,
+    opacity: 38,
+    opacityOnHover: 50
   });
 
   return (
     <PageSection className={content} id='question'>
       <div>
+        <AnimationOnScroll animateIn="animate__fadeInDown">
         <Typography
           className={title}
-          textColor='primary-700'
+          textColor='neutral-50'
           textType='heading2'
           as='h2'
-        >
-          Still have a question?
+          >
+          Still have a <span className={questionSpan}>question?</span>
         </Typography>
+        </AnimationOnScroll>
         <Typography
           className={text}
-          textColor='copy-dark'
+          textColor='neutral-50'
           textType='paragraph1'
           as='p'
         >
-          Send your question our way and we'll get back to you within 48 hours!
+          Send your question our way and we'll get back to you!
         </Typography>
       </div>
       <form
@@ -85,10 +100,10 @@ function Question() {
           return false;
         }}
       >
-        <Input {...inputProps('Name', 'name')} />
-        <Input {...inputProps('Email', 'email')} type='email' />
+        <Input className={input} {...inputProps('Name', 'name', 'Enter name')} />
+        <Input className={input} {...inputProps('Email', 'email', 'Enter email')} type='email' />
         <Textarea
-          {...(inputProps('Enter your question here', 'message') as any)}
+          {...(inputProps('Enter your question', 'message') as any)}
           onChange={(e) => {
             setInputs({
               ...inputs,
@@ -96,13 +111,14 @@ function Question() {
             });
           }}
           placeholder='Send us your questions here!'
-          className={long}
+          className={cx(long, textArea)}
           limit={200}
           rows={3}
         />
+        <TurnstileChallenge onToken={(token) => setToken(token)}/>
         <div className={cx(long, btn)}>
-          <Button disabled={isSubmitting} type='submit'>
-            SEND
+          <Button className={button} disabled={isSubmitting} type='submit'>
+            Send
           </Button>
         </div>
       </form>

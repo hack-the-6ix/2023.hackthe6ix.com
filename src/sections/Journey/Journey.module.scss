@@ -1,0 +1,80 @@
+@use '../../styles/mixins.module';
+@use '../../styles/colors.module';
+
+.root {
+  padding-bottom: 6.5rem;
+  padding-top: 6.5rem;
+}
+
+.title {
+  margin: 0 0 2.5rem;
+  display: inline-block;
+  letter-spacing: normal;
+}
+
+.airplane{
+  max-width: 25.375rem;
+  margin-left: -6rem;
+  @include mixins.media(tablet) {
+    margin-left: -1rem;
+  }
+  display:block;
+}
+
+.text,
+.heading {
+  margin: 0;
+  letter-spacing: normal;
+}
+
+.heading {
+  font-size: 28px;
+  line-height: 36px;
+}
+
+.text {
+  margin-top: 1rem;
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.iconContainer {
+  display: grid;
+  //justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(auto-fill, 1fr);
+  grid-column-gap: 2rem;
+  grid-row-gap: 3rem;
+
+  @include mixins.media(mobile) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(auto-fill, 1fr);
+  }
+}
+
+.iconImage {
+  grid-row: 1;
+
+  @include mixins.media(mobile) {
+    grid-row: auto;
+  }
+
+  svg {
+    width: 100%;
+  }
+}
+
+.iconText {
+  text-align: center;
+  grid-row: 2;
+
+  @include mixins.media(mobile) {
+    grid-row: auto;
+  }
+}
+
+.imageConnectionsAdjustment {
+  @include mixins.media(mobile) {
+    margin: 2.5rem 0;
+  }
+}

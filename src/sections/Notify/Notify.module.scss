@@ -1,10 +1,53 @@
-@use '../../styles/colors.module';
+@use '~@ht6/react-ui/dist/styles/colors.module';
+@use '../../styles/mixins.module' as localMixins;
 
 .container {
   text-align: center;
-  background-color: colors.$bg-1;
-  padding-bottom: 7.25rem;
-  padding-top: 3.75rem;
+  // background-color: none;
+  //padding-bottom: 7.25rem;
+  padding-top: 15vh;
+  //top: 100%;
+  //transform: translateY(-100%);
+  min-height: 60vh;
+  position: relative;
+
+  @include localMixins.media(tablet) {
+    padding-top: 0;
+    min-height: 90vh;
+  }
+}
+
+.sectionBg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.cloudRight {
+  top: 0;
+  left: 65vw;
+  position: absolute;
+  height: 40vh;
+
+  @include localMixins.media(tablet) {
+    top: auto;
+    bottom: 0;
+    left: 45vw;
+  }
+}
+
+.cloudLeft {
+  bottom: -20%;
+  right: 65vw;
+  position: absolute;
+  height: 50vh;
+
+  @include localMixins.media(tablet) {
+    bottom: 10%;
+    right: 55vw;
+  }
 }
 
 .text {
@@ -35,10 +78,37 @@
   grid-gap: 0.75rem;
 }
 
+.cta-heading {
+  font-size: 2.5rem;
+  line-height: 3rem;
+  font-weight: 800;
+  letter-spacing: normal;
+
+  @include localMixins.media(tablet) {
+    font-size: 3rem;
+    line-height: 3.66rem;
+  }
+}
+
 .input {
   width: 24rem;
 }
 
 .apply {
+  margin-top: 1rem;
   text-decoration: none;
+}
+
+.text-highlight {
+  color: colors.getColor(warning-400);
+}
+
+.faq-cta {
+  font-size: 1rem;
+  line-height: 1.5625rem;
+
+  @include localMixins.media(tablet) {
+    font-size: 1.33rem;
+    line-height: 2.083rem;
+  }
 }

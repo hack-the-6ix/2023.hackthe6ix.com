@@ -23,47 +23,47 @@ export class ApiServiceError extends Error {
 }
 
 type ApiServiceMethodType<Payload, Return> = (
-  payload: Payload,
-  ref: string,
-  behavior: 'debounce' | 'reset'
+    payload: Payload,
+    ref: string,
+    behavior: 'debounce' | 'reset'
 ) => QueryResponse<Return>;
 
 export class ApiService {
   private static memo: { [ref: string]: QueryResponse<any> | null } = {};
 
   private static query<T>(
-    context: string,
-    ref: string,
-    endpoint: ApiActions,
-    payload?: object,
-    options: RequestInit = {}
+      context: string,
+      ref: string,
+      endpoint: ApiActions,
+      payload?: object,
+      options: RequestInit = {}
   ): QueryResponse<T> {
     const controller = new AbortController();
     const res = {
       controller,
       response: fetch(
-        this.getAction(endpoint),
-        Object.assign(
-          {
-            headers: {
-              'content-type': 'application/json',
-            },
-            signal: controller.signal,
-          },
-          payload && {
-            method: 'POST',
-            body: JSON.stringify(payload),
-          },
-          options
-        )
+          this.getAction(endpoint),
+          Object.assign(
+              {
+                headers: {
+                  'content-type': 'application/json',
+                },
+                signal: controller.signal,
+              },
+              payload && {
+                method: 'POST',
+                body: JSON.stringify(payload),
+              },
+              options
+          )
       ).then(async (res) => {
         ApiService.memo[ref] = null;
         let data = await res.text();
         data = await res.json().catch(() => data);
         if (res.status !== 200) {
           throw new ApiServiceError(
-            data,
-            `[ApiService] - ${context} - Server Error ${res.status} - ${data}`
+              data,
+              `[ApiService] - ${context} - Server Error ${res.status} - ${data}`
           );
         }
 
@@ -78,15 +78,15 @@ export class ApiService {
     return `${process.env.GATSBY_API_URL}${endpoint}`;
   }
 
-  static subscribe: ApiServiceMethodType<{ email: string }, string> = (
-    payload,
-    ref,
-    behavior
+  static subscribe: ApiServiceMethodType<{ email: string, captchaToken: string }, string> = (
+      payload,
+      ref,
+      behavior
   ) => {
     if (!isEmail(payload.email)) {
       throw new ApiServiceError(
-        'Please provide a valid email',
-        `[ApiService] - Email Subscribe - Bad Input - ${payload.email}`
+          'Please provide a valid email',
+          `[ApiService] - Email Subscribe - Bad Input - ${payload.email}`
       );
     }
 
@@ -95,28 +95,28 @@ export class ApiService {
         ApiService.memo[ref]!.controller.abort();
       } else if (behavior === 'debounce') {
         throw new ApiServiceError(
-          'Request pending. Please try again later',
-          `[ApiService] - Email Subscribe - Debounced - ${ref}`
+            'Request pending. Please try again later',
+            `[ApiService] - Email Subscribe - Debounced - ${ref}`
         );
       }
     }
 
     return ApiService.query(
-      'Email Subscribe',
-      ref,
-      ApiActions.SUBSCRIBE,
-      payload
+        'Email Subscribe',
+        ref,
+        ApiActions.SUBSCRIBE,
+        payload
     );
   };
 
   static ask: ApiServiceMethodType<
-    { name: string; email: string; message: string },
-    string
-  > = (payload, ref, behavior) => {
+      { name: string; email: string; message: string, captchaToken: string },
+      string
+      > = (payload, ref, behavior) => {
     if (!isEmail(payload.email)) {
       throw new ApiServiceError(
-        'Please provide a valid email',
-        `[ApiService] - Ask Question - Bad Input - ${payload.email}`
+          'Please provide a valid email',
+          `[ApiService] - Ask Question - Bad Input - ${payload.email}`
       );
     }
 
@@ -125,8 +125,8 @@ export class ApiService {
         ApiService.memo[ref]!.controller.abort();
       } else if (behavior === 'debounce') {
         throw new ApiServiceError(
-          'Request pending. Please try again later',
-          `[ApiService] - Ask Question - Debounced - ${ref}`
+            'Request pending. Please try again later',
+            `[ApiService] - Ask Question - Debounced - ${ref}`
         );
       }
     }

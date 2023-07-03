@@ -3,27 +3,80 @@
 @use '../../styles/mixins.module' as localMixins;
 
 .root {
-  background-color: colors.getColor(primary-700);
   padding: 3.25rem 1.5rem 1.75rem;
   position: relative;
+  overflow-x: clip;
+  height: auto;
+  margin-top: 5rem;
+
+  @include localMixins.media(tablet) {
+    margin-top: 10rem;
+  }
+}
+
+.ht6 {
+  text-transform: uppercase;
+  color: #F3F6F6;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  margin: 0;
+  display: block;
+
+  @include localMixins.media(tablet) {
+    display: none;
+  }
+}
+
+.logo {
+  display: none;
+
+  @include localMixins.media(tablet) {
+    display: block;
+  }
+}
+
+.footerbg {
+  position: absolute;
+  bottom: 0;
+  width: 2000px;
+  z-index: 1;
+  pointer-events: none;
+  transform: translateX(-50%);
+  left: 50%;
+
+  @include localMixins.media(tablet) {
+    left: -30rem;
+    transform: none;
+    bottom: 8rem;
+  }
 }
 
 .text {
   margin: 0;
   margin-right: 2.5rem;
 
+  &.copyright {
+    font-size: 20px;
+  }
+
   @include localMixins.media(mobile) {
     margin-right: 0;
+
+    &.copyright {
+      font-size: 18px;
+      line-height: 24px;
+    }
   }
 }
 
 .link {
   color: colors.getColor(copy-light);
-  display: block;
+  display: block; 
+  font-size: 14px;
 }
 
 .linkItem {
-  margin-right: 1.75rem;
   &:last-child {
     margin-right: 0;
   }
@@ -36,6 +89,11 @@
   display: flex;
   padding: 0;
   margin: 0;
+  gap: 4rem;
+
+  @include localMixins.media(tablet) {
+    display: none;
+  }
 }
 
 .row {
@@ -44,33 +102,46 @@
   align-items: center;
   flex-wrap: wrap;
   display: flex;
+  z-index: 3;
+  position: relative;
+  color: colors.getColor(neutral-50);
 
-  & > * {
-    margin-bottom: 1rem;
+  .itemsmobile {
+    display: none;
+    gap: 2rem;
+  }
+
+  @include localMixins.media(tablet) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    gap: 2rem;
+
+    .itemsmobile {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
 
 .floatingBtn {
-  @include mixins.transition(transform);
-  background-color: rgba(white, 0.5);
+  @include mixins.transition(transform color);
+  background-color: rgba(#333c64, 0.3);
   margin: 1rem 1rem 1rem auto;
+  backdrop-filter: blur(3px);
   border-radius: 0.25rem;
-  position: sticky;
+  position: fixed;
   bottom: 1rem;
+  right: 1rem;
   z-index: 10;
+  color: colors.getColor(neutral-50);
+
+  &:hover, &:active, &:focus {
+    color: lighten(#2d948c, 10%);
+  }
 }
 
 .hide {
-  transform: translateY(100%) translateY(1rem);
-}
-
-.img {
-  transform: translateY(-100%);
-  position: absolute !important;
-  height: fit-content;
-  min-height: 10rem;
-  width: 100%;
-  z-index: -1;
-  margin: 0;
-  inset: 0;
+  transform: translateY(100%) translateY(2rem);
 }

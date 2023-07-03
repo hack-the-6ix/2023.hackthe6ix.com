@@ -1,0 +1,45 @@
+@use '~@ht6/react-ui/dist/styles/mixins.module';
+@use '~@ht6/react-ui/dist/styles/colors.module';
+
+.card {
+    background-color: colors.getColor(shades-0);
+    width: 468px;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+}
+
+.image {
+    aspect-ratio: 1;
+    margin-right: 18px;
+    margin-top: 53px;
+    margin-left: 60.13px;
+}
+
+.text {
+    display: block;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    margin-right: 60.13px;
+}
+
+.title {
+    font-style: italic;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 25px;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.content {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.label {
+    font-weight: 600;
+    font-size: 14px;
+}
