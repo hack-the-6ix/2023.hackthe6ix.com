@@ -90,7 +90,7 @@ function IndexPage() {
           ></div>
         </div>
         <Page title='Home'>
-          <Navigation links={navLinks} showMlhBanner useScrollSpy />
+          <Navigation links={navLinks} showMlhBanner useScrollSpy showApply />
           <Splash />
           <About />
           <div className={pastHeroSectionSpacer}>
