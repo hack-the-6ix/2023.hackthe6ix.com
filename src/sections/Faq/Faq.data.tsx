@@ -37,7 +37,7 @@ const questionGroups: Array<{
       {
         question: 'Am I eligible to participate?',
         answer:
-          'Any high-school, post-secondary students, or recent graduates (>1 years of graduating) are eligible to participate in our event.',
+          (<>Any high-school, post-secondary students, or recent graduates ({'>'}1 years of graduating) are eligible to participate in our event.<br/><br/>Want to participate in different ways? Check out our <BasicLink linkStyle='styled' href='https://forms.gle/GCibpWBG4FDUERFo9'>mentor & judge application</BasicLink>, <BasicLink linkStyle='styled' href='https://forms.gle/sNKwWYFubj5mYbDk8'>workshop lead applcation</BasicLink>, and <BasicLink linkStyle='styled' href='https://forms.gle/KjUJaHLbLmo8GXVK8'>volunteer sign-up</BasicLink>.</>),
       },
       {
         question: 'Do I need to know how to code?',
