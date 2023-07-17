@@ -158,8 +158,8 @@ function Splash() {
                 </Button>
                 <div>
                   <Button
-                    href='https://forms.gle/Y5LMhhwxSVxceq9JA'
-                    rel='noreferrer noopener'
+                    href='https://go.hackthe6ix.com/2023-mentor-apply'
+                    rel='noopener'
                     className={apply}
                     target='_blank'
                     as={BasicLink}
@@ -168,8 +168,8 @@ function Splash() {
                     Mentor & Judge App
                   </Button>
                   <Button
-                    href='https://forms.gle/NnadAF9Q8wzhCC6p9'
-                    rel='noreferrer noopener'
+                    href='https://go.hackthe6ix.com/2023-workshop-apply'
+                    rel='noopener'
                     className={apply}
                     target='_blank'
                     as={BasicLink}
