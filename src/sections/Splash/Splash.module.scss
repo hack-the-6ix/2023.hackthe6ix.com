@@ -193,6 +193,7 @@
 .apply {
   text-decoration: none;
   margin-bottom: 1rem;
+  flex-grow: 1;
 
   @include localMixins.media(mobile) {
     padding: 1.1rem 3rem;
@@ -202,7 +203,24 @@
 
 .apply-container {
   display: flex;
-  column-gap: 1rem;
+  flex-direction: column;
+  width: 35%;
+
+  div {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    
+  }
+  @include localMixins.media(tablet) {
+    width: auto;
+    div {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+    }
+  }
 }
 
 .text-highlight {
