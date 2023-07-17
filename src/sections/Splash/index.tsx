@@ -148,14 +148,36 @@ function Splash() {
           appsOpen ?
               <div className={applyContainer}>
                 <Button
-                    href='https://dash.hackthe6ix.com'
-                    rel='noreferrer noopener'
+                  href='https://dash.hackthe6ix.com'
+                  rel='noreferrer noopener'
+                  className={apply}
+                  target='_blank'
+                  as={BasicLink}
+                >
+                  Apply now!
+                </Button>
+                <div>
+                  <Button
+                    href='https://go.hackthe6ix.com/2023-mentor-apply'
+                    rel='noopener'
                     className={apply}
                     target='_blank'
                     as={BasicLink}
-                >
-                  Apply Now
-                </Button>
+                    buttonVariant='secondary'
+                  >
+                    Mentor & Judge App
+                  </Button>
+                  <Button
+                    href='https://go.hackthe6ix.com/2023-workshop-apply'
+                    rel='noopener'
+                    className={apply}
+                    target='_blank'
+                    as={BasicLink}
+                    buttonVariant='secondary'
+                  >
+                    Workshop Lead App
+                  </Button>
+                </div>
               </div>
               :
               <>
