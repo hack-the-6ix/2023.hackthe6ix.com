@@ -32,12 +32,12 @@ const questionGroups: Array<{
     questions: [
       {
         question: 'When do hacker applications open?',
-        answer: (<>Hack the 6ix applications for the 2023 year are open now! Head over to the <BasicLink linkStyle='styled' href='https://dash.hackthe6ix.com'>Hacker Dashboard</BasicLink> to start your application.</>),
+        answer: (<>Hack the 6ix applications for the 2023 year are now closed. Keep an eye on your inboxes for acceptances rolling out in the coming days!</>),
       },
       {
         question: 'Am I eligible to participate?',
         answer:
-          (<>Any high-school, post-secondary students, or recent graduates ({'>'}1 years of graduating) are eligible to participate in our event.<br/><br/>Want to participate in different ways? Check out our <BasicLink linkStyle='styled' href='https://forms.gle/GCibpWBG4FDUERFo9'>mentor & judge application</BasicLink>, <BasicLink linkStyle='styled' href='https://forms.gle/sNKwWYFubj5mYbDk8'>workshop lead applcation</BasicLink>, and <BasicLink linkStyle='styled' href='https://forms.gle/KjUJaHLbLmo8GXVK8'>volunteer sign-up</BasicLink>.</>),
+          (<>Any high-school, post-secondary students, or recent graduates ({'>'}1 years of graduating) are eligible to participate in our event.</>),
       },
       {
         question: 'Do I need to know how to code?',

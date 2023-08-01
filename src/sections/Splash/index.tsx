@@ -142,9 +142,9 @@ function Splash() {
             textType='paragraph1'
             as='p'
         >
-          {appsOpen ? "Applications are now open!" : "Applications opening soon! Receive the latest updates in your inbox."}
+          {appsOpen ? "Applications are now open!" : "Applications are now closed! Keep an eye on your inbox in the coming days."}
         </Typography>
-        {
+        {/* {
           appsOpen ?
               <div className={applyContainer}>
                 <Button
@@ -201,12 +201,12 @@ function Splash() {
                       onSubmit();
                       return false;
                     }}
-
+                    style={{cursor: "disabled !important"}}
                 >
                 </InputButton>
                 <TurnstileChallenge onToken={(token) => setToken(token)}/>
               </>
-        }
+        } */}
         <Socials
           className={socials}
           baseColor='shades-0'

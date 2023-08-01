@@ -2444,11 +2444,6 @@ type WebPOptions = {
   readonly quality: InputMaybe<Scalars['Int']>;
 };
 
-type NotifyQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type NotifyQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ readonly siteMetadata: { readonly applications: { readonly start: string | null, readonly end: string | null } | null } | null }> } };
-
 type PageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
