@@ -124,8 +124,8 @@ function Notify() {
             textType='heading2'
             as='h2'
           >
-            Applications open&nbsp;
-            <span className={textHighlight}>soon</span>
+            Applications are closed&nbsp;
+            {/* <span className={textHighlight}>soon</span> */}
           </Typography>)
           
         }
@@ -144,7 +144,7 @@ function Notify() {
         </Button>)
         :
         (<React.Fragment>
-          <InputButton
+          {/* <InputButton
             label='Enter email'
             name='email'
             buttonText='Notify me'
@@ -165,14 +165,14 @@ function Notify() {
               return false;
             }}
            >
-          </InputButton>
+          </InputButton> */}
           <TurnstileChallenge onToken={(token) => setToken(token)}/>
           <Typography
-          className={cx(text, faqCta)}
-          textColor='neutral-50'
-          textType='paragraph1'
-          as='p'
-        >
+            className={cx(text, faqCta)}
+            textColor='neutral-50'
+            textType='paragraph1'
+            as='p'
+          >
           Have questions? Check out our{' '}
           <BasicLink linkStyle='styled' href='#faq' className={textHighlight}>
             FAQ
