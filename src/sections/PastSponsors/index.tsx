@@ -21,7 +21,7 @@ const query = graphql`
       nodes {
         base
         childImageSharp {
-          gatsbyImageData(height: 100, quality: 100)
+          gatsbyImageData(height: 200, quality: 100)
         }
       }
     }
@@ -57,7 +57,7 @@ function PastSponsors() {
         as='p'
         textColor='shades-0'
       >
-        <span style={{ display: 'inline-block', width: '100%', textAlign: 'center' }}>Special thanks to our past sponsors for supporting Hack the 6ix and the incubation of big ideas. </span>
+        <span style={{ display: 'inline-block', width: '100%', textAlign: 'center' }}>Special thanks to our current sponsors for supporting Hack the 6ix and the incubation of big ideas. </span>
         <br />
         <span style={{ display: 'inline-block', width: '100%', textAlign: 'center' }}>Want to help us make it even better?</span>
       </Typography>
