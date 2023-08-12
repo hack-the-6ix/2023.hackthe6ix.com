@@ -53,7 +53,7 @@ const pastSponsors: PastSponsorGroup[] = [
   //   ],
   // },
   {
-    size: 12,
+    size: 9,
     gap: 2,
     tier: "bronze",
     items: [
@@ -61,7 +61,17 @@ const pastSponsors: PastSponsorGroup[] = [
         name: 'Best Buy',
         fileName: 'bestbuy.webp',
         url: 'https://www.bestbuy.com/',
-      }
+      },
+      {
+        name: 'Master of Management Analytics Program at Rotman School of Management',
+        fileName: 'rotmanmma.webp',
+        url: 'https://www.rotman.utoronto.ca/degrees/mastersprograms/mma'
+      },
+      {
+        name: 'Master of Financial Risk Management Program at Rotman School of Management',
+        fileName: 'rotmanmfrm.webp',
+        url: 'https://www.rotman.utoronto.ca/degrees/mastersprograms/mfrm'
+      },
     ],
   },
   {
