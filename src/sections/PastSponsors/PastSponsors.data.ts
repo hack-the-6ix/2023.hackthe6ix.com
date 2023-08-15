@@ -28,6 +28,11 @@ const pastSponsors: PastSponsorGroup[] = [
     tier: "silver",
     items: [
       {
+        name: 'FDM',
+        fileName: 'fdm.webp',
+        url: 'https://www.fdmgroup.com/',
+      },
+      {
         name: 'Altura',
         fileName: 'altura.webp',
         url: 'https://alturanft.com/',
