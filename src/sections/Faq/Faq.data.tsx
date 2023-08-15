@@ -61,7 +61,7 @@ const questionGroups: Array<{
     questions: [
       {
         question: 'How do I get to Hack the 6ix?',
-        answer: 'We\'re still finalizing our venue details for 2023, but Hack the 6ix is usually held somewhere in Toronto. Subscribe to email updates and check out our social media pages to be the first to know!'
+        answer: 'Venue details and directions have been sent to all accepted hackers. Please check your email for more information or contact us if you have any additional questions.'
       },
       {
         question: 'What should I bring?',

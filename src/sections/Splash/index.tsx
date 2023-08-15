@@ -136,14 +136,14 @@ function Splash() {
           Hack the 6ix is Toronto's <br className={hideMobile} /> <span className={textHighlight}>largest</span> summer hackathon, <br className={hideMobile} /> where <span className={textHighlight}>anyone</span> can hack <br className={hideDesktop} /> to <br className={hideMobile} />
           <VCarousel className={carousel} items={words} />
         </Typography>
-        <Typography
-            className={cx(text, signUpText)}
-            textColor='neutral-50'
-            textType='paragraph1'
-            as='p'
-        >
-          {appsOpen ? "Applications are now open!" : "Applications are now closed! Keep an eye on your inbox in the coming days."}
-        </Typography>
+        {/*<Typography*/}
+        {/*    className={cx(text, signUpText)}*/}
+        {/*    textColor='neutral-50'*/}
+        {/*    textType='paragraph1'*/}
+        {/*    as='p'*/}
+        {/*>*/}
+        {/*  {appsOpen ? "Applications are now open!" : "Applications are now closed! Keep an eye on your inbox in the coming days."}*/}
+        {/*</Typography>*/}
         {/* {
           appsOpen ?
               <div className={applyContainer}>
