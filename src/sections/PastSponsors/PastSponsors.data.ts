@@ -16,8 +16,8 @@ const pastSponsors: PastSponsorGroup[] = [
     tier: "platinum",
     items: [
       {
-        name: 'TMU',
-        fileName: 'tmu.webp',
+        name: 'Department of Computer Science @ TMU',
+        fileName: 'tmucs.webp',
         url: 'https://www.torontomu.ca/cs/',
       }
     ],
