@@ -29,7 +29,7 @@ const pastSponsors: PastSponsorGroup[] = [
     items: [
       {
         name: 'FDM',
-        fileName: 'fdm.webp',
+        fileName: 'fdm.png',
         url: 'https://www.fdmgroup.com/',
       },
       {
@@ -113,6 +113,11 @@ const pastSponsors: PastSponsorGroup[] = [
         name: 'Balsamiq',
         fileName: 'balsamiq.webp',
         url: 'https://balsamiq.com/',
+      },
+      {
+        name: "Nord Security",
+        fileName: "nord.png",
+        url: "https://nordsecurity.com"
       }
     ],
   },
