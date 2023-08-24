@@ -115,9 +115,19 @@ const pastSponsors: PastSponsorGroup[] = [
         url: 'https://balsamiq.com/',
       },
       {
-        name: "Nord Security",
-        fileName: "nord.png",
-        url: "https://nordsecurity.com"
+        name: "NordVPN",
+        fileName: "NordVPN.png",
+        url: "https://nordvpn.com"
+      },
+      {
+        name: "incogni",
+        fileName: "incogni.png",
+        url: "https://incogni.com"
+      },
+      {
+        name: "NordPass",
+        fileName: "nordpass.png",
+        url: "https://nordpass.com"
       }
     ],
   },
