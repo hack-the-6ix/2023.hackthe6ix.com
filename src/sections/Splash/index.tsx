@@ -144,41 +144,19 @@ function Splash() {
         {/*>*/}
         {/*  {appsOpen ? "Applications are now open!" : "Applications are now closed! Keep an eye on your inbox in the coming days."}*/}
         {/*</Typography>*/}
+        <div className={applyContainer}>
+          <Button
+            href='https://go.hackthe6ix.com/2024-orgapps'
+            rel='noreferrer noopener'
+            className={apply}
+            target='_blank'
+            as={BasicLink}
+          >
+            Apply to organize 2024!
+          </Button>
+        </div>
         {/* {
           appsOpen ?
-              <div className={applyContainer}>
-                <Button
-                  href='https://dash.hackthe6ix.com'
-                  rel='noreferrer noopener'
-                  className={apply}
-                  target='_blank'
-                  as={BasicLink}
-                >
-                  Apply now!
-                </Button>
-                <div>
-                  <Button
-                    href='https://go.hackthe6ix.com/2023-mentor-apply'
-                    rel='noopener'
-                    className={apply}
-                    target='_blank'
-                    as={BasicLink}
-                    buttonVariant='secondary'
-                  >
-                    Mentor & Judge App
-                  </Button>
-                  <Button
-                    href='https://go.hackthe6ix.com/2023-workshop-apply'
-                    rel='noopener'
-                    className={apply}
-                    target='_blank'
-                    as={BasicLink}
-                    buttonVariant='secondary'
-                  >
-                    Workshop Lead App
-                  </Button>
-                </div>
-              </div>
               :
               <>
                 <InputButton
