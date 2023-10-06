@@ -152,7 +152,7 @@ function Splash() {
             target='_blank'
             as={BasicLink}
           >
-            Apply to organize 2024!
+            Apply to be an organizer!
           </Button>
         </div>
         {/* {
