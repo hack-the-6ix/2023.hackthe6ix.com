@@ -144,7 +144,7 @@ function Splash() {
         {/*>*/}
         {/*  {appsOpen ? "Applications are now open!" : "Applications are now closed! Keep an eye on your inbox in the coming days."}*/}
         {/*</Typography>*/}
-        <div className={applyContainer}>
+        {/* <div className={applyContainer}>
           <Button
             href='https://go.hackthe6ix.com/2024-orgapps'
             rel='noreferrer noopener'
@@ -154,7 +154,7 @@ function Splash() {
           >
             Apply to be an organizer!
           </Button>
-        </div>
+        </div> */}
         {/* {
           appsOpen ?
               :
