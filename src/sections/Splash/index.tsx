@@ -63,11 +63,11 @@ function Splash() {
   const endDate = new Date(data.allSite.nodes[0].siteMetadata!.event!.end!);
   const isSameMonth = startDate.getMonth() === endDate.getMonth();
 
-  const appsStartDate = new Date(data.allSite.nodes[0].siteMetadata!.applications!.start!);
-  const appsEndDate = new Date(data.allSite.nodes[0].siteMetadata!.applications!.end!);
+  // const appsStartDate = new Date(data.allSite.nodes[0].siteMetadata!.applications!.start!);
+  // const appsEndDate = new Date(data.allSite.nodes[0].siteMetadata!.applications!.end!);
   const currentDate = new Date();
 
-  const appsOpen = appsStartDate < currentDate && currentDate < appsEndDate;
+  // const appsOpen = appsStartDate < currentDate && currentDate < appsEndDate;
 
   // const [emailInput, setEmailInput] = useState({email: ''});
   const [email, setEmail] = useState('');
@@ -144,7 +144,7 @@ function Splash() {
         {/*>*/}
         {/*  {appsOpen ? "Applications are now open!" : "Applications are now closed! Keep an eye on your inbox in the coming days."}*/}
         {/*</Typography>*/}
-        <div className={applyContainer}>
+        {/* <div className={applyContainer}>
           <Button
             href='https://go.hackthe6ix.com/2024-orgapps'
             rel='noreferrer noopener'
@@ -154,7 +154,7 @@ function Splash() {
           >
             Apply to be an organizer!
           </Button>
-        </div>
+        </div> */}
         {/* {
           appsOpen ?
               :
