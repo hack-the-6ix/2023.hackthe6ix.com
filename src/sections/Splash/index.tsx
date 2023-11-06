@@ -63,11 +63,11 @@ function Splash() {
   const endDate = new Date(data.allSite.nodes[0].siteMetadata!.event!.end!);
   const isSameMonth = startDate.getMonth() === endDate.getMonth();
 
-  const appsStartDate = new Date(data.allSite.nodes[0].siteMetadata!.applications!.start!);
-  const appsEndDate = new Date(data.allSite.nodes[0].siteMetadata!.applications!.end!);
+  // const appsStartDate = new Date(data.allSite.nodes[0].siteMetadata!.applications!.start!);
+  // const appsEndDate = new Date(data.allSite.nodes[0].siteMetadata!.applications!.end!);
   const currentDate = new Date();
 
-  const appsOpen = appsStartDate < currentDate && currentDate < appsEndDate;
+  // const appsOpen = appsStartDate < currentDate && currentDate < appsEndDate;
 
   // const [emailInput, setEmailInput] = useState({email: ''});
   const [email, setEmail] = useState('');
