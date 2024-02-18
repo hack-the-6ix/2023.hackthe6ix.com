@@ -185,6 +185,30 @@ function Splash() {
                 <TurnstileChallenge onToken={(token) => setToken(token)}/>
               </>
         } */}
+        <InputButton
+          label='Enter email'
+          name='email'
+          buttonText='Notify me'
+          inputProps={{
+            noBorder: true,
+            required: true,
+            opacity: 38,
+            opacityOnHover: 50,
+            placeHolderColor: "primary-50",
+            textColor: "shades-0",
+            value: email,
+            type: 'email',
+            onChange: (e) => setEmail(e.currentTarget.value)
+          }}
+          onSubmit={(e) => {
+            e.preventDefault();
+            onSubmit();
+            return false;
+          }}
+          style={{cursor: "disabled !important"}}
+        >
+        </InputButton>
+        <TurnstileChallenge onToken={(token) => setToken(token)}/>
         <Socials
           className={socials}
           baseColor='shades-0'
